@@ -1,0 +1,173 @@
+Good naming makes it easier to read and understand code.
+
+Consider the following two versions of functionally equivalent code.
+
+```java
+List<String> list1 = new ArrayList<>();
+for (x : list1) {
+    if (x.size() <= 4) {
+        list1.add(x);
+    }
+}
+return list1;
+```
+
+```java
+List<String> shortFileNames = new ArrayList<>();
+for (name : filenames) {
+    if (name.size() <= FILE_NAME_LENGTH_LIMIT) {
+        shortFileNames.add(name);
+    }
+}
+return shortFileNames;
+```
+
+Which one is more understandable?
+
+To make your code understandable, you need to `reveal your intent` and `avoid disinformation`.
+
+Methods which return boolean values should sound like questions.
+
+```java
+if (isFileTooLarge(image))
+```
+
+is more readable than
+
+```java
+if (checkFileSize(image))
+```
+
+## Naming conventions
+
+* all code is written in english, including comments
+* upper `CamelCase` is used for classes
+* lower `camelCase` is used for methods, local variables and instance variables
+* constants should be `ALL_CAPS`
+* methods are named by verbs, variables and classes by nouns
+* XML resource ids must use `snake_case`
+* Activities and Fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`
+* the corresponding layouts must be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`
+* all naming must be simple, clear and mnemonic (short and meaningful)
+* the [Infinum Code Style](/resources/infinum-code-style-settings.jar) must be imported into Android Studio and used in formatting code. If you want to find out how to import it, check out chapter about [Android Studio setup](Android Studio Setup.md).
+* drawable resources also have [naming conventions](http://petrnohejl.github.io/Android-Cheatsheet-For-Graphic-Designers/#naming-conventions)
+
+## Examples of good naming
+
+```java
+public class WelcomeActivity extends BaseActivity implements WelcomeView {
+
+    public static final int REQUEST_CODE_LOGIN = 147;
+
+    public static final String EXTRA_ACTION = "EXTRA_ACTION";
+
+    @InjectView(R.id.viewExchangeQuote)
+    protected ExchangeQuoteView exchangeQuoteView;
+
+    @InjectView(R.id.textSeeDetails)
+    protected TextView seeDetailsText;
+
+    @OnClick(R.id.textSeeDetails)
+    protected void onSeeDetailsClicked() {
+        presenter.onDetailsRequested();
+    }
+
+    @OnClick(R.id.loginButton)
+    protected void onLoginButtonClicked() {
+        presenter.onLoginButtonClicked();
+    }
+
+    @OnClick(R.id.registerButton)
+    protected void onRegisterButtonClicked() {
+        presenter.onRegisterButtonClicked();
+    }
+
+    @Override
+    public void showCurrencies(List<Currency> currencies) {
+        exchangeQuoteView.showCurrencies(currencies);
+    }
+
+    @Override
+    public void showSellingAmount(String sellingAmount) {
+        exchangeQuoteView.showSellingAmount(sellingAmount);
+    }
+
+    @Override
+    public void showBuyingAmount(String buyingAmount) {
+        exchangeQuoteView.showBuyingAmount(buyingAmount);
+    }
+
+    @Override
+    public void navigateToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_LOGIN);
+    }
+
+    @Override
+    public void navigateToRegister() {
+        Intent intent = RegistrationActivity.buildIntent(this);
+        startActivityForResult(intent, REQUEST_CODE_REGISTER);
+    }
+}
+```
+
+```xml
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <co.infinum.currencyfair.custom.ExchangeQuoteView
+                android:id="@+id/viewExchangeQuote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                tools:visibility="visible"/>
+
+        <com.ivankocijan.magicviews.views.MagicTextView
+                android:id="@+id/textSeeDetails"
+                style="@style/TextButton"
+                android:padding="8dp"
+                android:textAllCaps="false"
+                tools:text="@string/see_how_you_save"
+                android:visibility="invisible"
+                tools:visibility="visible"/>
+
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <com.ivankocijan.magicviews.views.MagicButton
+                    android:id="@+id/registerButton"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/register"/>
+
+            <Space android:layout_width="16dp"
+                   android:visibility="gone"
+                   android:layout_height="1dp"/>
+
+            <com.ivankocijan.magicviews.views.MagicButton
+                    android:id="@+id/loginButton"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/login"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+```
