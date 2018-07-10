@@ -2,13 +2,14 @@ PRs are the essential part of our workflow and this section describes how to cre
 
 #### General rules ####
 - A PR can not be merged until all static checkers and tests pass validation (i.e. CI build is flagged as success)
-- Master and development branch should be set as protected, which means no one can forcepush to them and they can't be deleted. If you are not sure how to set them as protected or you don't have access, ask one of the team leads to do it for you.
+- Master and development branch should be set as protected, which means no one can force push to them and they can't be deleted. If you are not sure how to set them as protected or you don't have access, ask one of the team leads to do it for you.
 
 #### Creating a PR ####
 
 1. A good PR includes only one feature or a bugfix. Fixing multiple issues or adding several features in a PR is not a good practice and it should be avoided whenever possible. 
 2. When creating a PR make sure you write a good description. It doesn't have to be long, but it has to give context to the reviewer. Commit messages will not be considered as a description of what has been done in the PR. 
 3. If possible, link a task to the description which describes why the PR was created. 
+4. Review your own PR before creating it.
 
 #### Reviewing a PR ####
 
