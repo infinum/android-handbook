@@ -15,8 +15,8 @@ Every project is different, but there are some common things which every readme 
 9. **Important services**
 A link to important services. You can add other services if they are relevant.
 	* Labs
-  * Productive/Jira/etc.
-  * Polyglot
-  * Crashlytics  
+  	* Productive/Jira/etc.
+  	* Polyglot
+  	* Crashlytics  
 10. **How to deploy a new build** - Instructions on how to deploy a new build.
 11. **Project specifics**. This section is not mandatory, but if there is anything specific to the project write it in this section.
