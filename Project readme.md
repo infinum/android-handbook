@@ -4,8 +4,8 @@ A good readme is essential so that anyone who access a repository can find relev
 
 Every project is different, but there are some common things which every readme has to contain. The order is not random, the readme should be in this order. 
 
-1. **Application name**. Even if the name of the repo is the same as the application name. 
-2. **CircleCI badge** - For the default branch - https://circleci.com/docs/2.0/status-badges/
+1. **Application name** - Even if the name of the repo is the same as the application name. 
+2. **CircleCI badge** - For the default branch. https://circleci.com/docs/2.0/status-badges/
 3. **Description** - Write down what the app is used for. 
 4. **Supported versions** - Minimal supported Android version.
 5. **People section** - A section explaining who is working on the project and who the project manager is.
