@@ -4,9 +4,9 @@ A good readme is essential so that anyone who access a repository can find relev
 
 Every project is different, but there are some common things which every readme has to contain. The order is not random, the readme should be in this order. 
 
-1. **Application name**. Even if the name of the repo is the same as the application name. 
-2. **CircleCI badge** - For the default branch - https://circleci.com/docs/2.0/status-badges/
-3. **Description** - Write down what the app is used for.
+1. **Application name** - Even if the name of the repo is the same as the application name. 
+2. **CircleCI badge** - For the default branch. https://circleci.com/docs/2.0/status-badges/
+3. **Description** - Write down what the app is used for. 
 4. **Architecture** - A quick overview of the architecture and a list of programming languages
 5. **API documentation** - A link and a short description. The description is needed only if there is something out of the ordinary (JSON-API, XML…). If the documentation doesn’t exist, push the backend developers to create one. 
 6. **Design** - Link to the design. Most of the time this is a link to the Zeplin project, but depending on the project, it can be something else.
@@ -16,7 +16,7 @@ A link to important services. You can add other services if they are relevant.
   * Productive/Jira/etc.
   * Polyglot
   * Firebase
-	* Google console project
-	* Google play  
+  * Google console project
+  * Google play  
 8. **How to deploy a new build** - Instructions on how to deploy a new build.
 9. **Project specifics**. This section is not mandatory, but if there is anything specific to the project write it in this section.
