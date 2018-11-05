@@ -15,6 +15,8 @@ A link to important services. You can add other services if they are relevant.
 	* Labs
   * Productive/Jira/etc.
   * Polyglot
-  * Crashlytics  
+  * Firebase
+	* Google console project
+	* Google play  
 8. **How to deploy a new build** - Instructions on how to deploy a new build.
 9. **Project specifics**. This section is not mandatory, but if there is anything specific to the project write it in this section.
