@@ -1,6 +1,6 @@
 # Sonarcloud
 
-Sonarcloud is a continuous code quality tool which analyzes your code and notifies you about common pitfalls. The idea behind sonarcloud integration is to keep the code base as clean as possible and to reduce the [https://infinum.co/the-capsized-eight/is-your-business-sinking-into-technical-debt](technical dept).
+Sonarcloud is a continuous code quality tool which analyzes your code and notifies you about common pitfalls. The idea behind sonarcloud integration is to keep the code base as clean as possible and to reduce the [technical dept](https://infinum.co/the-capsized-eight/is-your-business-sinking-into-technical-debt).
 
 Sonarcloud support PR integration and it will block PR from merging if the quality report is bellow our standards. Sonarqube and sonarcloud is the same thing. Sonarqube is a self hosted solution while sonarcloud is cloud based code quality tool. There are small differences, but as far as we are concerned, they have the same features.
 
@@ -10,7 +10,7 @@ Before starting the integration, I suggest you ask your team lead to help you wi
 
 This integration does not take branches or PRs into the account. It doesn’t matter on which branch your are, on the sonarcloud you will see only 1 analysis. This means it’s possible to overwrite the previous analysis, if you run sonarcloud on a different branch. However, you need to do this before setting up PR and branch analysis.
 
-1. Go to [https://sonarcloud.io/](sonarcloud.io) and login via github. Ask your team lead to give you member access to sonarcloud.
+1. Go to [sonarcloud.io](https://sonarcloud.io/) and login via github. Ask your team lead to give you member access to sonarcloud.
 
 2. In the upper right corner click on the ”+” icon and select “Analyze new project”
 
