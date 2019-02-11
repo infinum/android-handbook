@@ -75,7 +75,7 @@ def getSonarcloudToken() {
     }
 
     Properties props = getLocalProperties()
-    return props['sonarqube.token']
+    return props['sonarcloud.token']
 }
 
 def getLocalProperties() {
