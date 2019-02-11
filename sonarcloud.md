@@ -40,7 +40,7 @@ Here are the steps for initial integration:
 ```groovy
 buildscript {
     dependencies {
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:{sonarCloudLatestVersion}“
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:{sonarCloudLatestVersion}"
     }
 }
 ```
@@ -115,7 +115,7 @@ Here are the steps to set PR and branches integration:
 
 ```
 static def getDefaultBranch() {
-    return “dev”
+    return "dev"
 }
 
 // Return CircleCI PR number extracted from CIRCLE_PULL_REQUEST environment variable
