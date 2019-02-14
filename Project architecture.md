@@ -4,9 +4,11 @@ While defining a software arhicteture we always want to achive certain character
 
 ## What is MVVM?
 
-// TODO descirbe the basics of MVVM architecture and how it diff from MVP
+MVVM is a well known architecture that was publicly introduced in 2005 (source: [Introduction to Model/View/ViewModel pattern for building WPF apps](https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/)). It consists of three concepts Model, View and ViewModel. On first glance it is very similar to MVP. 
 
-
+* The Model in **M**VVM has the same role as it has in the MVP architecture. It is responsible for managing the data received from a specific datasource (Database, Network) completely UI independent.
+* View in M**V**VM has also a similar role as in MVP - presenting the data to the user. In Android, View is usualy represented as an Activity, Fragment or an Android View. The core difference between the View in MVP and in MVVM is that the MVVM view is more knowladgable about the underlying Model and ViewModel in a sense that it knows about the events and states that have to be observed.
+* ViewModel in MV**VM** is also known as the "Model of a View" and can be considered as a Views abstraction that creates a link between the Model and the View.
 
 ## Architecture components
 
@@ -18,15 +20,15 @@ While defining a software arhicteture we always want to achive certain character
 
 ![MVVM lifecycle](/img/mvvm_lifecyle.png "MVVM lifecycle")
 
- ViewModel might sound powerful but infect in the architecture components library this is just a simple abstract class.The magic stuff resides in the [ViewModelProvider](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProvider). ViewModelProvider is responsible for ViewModel creation and retention or the ViewModel. To create ViewModelProvider for specific Activity/Fragment you should use  [ViewModelProviders](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProviders) util class.
+ViewModel might sound powerful but in the architecture components library this is just a simple abstract class. The magic stuff resides in the [ViewModelProvider](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProvider). ViewModelProvider is responsible for ViewModel creation and retention or the ViewModel. To create a ViewModelProvider for specific Activity/Fragment you should use [ViewModelProviders](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProviders) util class.
 
 ### LiveData
 
-[LiveData](https://developer.android.com/topic/libraries/architecture/livedata) is lifecycle-aware observable class that is used as medium for data transfer from ViewModel to the View. Because of its connection to the activity lifecycle we have reduce number of memory leaks, crashes, lifecycle synchronization events beetween architecture layers. LiveData will take care of notifing the View about the latest data when the time is right. We only take care of preparing the correct data.
+[LiveData](https://developer.android.com/topic/libraries/architecture/livedata) is a lifecycle-aware observable class that is used as medium for data transfer from ViewModel to the View. Because of its connection to the activity lifecycle we have reduce number of memory leaks, crashes, lifecycle synchronization events beetween architecture layers. LiveData will take care of notifing the View about the latest data when the time is right. We only take care of preparing the correct data.
 
-### SingleLiveData
+### SingleLiveEvent
 
-// TODO
+Due to some use cases where LiveData was not working as expected (Snackbar, Navigation and other one shot events) Google added a custom implementation of LiveData called [SingleLiveEvent](https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) in the the [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture#android-architecture-blueprints). It is a lifecycle-aware observable that sends only new updates after subscription, used for events like navigation and Snackbar messages. For more information regarding this topic please check this [article](https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150).
 
 
 
@@ -42,8 +44,7 @@ ViewModel together with all the data will survive the activity cnofiguration cha
 
 - **Flow control**
 
-Most aplication contain some screens that can be grouped into a flow. Inside this flow you will often have a need to share some data. Information from the previous screen might be need or might influence some of the future screens. ViewModel and LiveDate can be a perfect solution for this type of situations. If you organize the specifc flow inside one activity and all other screens as fragment it is easy to share a ViewModel amongst all fragment and the controlling activity. This makes easy to share, store, combine and mange all the data in the flow. 
-
+Most aplication contain some screens that can be grouped into a flow. Inside this flow you will often have a need to share some data. Information from the previous screen might be needed or might have influenced some of the future screens. ViewModel and LiveDate can be a perfect solution for these types of situations. If you organize the specifc flow inside one activity and all other screens as fragment it is easy to share a ViewModel between all fragment and the controlling activity. This makes it easy to share, store, combine and mange all the data in the flow. 
 
 
 ## The implementation
