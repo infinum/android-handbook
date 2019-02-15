@@ -4,9 +4,9 @@ While defining a software arhicteture we always want to achive certain character
 
 ## What is MVVM?
 
-MVVM is a well known architecture that was publicly introduced in 2005 (source: [Introduction to Model/View/ViewModel pattern for building WPF apps](https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/)). It consists of three concepts Model, View and ViewModel. On first glance it is very similar to MVP. 
+Today MVVM is a well known architecture that was developed by Microsoft and was publicly introduced in 2005 (source: [Introduction to Model/View/ViewModel pattern for building WPF apps](https://blogs.msdn.microsoft.com/johngossman/2005/10/08/introduction-to-modelviewviewmodel-pattern-for-building-wpf-apps/)). It consists of three components Model, View and ViewModel. Let us take a more detailed look at the components: 
 
-* The Model in **M**VVM has the same role as it has in the MVP architecture. It is responsible for managing the data received from a specific datasource (Database, Network) completely UI independent.
+* The Model in **M**VVM has the same role as it has in the MVP architecture. It is responsible for managing the data received from a specific datasource (Database, Network), completely UI independent.
 * View in M**V**VM has also a similar role as in MVP - presenting the data to the user. In Android, View is usualy represented as an Activity, Fragment or an Android View. The core difference between the View in MVP and in MVVM is that the MVVM view is more knowladgable about the underlying Model and ViewModel in a sense that it knows about the events and states that have to be observed.
 * ViewModel in MV**VM** is also known as the "Model of a View" and can be considered as a Views abstraction that creates a link between the Model and the View.
 
@@ -28,8 +28,7 @@ ViewModel might sound powerful but in the architecture components library this i
 
 ### SingleLiveEvent
 
-Due to some use cases where LiveData was not working as expected (Snackbar, Navigation and other one shot events) Google added a custom implementation of LiveData called [SingleLiveEvent](https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) in the the [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture#android-architecture-blueprints). It is a lifecycle-aware observable that sends only new updates after subscription, used for events like navigation and Snackbar messages. For more information regarding this topic please check this [article](https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150).
-
+Due to some use cases where LiveData was not best suited to handle the problem of resubscriptions (Snackbar, Navigation and other one shot events) Google added a custom implementation of LiveData called [SingleLiveEvent](https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) in the the [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture#android-architecture-blueprints). It is a lifecycle-aware observable that sends only new updates after subscription, used for events like navigation and Snackbar messages. For more information regarding this topic please check this [article](https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150).
 
 
 ## What we solve with MVVM?
@@ -48,6 +47,86 @@ Most aplication contain some screens that can be grouped into a flow. Inside thi
 
 
 ## The implementation
+
+This section will go through some main guidelines on how to implement MVVM in your Android project. We will cover an implementation of MVVM using the architectural components from Android that we described in an erlier section.
+
+The user interface in android app is made with a collection of View and ViewGroup objects that are inside of an Activity or a Fragment container. Those two containers represent the View component in the MVVM architecture. You may wonder why an ordinary Android View could not be the View in MVVM? This is a totaly valid case and can be implemented in many ways, but we will focus on Activities and Fragments because they both implement [LifecycleOwner](https://developer.android.com/reference/android/arch/lifecycle/LifecycleOwner) interface which gives us the opportunity to use LiveData and ViewModel. The use of LiveData and ViewModel gives us a great head start in developing our MVVM archtecture. 
+
+Lets take a look at the ViewModel first. It is probably a good idea to have a base implementation of ViewModel that will handle some shared logic and reduce boilerplate in our codebase. This will look something like this:
+
+```
+open class BaseViewModel: ViewModel()
+```
+Now we need a means of communication between the ViewModel and the View. But before we talk about that lets see what kind of information our View expects in the communication. In other words, what should we expose to the View from the ViewModel? 
+
+In most cases the View wants to know about the state of the screen so that it can render the changes accordingly. The state of a screen is an object that represents the things that the user can see on the screen. To better understand what is part of the screen state one can look at it in the following way. A part of the state can be any data representation of a UI component that we want the View to render after it was recreated, where the end goal is to have the same screen as the one before the View got recreated. 
+
+Unlike states there are things that we do not want to render after a View recreation, for example display of a self dismissable messages (Toast, Snackbar, etc.) or some kind of navigation triggers. For this we need to expose another piece of information to the View and we call that events. Event is an one shot trigger that is emmited from the ViewModel and consumed by the View only once. 
+
+Considering the concepts of State and Event we would adjust our BaseViewModel implementation to be aware of them. The end result would look like this:
+
+```
+open class BaseViewModel<State : Any, Event : Any> : ViewModel() 
+```
+We now have the state and events for a specific View, but we are still missing a way to expose these objects to the View. This is where LiveData and SingleLiveEvent implementations come into play. 
+Inside ViewModel we need LiveData objects of State and Events that the View could observe. The LiveDaata objects would look something like this:
+
+```
+open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
+
+    private val stateLiveData: MutableLiveData<State> = MutableLiveData()
+    private val eventLiveData: SingleLiveEvent<Event> = SingleLiveEvent()
+    
+    fun viewStateData(): LiveData<State> = stateLiveData
+    fun viewEventData(): LiveData<Event> = eventLiveData
+}
+```
+
+To make it easier to use the LiveData objects we can make a convinance backing field and function that will help us manipulate the LiveData objects in our concrete ViewModel implementation.
+
+```
+open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
+   
+   //...
+ 	
+ 	protected var viewState: State? = null
+        get() = stateLiveData.value ?: field
+        set(value) {
+            val viewState = stateLiveData.value
+            stateLiveData.value = value
+        }
+        
+    protected fun emitEvent(event: Event) {
+        eventLiveData.value = event
+    }
+}
+```
+
+After we have a BaseViewModel implementation, for example LoginViewModel, we need to provide it to the View. This can be achieved using a utility method from the ViewModelProviders class: 
+
+```
+ViewModelProviders.of(this).get(LoginViewModel::class.java)
+
+```
+
+In the above code `this` represents the LifecycleOwner. In our case, as mentioned erlier, this is either an Activity or Fragment. The above code returns a ViewModel instance which we use to observe the LiveData objects.
+
+```
+loginViewModel.viewStateData.observe(this, { state -> 
+	// Update the UI state 
+})
+
+loginViewModel.eventLiveData.observe(this, { event -> 
+	// Handle event
+})
+
+```
+
+This is now enough to have a connection between View and ViewModel.
+
+So far we only concetrated on View and ViewModel, but what about the Model in MVVM? The Model is responsible for managing the data received from a specific datasource (Database, Network, etc.), completely UI independent. This means that the model should expose its data only to the ViewModel. The ViewModel can also request some data from the Model, so it is a two-way communication.
+
+At this point the idea of MVVM and how to implement it should be much more clearer and easier to understand. Take into account that the code you saw was very simplified to only show the conceptual idea of MVVM in Android. This is just one way to implement it, there are many more different kinds of implementation that also include [DataBinding](https://developer.android.com/topic/libraries/data-binding/) or are very [Rx](http://reactivex.io/) heavy.
 
 A school example of our proposal of MVVM architecture can be found on this [github repo](https://github.com/infinum/Android-MvvM-Example). In the Readme you will find all the details for base setup and starting to use Android archutecture componets.
 
