@@ -48,7 +48,7 @@ Most aplication contain some screens that can be grouped into a flow. Inside thi
 
 ## The implementation
 
-This section will go through some main guidelines on how to implement MVVM in your Android project. We will cover an implementation of MVVM using the architectural components from Android that we described in an erlier section.
+This section will go through some main guidelines on how to implement MVVM in your Android project. We will cover an implementation of MVVM using the architectural components from Android that we described in an earlier section.
 
 The user interface in android app is made with a collection of View and ViewGroup objects that are inside of an Activity or a Fragment container. Those two containers represent the View component in the MVVM architecture. You may wonder why an ordinary Android View could not be the View in MVVM? This is a totaly valid case and can be implemented in many ways, but we will focus on Activities and Fragments because they both implement [LifecycleOwner](https://developer.android.com/reference/android/arch/lifecycle/LifecycleOwner) interface which gives us the opportunity to use LiveData and ViewModel. The use of LiveData and ViewModel gives us a great head start in developing our MVVM archtecture. 
 
@@ -69,7 +69,7 @@ Considering the concepts of State and Event we would adjust our BaseViewModel im
 open class BaseViewModel<State : Any, Event : Any> : ViewModel() 
 ```
 We now have the state and events for a specific View, but we are still missing a way to expose these objects to the View. This is where LiveData and SingleLiveEvent implementations come into play. 
-Inside ViewModel we need LiveData objects of State and Events that the View could observe. The LiveDaata objects would look something like this:
+Inside ViewModel we need LiveData objects of State and Events that the View could observe. The LiveData objects would look something like this:
 
 ```
 open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
@@ -128,7 +128,7 @@ So far we only concetrated on View and ViewModel, but what about the Model in MV
 
 At this point the idea of MVVM and how to implement it should be much more clearer and easier to understand. Take into account that the code you saw was very simplified to only show the conceptual idea of MVVM in Android. This is just one way to implement it, there are many more different kinds of implementation that also include [DataBinding](https://developer.android.com/topic/libraries/data-binding/) or are very [Rx](http://reactivex.io/) heavy.
 
-A school example of our proposal of MVVM architecture can be found on this [github repo](https://github.com/infinum/Android-MvvM-Example). In the Readme you will find all the details for base setup and starting to use Android archutecture componets.
+A school example of our proposal of MVVM architecture can be found on this [github repo](https://github.com/infinum/Android-MvvM-Example). In the Readme you will find all the details for base setup and starting to use Android architecture componets.
 
 // TODO other project repos using MVVM
 
