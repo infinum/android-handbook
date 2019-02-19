@@ -8,7 +8,11 @@ Today MVVM is a well known architecture that was developed by Microsoft and was 
 
 * The Model in **M**VVM has the same role as it has in the MVP architecture. It is responsible for managing the data received from a specific data source (Database, Network), completely UI independent.
 * View in M**V**VM has also a similar role as in MVP - presenting the data to the user. In Android, View is usually represented as an Activity, Fragment or an Android View. The core difference between the View in MVP and in MVVM is that the MVVM view is more knowledgable about the underlying Model and ViewModel in a sense that it knows about the events and states that have to be observed.
-* ViewModel in MV**VM** is also known as the "Model of a View" and can be considered as a Views abstraction that creates a link between the Model and the View.
+* ViewModel in MV**VM** is also known as the "Model of a View" and can be considered as a Views abstraction that creates a link between the Model and the View. The difference between the Presenter from MVP and the ViewModel is that the Presenter has a reference to a view, whereas the ViewModel directly binds to properties on the view model to send and receive updates.
+
+
+![MVVM Architecture diagram](https://i.stack.imgur.com/GXMcg.png, "MVVM Architecture diagram")
+
 
 ## Architecture components
 
@@ -59,7 +63,7 @@ open class BaseViewModel: ViewModel()
 ```
 Now we need a means of communication between the ViewModel and the View. But before we talk about that let's see what kind of information our View expects in the communication. In other words, what should we expose to the View from the ViewModel? 
 
-In most cases, the View wants to know about the state of the screen so that it can render the changes accordingly. The state of a screen is an object that represents the things that the user can see on the screen. To better understand what is part of the screen state one can look at it in the following way. A part of the state can be any data representation of a UI component that we want the View to render after it was recreated, where the end goal is to have the same screen like the one before the View got recreated. 
+In most cases, the View wants to know about the state of the screen so that it can render the changes accordingly. The state of a screen is an object that represents the statefull data that the user can see on the screen. To better understand what is part of the screen state one can look at it in the following way. A part of the state can be any data representation of a UI component that we want the View to render after it was recreated, where the end goal is to have the same screen like the one before the View got recreated. 
 
 Unlike states, there are things that we do not want to render after a View recreation. For example, display of a self dismissable messages (Toast, Snackbar, etc.) or some kind of navigation triggers. For this, we need to expose another piece of information to the View and we call that events. An event is an one shot trigger that is emitted from the ViewModel and consumed by the View only once. 
 
@@ -80,7 +84,8 @@ open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
     fun viewStateData(): LiveData<State> = stateLiveData
     fun viewEventData(): LiveData<Event> = eventLiveData
 }
-```
+``` 
+As we can see in the above code, we expose our private stateLiveData and eventLiveData through functions that return immutable LiveData. This way we make sure that we do not allow changes to our live data objects directly, but at the same time we allow observing changes made on our live data objects.
 
 To make it easier to use the LiveData objects we can make a convenience backing field and function that will help us manipulate the LiveData objects in our concrete ViewModel implementation.
 
@@ -112,11 +117,11 @@ ViewModelProviders.of(this).get(LoginViewModel::class.java)
 In the above code, `this` represents the LifecycleOwner. In our case, as mentioned earlier, this is either an Activity or Fragment. The above code returns a ViewModel instance which we use to observe the LiveData objects.
 
 ```
-loginViewModel.viewStateData.observe(this, { state -> 
+loginViewModel.viewStateData().observe(this, { state -> 
 	// Update the UI state 
 })
 
-loginViewModel.eventLiveData.observe(this, { event -> 
+loginViewModel.viewEventData().observe(this, { event -> 
 	// Handle event
 })
 
@@ -130,7 +135,11 @@ At this point, the idea of MVVM and how to implement it should be much clearer a
 
 A school example of our proposal of MVVM architecture can be found on this [github repo](https://github.com/infinum/Android-MvvM-Example). In the Readme you will find all the details for base setup and starting to use Android architecture componets.
 
-// TODO other project repos using MVVM
+For more projects with MVVM architecture check out the following list:
+
+* [HAK-ispitivaci](https://github.com/infinum/Android-Hak-Ispitivaci)
+* [Porsche-Group-Slovenia](https://github.com/infinum/Android-Porsche-Group-Slovenia)
+* [XtraCash](https://github.com/infinum/Android-XtraCash)
 
 
 
