@@ -1,5 +1,3 @@
-# Sonarcloud
-
 Sonarcloud is a continuous code quality tool which analyzes your implementation and notifies you about common pitfalls. The idea behind Sonarcloud integration is to keep the code base as clean as possible and to reduce the [technical debt](https://infinum.co/the-capsized-eight/is-your-business-sinking-into-technical-debt).
 
 Sonarcloud support PR integration and it will block a PR from merging if the quality report is bellow our standards. Sonarqube and sonarcloud are the same thing. Sonarqube is a self hosted solution while sonarcloud is a cloud based code quality tool. There are small differences, but as far as we are concerned, they have the same features.
