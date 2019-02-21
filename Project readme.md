@@ -1,5 +1,3 @@
-# Project readme
-
 A good readme is essential so that anyone who access a repository can find relevant documentation and understand what the project is about.
 
 Every project is different, but there are some common things which every readme has to contain. The order is not random, the readme should be in this order. 
@@ -13,10 +11,10 @@ Every project is different, but there are some common things which every readme 
 7. **Important services**
 A link to important services. You can add other services if they are relevant.
 	* Labs
-  * Productive/Jira/etc.
-  * Polyglot
-  * Firebase
-  * Google console project
-  * Google play  
+	* Productive/Jira/etc.
+	* Polyglot
+	* Firebase
+	* Google console project
+	* Google play  
 8. **How to deploy a new build** - Instructions on how to deploy a new build.
 9. **Project specifics**. This section is not mandatory, but if there is anything specific to the project write it in this section.
