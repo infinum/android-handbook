@@ -30,9 +30,10 @@ ViewModel might sound powerful but in the architecture components library, this 
 
 [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) is a lifecycle-aware observable class that is used as a medium for data transfer from ViewModel to the View. Because of its connection to the activity lifecycle we have reduced number of memory leaks, crashes, lifecycle synchronization events between architecture layers. LiveData will take care of notifying the View about the latest data when the time is right. We only take care of preparing the correct data.
 
-### SingleLiveEvent
+### LiveEvent
 
 Due to some use cases where LiveData was not best suited to handle the problem of resubscriptions (Snackbar, Navigation and other one shot events) Google added a custom implementation of LiveData called [SingleLiveEvent](https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) in the [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture#android-architecture-blueprints). It is a lifecycle-aware observable that sends only new updates after subscription, used for events like navigation and Snackbar messages. For more information regarding this topic please check this [article](https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150).
+However, the SingleLiveEvent implementation from Google has one major setback and that is the fact that it works only with one observer at a time. This issue is addressed and explained in detail in this [article](https://proandroiddev.com/livedata-with-single-events-2395dea972a8). The owner of the article proposes an improved implementation, called LiveEvent, which covers the case of multiple observers. The source for the implementation: [LiveEvent](https://github.com/hadilq/LiveEvent/blob/master/lib/src/main/java/com/hadilq/liveevent/LiveEvent.kt)
 
 
 ## What we solve with MVVM?
@@ -72,14 +73,14 @@ Considering the concepts of State and Event we would adjust our BaseViewModel im
 ```
 open class BaseViewModel<State : Any, Event : Any> : ViewModel() 
 ```
-We now have the state and events for a specific View, but we are still missing a way to expose these objects to the View. This is where LiveData and SingleLiveEvent implementations come into play. 
+We now have the state and events for a specific View, but we are still missing a way to expose these objects to the View. This is where LiveData and LiveEvent implementations come into play. 
 Inside ViewModel we need LiveData objects of State and Events that the View could observe. The LiveData objects would look something like this:
 
 ```
 open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
 
     private val stateLiveData: MutableLiveData<State> = MutableLiveData()
-    private val eventLiveData: SingleLiveEvent<Event> = SingleLiveEvent()
+    private val eventLiveData: LiveEvent<Event> = LiveEvent()
     
     fun viewStateData(): LiveData<State> = stateLiveData
     fun viewEventData(): LiveData<Event> = eventLiveData
