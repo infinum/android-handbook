@@ -22,7 +22,7 @@ Today MVVM is a well known architecture that was developed by Microsoft and was 
 
 [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) is an important part of the architecture and it represents the pillar of our business logic. ViewModel main purpose is to store and manage data for UI. It is designed to survive the activity configuration changes from which the screen orientation is the most common and troubles one. The below image displays scope of the ViewModel and its lifetime in memory with lifecycle states of an activity as it undergoes a rotation and then is finished.
 
-![MVVM lifecycle](/img/mvvm_lifecyle.png)
+![MVVM lifecycle](/img/mvvm_lifecycle.png)
 
 ViewModel might sound powerful but in the architecture components library, this is just a simple abstract class. The magic stuff resides in the [ViewModelProvider](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProvider). ViewModelProvider is responsible for ViewModel creation and retention or the ViewModel. To create a ViewModelProvider for specific Activity/Fragment you should use [ViewModelProviders](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProviders) util class.
 
