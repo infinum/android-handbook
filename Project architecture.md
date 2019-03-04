@@ -11,7 +11,7 @@ Today MVVM is a well known architecture that was developed by Microsoft and was 
 * ViewModel in MV**VM** is also known as the "Model of a View" and can be considered as a Views abstraction that creates a link between the Model and the View. The difference between the Presenter from MVP and the ViewModel is that the Presenter has a reference to a view, whereas the ViewModel directly binds to properties on the view model to send and receive updates.
 
 
-![MVVM Architecture diagram](https://i.stack.imgur.com/GXMcg.png, "MVVM Architecture diagram")
+![MVVM Architecture diagram](/img/mvvm_architecture.png, "MVVM Architecture diagram")
 
 
 ## Architecture components
@@ -85,7 +85,7 @@ open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
     fun viewStateData(): LiveData<State> = stateLiveData
     fun viewEventData(): LiveData<Event> = eventLiveData
 }
-``` 
+```
 As we can see in the above code, we expose our private stateLiveData and eventLiveData through functions that return immutable LiveData. This way we make sure that we do not allow changes to our live data objects directly, but at the same time we allow observing changes made on our live data objects.
 
 To make it easier to use the LiveData objects we can make a convenience backing field and function that will help us manipulate the LiveData objects in our concrete ViewModel implementation.
