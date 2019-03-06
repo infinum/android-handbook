@@ -1,3 +1,7 @@
+## ~~Deprecated~~
+
+Android team has moved pass MVP architecture and is now using MVVM on all the new project. We are keeping this chapter since there is still majority of projects that use MVP structure and we are keeping this as reference. If you are starting a new project or doing a refactor of existing one check MVVM architecture setup describe in chapter [Project architecture](/Project architecture.md)
+
 MVP stands short for Model-View-Presenter and it is a derivative from the MVC (Model View Controller) design pattern. The main difference between the two is shown in the picture below.
 
 ![MVC vs. MVP](/img/mvc_vs_mvp.png "MVC vs. MVP")
