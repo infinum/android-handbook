@@ -1,7 +1,7 @@
-Gradle is build and dependency system for Android projects since Google introduced Android Studio.
+Gradle has been a build and dependency system for Android projects since Google introduced Android Studio.
 
-Gradle configuration file is named **build.gradle**.
-Each project contains top-level configuration file which looks something like this:
+The Gradle configuration file is named **build.gradle**.
+Each project contains a top-level configuration file which looks something like this:
 
 ```gradle
 buildscript {
@@ -20,7 +20,7 @@ allprojects {
 }
 ```
 
-Top level file contains global configuration which is applicable to all modules inside your project. (If you don't know what module is, check the following article: [Creating Modules](https://developer.android.com/sdk/installing/create-project.html#CreatingAModule))
+A top-level file contains a global configuration which is applicable to all modules inside your project. (If you don't know what a module is, check out the following article: [Creating Modules](https://developer.android.com/sdk/installing/create-project.html#CreatingAModule)).
 
 Your main module (usually named **app**) contains its own **build.gradle**.
 Its contents usually look like this:
@@ -62,12 +62,12 @@ dependencies {
 }
 ```
 
-Let's break down modules' build.gradle into several parts:
+Let's break down the module's build.gradle into several parts:
 
 ###1. Default config
-Values defined in `defaultConfig` block override those in AndroidManifest.
-`defaultConfig` elements are applied to all build variants, unless that build variant has its own defaultConfig specified.
-Example of usual `defaultConfig` block can be seen below.
+Values defined in the `defaultConfig` block override those in AndroidManifest.
+`defaultConfig` elements are applied to all build variants, unless a build variant has its own defaultConfig specified.
+An example of a typical `defaultConfig` block can be seen below.
 
 ```gradle
 defaultConfig {
@@ -80,11 +80,11 @@ defaultConfig {
 ```
 
 ###2. Lint options
-Lint is a static code analysis tool that checks your source files for potential bugs and optimization improvements. Lint check is mandatory on all projects.
+Lint is a static code analysis tool that checks your source files for potential bugs and optimization improvements. A lint check is mandatory on all projects.
 
-`lintOptions` block defines configuration for Lint. Possible config values can be found on [Lint support](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Lint-support) page.
+The `lintOptions` block defines the configuration for lint. Possible config values can be found on the [lint support](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Lint-support) page.
 
-**abortOnError** flag **must be** set to true. You can disable some of the checks after your team leaders' approval. All unapproved disabled checks and *abortOnError false* is subject to yellow card.
+The **abortOnError** flag **must be** set to true. You can disable some of the checks after your team leaders' approval. All unapproved disabled checks and *abortOnError false* are subject to a yellow card.
 
 ```gradle
 lintOptions {
@@ -93,7 +93,7 @@ lintOptions {
 ```
 
 ###3. Signing configs
-`signingConfigs` can contain one or more configurations to sign your apk. Each signing configuration should have following properties:
+`signingConfigs` can contain one or more configurations to sign your APK. Each signing configuration should have the following properties:
 
 * keyAlias
 * keyPassword
@@ -111,12 +111,12 @@ signingConfigs {
 }
 ```
 
-Based on the example above, you should reference signing configuration block in the buildType block with `signingConfig signingConfigs.release`.
+Based on the example above, you should reference the signing configuration block in the buildType block with `signingConfig signingConfigs.release`.
 
-###4. Build Types
-The `buildTypes` element controls how to build and package your app. By default, the build system defines two build types: `debug` and `release`. The `debug` build type includes debugging symbols and is signed with the debug key. The `release` build type is not signed by default.
+###4. Build types
+The `buildTypes` element controls how your app is built and packaged. By default, the build system defines two build types: `debug` and `release`. The `debug` build type includes debugging symbols and is signed with the debug key. The `release` build type is not signed by default.
 
-If your app uses feature which key depends on signingKey then you should sign the debug build with your key instead of using debug (default) key to ease the development for other collaborators. This is done in the example below:
+If your app uses a feature whose key depends on signingKey, you should sign the debug build with your key instead of using the debug (default) key to ease the development for other collaborators. This is done in the example below:
 
 ```gradle
  buildTypes {
@@ -134,12 +134,12 @@ If your app uses feature which key depends on signingKey then you should sign th
     }
 }
 ```
-`minifyEnabled` defines if the build will be run with [proguard](http://developer.android.com/tools/help/proguard.html). All release builds **must be** built with proguard. `proguardFiles` property defines proguard configuration files.
+`minifyEnabled` defines if the build will be run with [ProGuard](http://developer.android.com/tools/help/proguard.html). All release builds **must be** built with ProGuard. The `proguardFiles` property defines ProGuard configuration files.
 
 ###5. Product flavors
-Product flavor define customized version of the app. Project can have multiple flavors (e.g. [paid | free] or same app targeting different API endpoints, etc.).
+Product flavors define a customized version of the app. A project can have multiple flavors (e.g., [paid | free] or the same app targeting different API endpoints, etc.).
 
-Following example creates 3 flavors
+The following example creates three flavors
 
 ```gradle
  flavorDimensions 'api'
@@ -158,10 +158,10 @@ Following example creates 3 flavors
 }
 ```
 
-Product flavor objects are of same type as defaultConfig and share same attributes. This means you can override any default value for specific flavor.
+Product flavor objects are of the same type as defaultConfig and share the same attributes. This means you can override any default value for a specific flavor.
 
 ###6. Dependencies
-Gradle projects can have dependencies on other components. These components can be external binary packages, or other Gradle projects.
+Gradle projects can have dependencies on other components. These components can be external binary packages or other Gradle projects.
 To configure a dependency on an external library jar, you need to add a dependency on the compile configuration.
 
 ```gradle
@@ -171,17 +171,17 @@ dependencies {
 }
 ```
 
-###7. Build Variants
-Each (Build Type, Product Flavor) combination is called **Build Variant**.
-Projects with no flavors still have Build Variants, but the single default flavor is used, nameless, making the list of variants same to the list of Build Types.
-To build the variant you want, you should select it from AS menu on the left side.
+###7. Build variants
+Each (build type, product flavor) combination is called a **build variant**.
+Projects with no flavors still have build variants, but the single default flavor is used, nameless, making the list of variants the same as the list of build types.
+To build the variant you want, you should select it from the AS menu on the left side.
 
 ![Build variant menu](/img/build_variant_1.png "Build variant menu")
 ![Build variant selection](/img/build_variant_2.png "Build variant selection")
 
-### 8. Adding build version to apk file
+### 8. Adding a build version to an APK file
 
-Android studio sets the name of the apk file based on the app name, build type and flavor. For example, default output looks like this **app-staging-debug.apk**. If needed this can be changed by adding this code snipped to build.gradle file
+Android Studio sets the name of the APK file based on the app name, build type, and flavor. For example, the default output looks like this: **app-staging-debug.apk**. If necessary, this can be changed by adding this code snippet to build.gradle file
 
 ```gradle
 android.applicationVariants.all { variant ->
@@ -205,11 +205,11 @@ android.applicationVariants.all { variant ->
     }
 }
 ```
-This code snippet iterates through all build variants and renames apk files to **appName-buildType-versionName.apk**. Modify this example based on your needs.
+This code snippet iterates through all build variants and renames APK files to **appName-buildType-versionName.apk**. Modify this example depending on your needs.
 
 ### 9. Variant filtering
 
-In case you don't want all variants to be available for building, you can filter them out as follows:
+In case you don't want all variants to be available for building, you can filter them out like this:
 
 ```gradle
 variantFilter { variant ->
@@ -218,4 +218,4 @@ variantFilter { variant ->
 }
 ```
 
-`variantFilter` block must be declared inside `android` block of your apps `build.gradle` file (not in the top-level one)
+The `variantFilter` block has to be declared inside the `android` block of your app's `build.gradle` file (not in the top-level one).
