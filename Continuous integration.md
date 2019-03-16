@@ -1,24 +1,24 @@
 Continuous Integration (CI) is a development practice that requires developers to integrate code into a shared repository several times a day. Each check-in is then verified by an automated build, allowing teams to detect problems early.
 
-By integrating regularly, you can detect errors quickly, and locate them more easily.
+By integrating regularly, you can detect errors quickly and locate them more easily.
 
-## Circle CI
+## CircleCI
 
-Circle CI is a container-based CI service. It has multiple features:
+CircleCI is a container-based CI service. It has multiple features:
 
 * support for all kinds of programming languages
-* free of charge for first container
+* free of charge for the first container
 * support for static code checkers (Lint, Findbugs, PMD, Checkstyle)
 * no additional configuration is needed
 * everything is maintained and updated by their support team
 
-On the other hand, Circle CI currently only supports Github repositories and it uses default Android emulator, so your execution times are a little bit slower than expected.  You'll also need admin privileges to Github's repository which you want to connect to Circle CI.
+However, CircleCI currently supports only GitHub repositories, and it uses the default Android emulator, so your execution times are a little bit longer than expected.  You'll also need admin privileges to the GitHub's repository which you want to connect CircleCI to.
 
-Also, as Circle CI is a cloud based solution, your code gets cloned to remote server which could pose a security problem for your client.
+Also, as CircleCI is a cloud-based solution, your code gets cloned to a remote server, which could pose a security problem for your client.
 
 ## Configuration
 
-Circle CI uses simple configuration script, which is placed in `.circleci/config.yml` file:
+CircleCI uses a simple configuration script, which is placed in the `.circleci/config.yml` file:
 
 ```yml
 # Build configuration file for Circle CI
@@ -90,7 +90,7 @@ experimental:
         - dev
 ```
 
-You also need to add the following code in yout top-level `build.gradle` (the one in the root of the project) to [disable pre-dexing](http://tools.android.com/tech-docs/new-build-system/tips#TOC-Improving-Build-Server-performance):
+You also need to add the following code in your top-level `build.gradle` (the one in the root of the project) to [disable pre-dexing](http://tools.android.com/tech-docs/new-build-system/tips#TOC-Improving-Build-Server-performance):
 
 ```gradle
 project.ext.preDexLibs = !project.hasProperty('disablePreDex')
@@ -106,13 +106,13 @@ subprojects {
 }
 ```
 
-This will significantly speed up compilation of your apps on CircleCI.
+This will significantly speed up the compilation of your apps on CircleCI.
 
 ## Protected branches
 
-In the git flow model that is applied in Infinum, `dev` and `master` branches have a special role in the development and release cycle. It is expected that the code is not pushed directly to those two branches, therefore the branches need to be set as protected. Also, in order to make sure that the code in those two branches builds successfully at any time and always satisfies statical analysis rules and any other rules defined in `circle.yml`, Circle CI needs to be enabled on `dev` and `master`.
+In the git flow model that is applied in Infinum, the `dev` and `master` branche have a special role in the development and release cycle. It is expected that the code is not pushed directly to those two branches; therefore the branches need to be set as protected. Also, in order to make sure that the code in those two branches builds successfully at any time and always satisfies static analysis rules and any other rules defined in `circle.yml`, CircleCI needs to be enabled on `dev` and `master`.
 
-First, `dev` and `master` branch need to be set as protected. In order to set them as protected, an administrator rights are required on the working project. Administrator user can click the Settings button, as depicted in the picture
+First, the `dev` and `master` branch need to be set as protected. In order to set them as protected, administrator rights are required on the working project. The administrator user can click on the Settings button, as depicted in the picture
 
 ![Click on the Settings](/img/CI-protect-branch-click-setting.png)
 
