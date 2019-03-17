@@ -40,16 +40,16 @@ if (checkFileSize(image))
 
 ## Naming conventions
 
-* all code is written in english, including comments
+* all code is written in English, including comments
 * upper `CamelCase` is used for classes
-* lower `camelCase` is used for methods, local variables and instance variables
+* lower `camelCase` is used for methods, local variables, and instance variables
 * constants should be `ALL_CAPS`
 * methods are named by verbs, variables and classes by nouns
-* XML resource ids must use `snake_case`
-* Activities and Fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`
-* the corresponding layouts must be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`
-* all naming must be simple, clear and mnemonic (short and meaningful)
-* the [Infinum Code Style](/resources/infinum-code-style-settings.jar) must be imported into Android Studio and used in formatting code. If you want to find out how to import it, check out chapter about [Android Studio setup](Android Studio Setup.md).
+* XML resource IDs have to use `snake_case`
+* activities and fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`
+* the corresponding layouts have to be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`
+* all naming has to be simple, clear and mnemonic (short and meaningful)
+* the [Infinum Code Style](/resources/infinum-code-style-settings.jar) has to be imported into Android Studio and used in formatting code. If you want to find out how to import it, check out the chapter about [Android Studio setup](Android Studio Setup.md).
 * drawable resources also have [naming conventions](http://petrnohejl.github.io/Android-Cheatsheet-For-Graphic-Designers/#naming-conventions)
 
 ## Examples of good naming
