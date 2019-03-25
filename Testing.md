@@ -1,15 +1,15 @@
-Writing tests is not the most glamorous part of developing an Android application but it is an invaluable one. There are two main types of tests for Android apps - unit tests and instrumentation tests.
+Writing tests is not the most glamorous part of developing an Android application, but it is an invaluable one. There are two main types of tests for Android apps—unit tests and instrumentation tests.
 
-Unit tests test small components in isolation while instrumentation tests test larger functionality like whole screens or even multiple screens.
+Unit tests test small components in isolation, while instrumentation tests test larger functionality, such as whole screens or even multiple screens.
 
 ## Unit tests
 
-Unit tests are easy to write and fast to execute since they don't need an Android device to run - they run on a plain JVM.
+Unit tests are easy to write and fast to execute since they don't need an Android device to run on—they run on a plain JVM.
 
-This means that the code needs to be cleanly separated so we can write useful unit tests for it.
+This means that the code has to be neatly separated so we can write useful unit tests for it.
 
-Usually it's very useful to test the presenter logic, assuming MVP is used in the app (see [MVP](/MVP.md) chapter about details).
-This means that presenters need to be Android-agnostic.
+It is usually very useful to test the presenter logic, assuming MVP is used in the app (see the [MVP](/MVP.md) chapter for details).
+This means that presenters have to be Android-agnostic.
 
 In general, the most useful tests cover the business logic of the app and the most important functionalities, paying special attention to edge cases.
 
@@ -31,7 +31,7 @@ public static boolean isTicketCodeValid(@NonNull String code) {
 
     for (int i = 0, length = code.length(); i < length; i++) {
         if (!Character.isDigit(code.charAt(i))) {
-            // all the characters need to be digits
+            // all characters have to be digits
             return false;
         }
         digits[i] = Character.digit(code.charAt(i), 10);
@@ -88,33 +88,33 @@ class TicketCodeUtilTest {
 }
 ```
 
-Notice that these tests don't just test the *happy path*, they also test edge cases where the input isn't completely numeric or of the required length.
+Notice that these tests don't just test the *happy path*, they also test edge cases, in which the input isn't completely numeric or of the required length.
 
 ### Libraries
 
 These libraries make it easier to write unit tests:
 
-- `junit:junit:4.12` - a simple annotation-based test framework
-- `org.assertj:assertj-core:3.6.0` - provides [readable assertion methods](http://joel-costigliola.github.io/assertj/)
+- `junit:junit:4.12`—a simple annotation-based test framework
+- `org.assertj:assertj-core:3.6.0`—provides [readable assertion methods](http://joel-costigliola.github.io/assertj/)
 
-As seen in the example above, we like to write tests in Kotlin because it's less verbose than Java and often leads to smaller, more readable tests.
+As seen in the above example, we like to write tests in Kotlin because it's less verbose than Java and often leads to smaller, more readable tests.
 
 ## Instrumentation tests
 
 Instrumentation tests cover more functionality and run on a real Android device (or emulator). Although they take more time to write and execute slower, they test whole features of the app and are also quite useful.
 
-These tests can be written manually using the [Espresso test framework](https://developer.android.com/topic/libraries/testing-support-library/index.html#Espresso) or recorded using [Espresso test recorder](https://developer.android.com/studio/test/espresso-test-recorder.html).
+These tests can be written manually using the [Espresso test framework](https://developer.android.com/topic/libraries/testing-support-library/index.html#Espresso) or recorded using the [Espresso test recorder](https://developer.android.com/studio/test/espresso-test-recorder.html).
 
-For these kind of test you usually want to prepare a mock web server so the tests don't depend on the availability and state of a real test/staging API.
+For these kinds of tests, you usually want to prepare a mock web server so the tests don't depend on the availability and state of a real test/staging API.
 See below for more info on how to do that.
 
 ## Common testing techniques
 
-### Building complex objects by deserializing json files
+### Building complex objects by deserializing JSON files
 
-When testing some functionality requires you to build a complex object with many nested objects, you can make your life easier by placing a json representation of that object into the test resources and deserializing it at the beginning of the test.
+When testing some functionality requires you to build a complex object with many nested objects, you can make your life easier by placing a JSON representation of that object into the test resources and deserializing it at the beginning of the test.
 
-This will decrease the test code and make it more readable.
+This will decrease the size of the test code and make it more readable.
 
 See the `ResourceUtils` class below for a useful helper class.
 
@@ -172,11 +172,11 @@ You may also find the [Burst library](https://github.com/square/burst) useful.
 
 ### Using a mock web server to simulate API
 
-When testing, we don't want to execute real API calls. Instead, we use mock server and specify each response so we can test different use cases. Usually good idea is to provide OkHttp's [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) with Dagger. Then you have to start it and shutdown it before and after each test.
+When testing, we don't want to execute real API calls. Instead, we use a mock server and specify each response so we can test different use cases. It is usually a good idea to provide OkHttp's [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) with Dagger. You have to start it and shut it down before and after each test.
 
-In each test you may want to enqueue response(s). Enqueuing works by [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)))
+In each test, you may want to enqueue the response(s). Enqueuing works using [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)))
 
-To enqueue response, first you have to create one and put it in, let's say `/resources/mockdata`, folder in androidTest flavor. Then you need to create utils class for reading from resources file. It may look like something like this:
+To enqueue responses, first you have to create one and put it in, let's say, the `/resources/mockdata` folder in the androidTest flavor. Then, you need to create a utils class for reading from the resources file. It may look something like this:
 
 ```java
 import java.io.InputStream;
@@ -186,7 +186,7 @@ import java.util.Scanner;
  * Utility methods for accessing resources bundled with test APK. Standard Android Resources don't seem to work for test APK
  * (unable to fetch R.java).
  * <p>
- * Resources should be placed under /resources/mockdata folder in androidTest flavour. Use {@link #readFromFile(String)} to read a text
+ * Resources should be placed under /resources/mockdata folder in androidTest flavor. Use {@link #readFromFile(String)} to read a text
  * file to String giving only a name of the file located in /resources/mockdata folder.
  */
 public class ResourceUtils {
@@ -222,11 +222,11 @@ MockResponse mockResponse = new MockResponse().setBody(body).setResponseCode(Htt
 mockWebServer.enqueue(mockResponse);
 ```
 
-and next API call will result with that response.
+and the next API call will result in that response.
 
 #### Redirect responses
 
-When you want to test redirection you have to be careful how you set URL in the Location header. When you are creating the URL you must set MockServer's host and port in the URL scheme. The code below is an example of a test that successfully tests redirection.
+When you want to test redirection, you have to be careful how you set the URL in the Location header. When you are creating the URL, you have to set the MockServer's host and port in the URL scheme. The code below is an example of a test that successfully tests redirection.
 
 ```java
 @Test
@@ -243,17 +243,17 @@ public void mobileDataUserLowBudget() throws Exception {
     enqueueEmptyResponse(HttpURLConnection.HTTP_OK);
     startActivity();
 
-    //Check that request exists and that it is made to proper URL
+    //Check that the request exists and that it is made to the proper URL
     RecordedRequest request = takeLastRequest();
     Assert.assertNotNull(request);
     Assert.assertTrue(request.getPath().contains("molimo-vas-dopunite-kredit"));
 }
 ```
 
-To properly test redirection you must:
+To properly test redirection you have to:
 
-*   Provide 2 responses because first response redirects you and second request is instantly executed, thus you receive 2nd response in your callback.  
-*   Set **Location** header in 1st response ([Location header](https://en.wikipedia.org/wiki/HTTP_location)).
-*   **DO NOT HARDCODE** Location header. If you hardcode URL whose host is different than MockServer's host and port, you will receive 404 error response and you will never receive the 2nd response that you provided. To successfully execute redirected request, you **MUST** get MockServer host and port and use them as host in your URL scheme!
-*   Fetch last request and check if the request's URL is the one you provided in Location header.
+*   Provide two responses because the first response redirects you, and the second request is instantly executed, so you receive the second response in your callback.  
+*   Set the **Location** header in the first response ([Location header](https://en.wikipedia.org/wiki/HTTP_location)).
+*   **DO NOT HARDCODE** the Location header. If you hardcode the URL whose host is different than the MockServer host and port, you will receive a 404 error response, and you will never receive the second response that you provided. To successfully execute the redirected request, you **HAVE TO** get the MockServer host and port and use them as host in your URL scheme!
+*   Fetch the last request and check if the request's URL is the one you provided in the Location header.
 *   Voila!
