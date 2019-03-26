@@ -98,7 +98,7 @@
 
 	An in-house developed library for viewing the contents of the in-app database for debugging purposes. No need to pull the database from a rooted phone.
 
-	More info with code examples is available [here.](https://github.com/infinum/android_dbinspector)
+	More info with code examples is available [here](https://github.com/infinum/android_dbinspector).
 
 ## Testing
 
