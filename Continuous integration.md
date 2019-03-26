@@ -110,7 +110,7 @@ This will significantly speed up the compilation of your apps on CircleCI.
 
 ## Protected branches
 
-In the git flow model that is applied in Infinum, the `dev` and `master` branche have a special role in the development and release cycle. It is expected that the code is not pushed directly to those two branches; therefore the branches need to be set as protected. Also, in order to make sure that the code in those two branches builds successfully at any time and always satisfies static analysis rules and any other rules defined in `circle.yml`, CircleCI needs to be enabled on `dev` and `master`.
+In the git flow model that is applied in Infinum, the `dev` and `master` branches have a special role in the development and release cycle. It is expected that the code is not pushed directly to those two branches; therefore the branches need to be set as protected. Also, in order to make sure that the code in those two branches builds successfully at any time and always satisfies static analysis rules and any other rules defined in `circle.yml`, CircleCI needs to be enabled on `dev` and `master`.
 
 First, the `dev` and `master` branch need to be set as protected. In order to set them as protected, administrator rights are required on the working project. The administrator user can click on the Settings button, as depicted in the picture
 
