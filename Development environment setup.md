@@ -8,7 +8,7 @@
 ## Import code style
 
 To make working with the rest of the team easier, we all use the same code style settings.
-This ensures there are no unnecessary changes caused by code style differences and also makes it easier to conform to the established ckeckstyle rules. The code style includes both Java and XML style.
+This ensures there are no unnecessary changes caused by code style differences and also makes it easier to conform to the established ckeckstyle rules. The code style includes Java, Kotlin, and XML styles.
 
 To import Infinum's code style:
 
