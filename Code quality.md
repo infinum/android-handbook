@@ -6,7 +6,7 @@ Lint is a static code checker and is used to indicate suspicious and potentially
 
 Lint should always be enabled on release builds. In other words, every build that is given into the hands of our internal QA team or the client **must** be run through lint and other static code checkers on CI.
 
-For example, you might be working on an older project with outdated codebase. In that case, if static code checkers haven't already been set up, it's expected of you to set them up and create a [baseline](https://sites.google.com/a/android.com/tools/tech-docs/lint-in-studio-2-3#TOC-Creating-a-Baseline) if necessary. The entire new codebase that's written in the project **should be run through** static code checkers.
+For example, you might be working on an older project with outdated codebase. In that case, if static code checkers haven't already been set up, it's expected of you to set them up and create a [baseline](https://sites.google.com/a/android.com/tools/tech-docs/lint-in-studio-2-3#TOC-Creating-a-Baseline) if necessary. The entire new codebase that's written in the project **should pass** static code checkers.
 
 ### Proguard
 
