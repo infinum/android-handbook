@@ -17,7 +17,7 @@
 8. Set up basic networking and test code with dependency injection (see the [Dependency injection](/Dependency injection.md) chapter for details)
 9. Set up Fabric on the Infinum or client account if available (make sure that caught exceptions are also logged using [Timber](https://github.com/JakeWharton/timber))
 10. Add app icons with a different icon for non-production server targets (we usually use a banner overlay on the icon saying 'test' or 'staging')
-  11. Add the appropriate ProGuard configuration depending on the libraries used
+11. Add the appropriate ProGuard configuration depending on the libraries used
 12. Open a pull request to the appropriate colleague
 
 The first pull request should contain only the initial setup code so it's easier to review.
