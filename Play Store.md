@@ -5,7 +5,7 @@ When releasing an application to the Google Play Store, you should make sure you
 3. Build the signed and obfuscated release version of the application
 4. Test the application manually; make sure all API endpoints are pointing to production
 5. Upload the release .apk to the Play Store
-6. Add a tag for the version on master branch. Find out more about tagging in the [Git usage section](/git-usage)
+6. Add a tag for the version on dev/release branch. Find out more about tagging in the [Git usage section](/git-usage)
 
 If your app is already on the Play Store, take special care to **test the update** of your app:
 
