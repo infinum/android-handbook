@@ -2,7 +2,7 @@ Pull requests are the essential part of our workflow. This section describes how
 
 ### General rules
 - A pull request cannot be merged until the CI build passes
-- The dev and release branches should be set as protected, which means no one can force push to them, and they can't be deleted. If you are not sure how to set them as protected, or you don't have access, ask one of the team leads to do it for you.
+- The `dev` and `release` branches should be set as protected, which means no one can force push into them, and they can't be deleted. If you are not sure how to set them as protected, or you don't have access, ask one of the team leads to do it for you.
 
 ### Creating a pull request
 
