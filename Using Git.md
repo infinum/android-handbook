@@ -4,14 +4,15 @@ Just remember to clone the repository using the [SSH clone URL](https://help.git
 
 ## Git Flow
 
-We use a variant of the [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) workflow. The difference between our variant and the linked document is that we don't use release branches.
-You can find a more detailed explanation of Git Flow [here](http://nvie.com/posts/a-successful-git-branching-model/).
+We use a variant of the [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) workflow. There are some differences between our variant and the linked document. The main one is we don't need the `master` branch. Also, on most projects we don't use `release` branches. 
 
 ![Git Flow](/img/git-flow.svg)
 
-There are two main branches, `master` and `dev`.
+By definition, there are two main branches, `master` and `dev`.
 The `master` branch contains **only published code** at all times, and each release is **tagged** with the version number.
 The `dev` branch serves for integration of various features/fixes developed in separate branches.
+
+We noticed that the `master` branch is not used that often. Since we have tags on release commits, having a branch that only contains published code seems unnecessary. That is why, for the simplicity, we only keep the `dev` branch as the main branch and track releases via tags.
 
 ## Git tagging
 
@@ -59,6 +60,16 @@ or by merging `dev` into your branch
 git checkout feature/login-screen
 git merge dev
 ```
+
+### Release branches
+
+Most projects have one active development stream at the moment. This means that all new changes should be included in the next upcoming release. Because of this, all changes can be merged into the `dev` branch without the need to introduce multiple `release` branches.
+
+However, some projects have multiple releases planned ahead. It is possible that at some point a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `dev` branch. You can use regex to match all the release branches and not worry about protecting newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done even with admin privileges. 
+
+When working with `release` branches, it needs to be clear which task should be included in which version. If you are not sure of this, ask the project manager before starting with the task. In (Productive)[[https://app.productive.io](https://app.productive.io/)] release versions can be defined with tags or boards. In (JIRA)[<https://www.atlassian.com/software/jira>] you can track the status of each release and define `Fix version/s` attribute on a task.
+
+After releasing a new version from the `release` branch, make sure to create a new tag with that version from the last commit in that branch. Then you can merge the `release` branch into the `dev` branch. Don't forget to also update all other active `release` branches.
 
 ### Commit early, commit often
 

@@ -1,8 +1,8 @@
 ## Before starting work
 
 1. Create a private Git repository on Github/Bitbucket
-2. Create an empty `master` and `dev` branch, mark them protected if possible
-3. Set `dev` as the default branch
+2. Create an empty `dev` branch, set it as default branch, and protected if possible
+3. If you are going to use `release` branches add protection regex with same rules as for the `dev` branch 
 4. Ask the project manager to provide you with all project documentation and design
 
 ## Initial project setup
