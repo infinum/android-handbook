@@ -43,6 +43,7 @@ if (checkFileSize(image))
 * all code is written in English, including comments
 * upper `CamelCase` is used for classes
 * lower `camelCase` is used for methods, local variables, and instance variables
+* abbreviations and acronyms should use camel case as normal words (e.g. `XmlHttpRequest`, `QrCodeReader`, `userId`)
 * constants should be `ALL_CAPS`
 * methods are named by verbs, variables and classes by nouns
 * XML resource IDs have to use `snake_case`
