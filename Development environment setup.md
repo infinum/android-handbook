@@ -1,9 +1,13 @@
 ## Install basic tools
 
-- [Latest Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [Android Studio](https://developer.android.com/studio/index.html)
 - Git—`brew install git` ([brew docs](http://brew.sh/))
 - Zeplin—`brew cask install zeplin` ([brew cask docs](https://caskroom.github.io/))
+
+## Setup java JDK
+
+- On welcome screen go to Configure -> Default project structure... and change JDK location to Embedded JDK
+- If you have opened a project without following the first step go to File -> Project structure... -> SDK Location and change JDK location to Embedded JDK, then go to File -> Other settings -> Default project structure... and change JDK location to Embedded JDK
 
 ## Import code style
 

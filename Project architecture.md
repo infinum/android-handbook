@@ -40,7 +40,7 @@ However, the SingleLiveEvent implementation from Google has one major setback—
 
 - **Canceling network calls**
 
-Since we have LiveDate to take care of lifecycle state changes, we don't have to worry that much about async work that loads our data. We can set the data to LiveData at any time without fear that this is going to crash our app because the View is not ready. This means there is no need to cancel a network call when activity is moved to the background. So, no unnecessary data traffic, repeated calls, checks if we already have the data, or in-memory cache in the activity scope. 
+Since we have LiveData to take care of lifecycle state changes, we don't have to worry that much about async work that loads our data. We can set the data to LiveData at any time without fear that this is going to crash our app because the View is not ready. This means there is no need to cancel a network call when activity is moved to the background. So, no unnecessary data traffic, repeated calls, checks if we already have the data, or in-memory cache in the activity scope. 
 
 - **Recreating an activity and state preservation**
 
