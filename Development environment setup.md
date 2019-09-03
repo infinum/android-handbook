@@ -6,7 +6,7 @@
 
 ## Setup java JDK
 
-Java JDK comes embedded in android studio and is often more compatible, therefore we don't need to install new JDK. However android studio by default uses systems JDK so project structure needs to be changed in order to use embedded one.
+Java JDK comes embedded in Android studio and is often more compatible, therefore we don't need to install new JDK. However Android studio by default uses systems JDK so project structure needs to be changed in order to use embedded one.
 
 - On welcome screen go to Configure -> Default project structure... and change JDK location to Embedded JDK
 - If you have opened a project without following the first step go to File -> Project structure... -> SDK Location and change JDK location to Embedded JDK, then go to File -> Other settings -> Default project structure... and change JDK location to Embedded JDK
