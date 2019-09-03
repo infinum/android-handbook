@@ -10,7 +10,7 @@
 
 	ViewPagerIndicator provides us with paging indicator widgets compatible with the ViewPager. It helps you provide a clear indicator that additional content exist.
 
-	More info with code examples is available [here](http://viewpagerindicator.com/).
+	More info with code examples is available [here](https://github.com/JakeWharton/ViewPagerIndicator).
 
 3. **CircleImageView**
 
