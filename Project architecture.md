@@ -48,7 +48,7 @@ The ViewModel together with all the data will survive the activity configuration
 
 - **Flow control**
 
-Most applications contain some screens that can be grouped into a flow. Inside this flow, you will often have to share some data. Information from the previous screen might be needed or might influence some of the future screens. The ViewModel and LiveDate can be the perfect solution for such situations. If you organize a specific flow inside one activity, and all other screens as a fragment, it is easy to share a ViewModel among all fragments and the controlling activity. This makes it easy to share, store, combine, and manage all the data in the flow. 
+Most applications contain some screens that can be grouped into a flow. Inside this flow, you will often have to share some data. Information from the previous screen might be needed or might influence some of the future screens. The ViewModel and LiveData can be the perfect solution for such situations. If you organize a specific flow inside one activity, and all other screens as a fragment, it is easy to share a ViewModel among all fragments and the controlling activity. This makes it easy to share, store, combine, and manage all the data in the flow. 
 
 
 ## Implementation
