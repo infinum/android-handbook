@@ -7,7 +7,7 @@
 
 ## Initial project setup
 
-1. Branch a new branch off `dev` (see the [Git usage](/books/android/Using Git) chapter for details)
+1. Branch a new branch off `dev` (see the [Using Git](/books/android/Using Git) chapter for details)
 2. Create a new project in Android Studio using the wizard
 3. Create a gitignore file using [gitignore.io](https://www.gitignore.io/)
 4. Set up buildTypes and flavors (you usually need a `staging` and `production` flavor)
