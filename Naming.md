@@ -51,7 +51,7 @@ if (checkFileSize(image))
 * activities and fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`
 * the corresponding layouts have to be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`
 * all naming has to be simple, clear and mnemonic (short and meaningful)
-* the [Infinum Code Style](https://github.com/infinum/android-handbook-private/blob/master/files/InfinumCodeStyle.xml) has to be imported into Android Studio and used in formatting code. If you want to find out how to import it, check out the chapter about [Development environment setup](/books/android/Development environment setup).
+* the [Infinum Code Style](https://github.com/infinum/android-handbook-private/blob/master/files/InfinumCodeStyle.xml) has to be imported into Android Studio and used in formatting code. If you want to find out how to import it, check out the chapter about [Development environment setup](/books/android/development-environment-setup).
 * drawable resources also have [naming conventions](http://petrnohejl.github.io/Android-Cheatsheet-For-Graphic-Designers/#naming-conventions)
 
 ## Examples of good naming
