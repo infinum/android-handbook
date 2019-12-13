@@ -2,74 +2,76 @@ Before you can start using Git, you need to [generate an SSH key](https://help.g
 In that way, you can interact with private repositories without entering your username and password all the time.
 Just remember to clone the repository using the [SSH clone URL](https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-ssh).
 
+## Using Git
+
+As a part of git standardization we created [this document](https://docs.google.com/document/d/1jhvA8XvLYGbmrfU0JeY8R0RgqATQ1rmM4zFphQ0xeyw/edit?usp=sharing) which contains all the important information on how we are using git. 
+
 ## Git Flow
 
-We use a variant of the [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) workflow. There are some differences between our variant and the linked document. The main one is we don't need the `master` branch. Also, on most projects we don't use `release` branches. 
+We use a variant of the [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) workflow. There are some differences between our variant and the linked page, as it is described in [Git standardization document](https://docs.google.com/document/d/1jhvA8XvLYGbmrfU0JeY8R0RgqATQ1rmM4zFphQ0xeyw/edit?usp=sharing). 
 
 ![Git Flow](/img/git-flow.svg)
 
-By definition, there are two main branches, `master` and `dev`.
-The `master` branch contains **only published code** at all times, and each release is **tagged** with the version number.
-The `dev` branch serves for integration of various features/fixes developed in separate branches.
+On most of the project we are going to use `master` as main branch and `dev` is not going to be used. All the development will be done on `master` branch. Each release is **tagged** with the version number as it is described in Git standardization document.
 
-We noticed that the `master` branch is not used that often. Since we have tags on release commits, having a branch that only contains published code seems unnecessary. That is why, for the simplicity, we only keep the `dev` branch as the main branch and track releases via tags.
+We noticed that when having both `master` and `dev` branches only one of them is used actively. Since we have tags on release commits, having a branch that only contains published code seems unnecessary. That is why, for the simplicity, we only keep the `master` branch as the main branch and track releases via tags.
 
 ## Git tagging
 
 Before releasing the app on PlayStore, the release has to be tagged with the version number. Also, provide a short description for the release. Here's an example of adding a tag:
 
 ```bash
-git tag -a 3.0.0 -m “The best version ever“
+git tag -a v3.0.0 -m “The best version ever“
 git push --tags
 ```
 You can find more info about tagging [here](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
 
 ### Naming conventions
 
-The development branch should always be named `dev`, for consistency across projects.  
+The development branch should always be named `master`, for consistency across projects.  
 
-Branches are named according to their use, and words are delimited by dashes. Some examples:
+Branches are named according to their use, and words are delimited by dashes. You sould use Productive/Jira task number when possible. Some examples:
 
-    feature/login-screen
+    feature/123-login-screen
     enhancement/ui-improvements
     fix/533-pin-user-alert
 
 ### Starting work on a new feature
 
 ```bash
-git checkout dev
-git checkout -b feature/login-screen
+git checkout master
+git checkout -b feature/123-login-screen
 ```
 
-### Merging the feature into `dev`
+### Merging the feature into `master`
 
-The preferred way of merging a branch back into `dev` is by creating a pull request and assigning it to a colleague for review.
+The preferred way of merging a branch back into `master` is by creating a pull request and assigning it to a colleague for review.
 
 There are two different roles in every pull request—the assignee and the reviewer. Reviewers are your colleagues who review your pull request, whereas the assignee is the person responsible for merging or cancelling the pull request, in other words, **you**.
 
-If the branch cannot be merged back into `dev` because of a merge conflict, you need to fix the conflict on your feature branch by either rebasing from `dev`
+If the branch cannot be merged back into `master` because of a merge conflict, you need to fix the conflict on your feature branch by either rebasing from `master`
 
 ```bash
 git checkout feature/login-screen
-git rebase dev
+git rebase master
 ```
 
-or by merging `dev` into your branch
+or by merging `master` into your branch
 
 ```bash
 git checkout feature/login-screen
-git merge dev
+git merge master
 ```
 
 ### Release branches
 
-Most projects have one active development stream at the moment. This means that all new changes should be included in the next upcoming release. Because of this, all changes can be merged into the `dev` branch without the need to introduce multiple `release` branches.
+Most projects have one active development stream at the moment. This means that all new changes should be included in the next upcoming release. Because of this, all changes can be merged into the `master` branch without the need to introduce multiple `release` branches.
 
-However, some projects have multiple releases planned ahead. It is possible that at some point a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `dev` branch. You can use regex to match all the release branches and not worry about protecting newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done even with admin privileges. 
+However, some projects have multiple releases planned ahead. It is possible that at some point a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `master` branch. You can use regex to match all the release branches and not worry about protecting newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done even with admin privileges. 
 
 When working with `release` branches, it needs to be clear which task should be included in which version. If you are not sure of this, ask the project manager before starting with the task. In (Productive)[[https://app.productive.io](https://app.productive.io/)] release versions can be defined with tags or boards. In (JIRA)[<https://www.atlassian.com/software/jira>] you can track the status of each release and define `Fix version/s` attribute on a task.
 
-After releasing a new version from the `release` branch, make sure to create a new tag with that version from the last commit in that branch. Then you can merge the `release` branch into the `dev` branch. Don't forget to also update all other active `release` branches.
+After releasing a new version from the `release` branch, make sure to create a new tag with that version from the last commit in that branch. Then you can merge the `release` branch into the `master` branch. Don't forget to also update all other active `release` branches.
 
 ### Commit early, commit often
 
