@@ -11,6 +11,8 @@ Java JDK comes embedded in Android studio and is often more compatible, therefor
 - On welcome screen go to Configure -> Default project structure... and change JDK location to Embedded JDK
 - If you have opened a project without following the first step go to File -> Project structure... -> SDK Location and change JDK location to Embedded JDK, then go to File -> Other settings -> Default project structure... and change JDK location to Embedded JDK
 
+However, if you are going to use terminal for running some gradle tasks (and eventually you are going to) you may run in some problems if you are going to use Java version higher than 8. So I'd suggest downloading Java 8 and setting it to default in you terminal.
+
 ## Import code style
 
 To make working with the rest of the team easier, we all use the same code style settings.
