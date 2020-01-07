@@ -33,7 +33,7 @@ public class User {
 
 In the above example, the public **setter** for the `activationStatus` field of the `User`
 class receives an _int_ value as a method parameter. The class also defines three
-conveniently named constants that this method should obviously receive.
+conveniently named constants this method should obviously receive.
 
 However, nothing is stopping us from setting **virtually any** integer.
 
@@ -85,7 +85,7 @@ command line lint tool, which brings this feature to CI.
 _Magic constants_ is a fancy name for simple `integer` and `String` constants.
 Enums are classes which need to be loaded at the time they are called. Each
 enumerated value in an enum class has to be instantiated. Each instance takes up
-memory for their ordinal and name, and reference on top of that. In its 
+memory for their ordinal and name, and reference on top of that. In its
 simplest form, an enum instance can take up between **40** and **70 bytes**. This
 number is multiplied by the number of instances.
 

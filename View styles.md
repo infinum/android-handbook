@@ -9,7 +9,7 @@ A style is a collection of properties that specify the look and format for a Vie
 
 ## Example
 
-Let’s say you want to declare a button style that is used multiple times in the app. You declare its style in `styles.xml` like this:
+Let’s say that you want to declare a button style that is used multiple times in the app. You declare its style in `styles.xml` like this:
 
 ```xml
   <style name="ConfirmationButton">
@@ -33,4 +33,4 @@ After declaring the style, all you need to do is add it to a `Button` in the XML
 
 ## Why, what, when?
 
-Styles are not easy, and in some cases, they do not work as you thought they would. For detailed info on how and when to use them, read [this blog post](http://blog.danlew.net/2014/11/19/styles-on-android/).
+Styles are not easy and, in some cases, they do not work as you thought they would. For detailed info on how and when to use them, read [this blog post](http://blog.danlew.net/2014/11/19/styles-on-android/).

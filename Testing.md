@@ -1,12 +1,12 @@
-Writing tests is not the most glamorous part of developing an Android application, but it is an invaluable one. There are two main types of tests for Android apps—unit tests and instrumentation tests.
+Writing tests is not the most glamorous part of developing an Android application, but also an invaluable one. There are two main types of tests for Android apps—unit tests and instrumentation tests.
 
-Unit tests test small components in isolation, while instrumentation tests test larger functionality, such as whole screens or even multiple screens.
+Unit tests test small components in isolation, while instrumentation tests test larger functionalities, such as whole screens or even multiple screens.
 
 ## Unit tests
 
-Unit tests are easy to write and fast to execute since they don't need an Android device to run on—they run on a plain JVM.
+Unit tests are easy to write and fast to execute since they don't need an Android device to run on; they run on a plain JVM.
 
-This means that the code has to be neatly separated so we can write useful unit tests for it.
+This means that the code has to be neatly separated so that we can write useful unit tests for it.
 
 It is usually very useful to test the presenter logic, assuming MVP is used in the app (see the [MVP](/MVP.md) chapter for details).
 This means that presenters have to be Android-agnostic.
@@ -15,7 +15,7 @@ In general, the most useful tests cover the business logic of the app and the mo
 
 ### Example
 
-The following method tests if the ticket barcode conforms to the specified format.
+The following method tests whether the ticket barcode conforms to the specified format.
 
 ```java
 /**
@@ -88,7 +88,7 @@ class TicketCodeUtilTest {
 }
 ```
 
-Notice that these tests don't just test the *happy path*, they also test edge cases, in which the input isn't completely numeric or of the required length.
+Notice that these tests don't just test the *happy path*. They also test edge cases, in which the input isn't completely numeric or of the required length.
 
 ### Libraries
 
@@ -112,7 +112,7 @@ See below for more info on how to do that.
 
 ### Building complex objects by deserializing JSON files
 
-When testing some functionality requires you to build a complex object with many nested objects, you can make your life easier by placing a JSON representation of that object into the test resources and deserializing it at the beginning of the test.
+When testing a functionality requires you to build a complex object with many nested objects, you can make your life easier by placing a JSON representation of that object into the test resources and deserializing it at the beginning of the test.
 
 This will decrease the size of the test code and make it more readable.
 
@@ -172,7 +172,7 @@ You may also find the [Burst library](https://github.com/square/burst) useful.
 
 ### Using a mock web server to simulate API
 
-When testing, we don't want to execute real API calls. Instead, we use a mock server and specify each response so we can test different use cases. It is usually a good idea to provide OkHttp's [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) with Dagger. You have to start it and shut it down before and after each test.
+When testing, we don't want to execute real API calls. Instead, we use a mock server and specify each response so that we can test different use cases. It is usually a good idea to provide OkHttp's [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) with Dagger. You have to start it and shut it down before and after each test.
 
 In each test, you may want to enqueue the response(s). Enqueuing works using [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)))
 

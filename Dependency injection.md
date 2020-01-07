@@ -1,6 +1,6 @@
-When writing a class, it's natural for it to make use of other objects. These other objects (or services) are [dependencies](http://tutorials.jenkov.com/ood/understanding-dependencies.html#whatis). The simplest way to write code is to simply create and use those other objects. But this means your object has an inflexible relationship with those dependencies: no matter why you are invoking your object, it uses the same dependencies.
+When writing a class, it's natural for it to make use of other objects. These other objects (or services) are [dependencies](http://tutorials.jenkov.com/ood/understanding-dependencies.html#whatis). The simplest way to write code is to create and use those other objects. But this means that your object has an inflexible relationship with those dependencies; no matter why you are invoking your object, it uses the same dependencies.
 
-A more powerful technique is to be able to create your object and provide it with dependencies to use. In this way, you can create your object with different dependencies at different times, making your object more flexible. This is [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), with which you "inject" the dependencies into the object.
+A more powerful technique is to be able to create your object and provide it with dependencies to use. This way, you can create your object with different dependencies at different times, which makes it more flexible. This is called [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) because you "inject" the dependencies into the object.
 
 ![Dependency inversion principle](/img/dependecy_inversion_principle.jpg "Example of dependency inversion principle")
 
@@ -18,7 +18,7 @@ The main advantage of dependency injection is the reduction of boilerplate code 
   * Reusability
   * Testability
 
-Not every problem is solved with dependency injection, and also there are some disadvantages that come with such great power. As we don't care about actual implementation, our code can become difficult to trace (`Protip:` use <kbd>Alt</kbd>+<kbd>Cmd</kbd> to access the implementation file directly in Android Studio).
+Not every problem is solved with dependency injection. There are also some disadvantages that come with such great power. As we don't care about the actual implementation, our code can become difficult to trace (`Protip:` use <kbd>Alt</kbd>+<kbd>Cmd</kbd> to access the implementation file directly in Android Studio).
 
 ## Dagger 2
 
@@ -28,7 +28,7 @@ The true power of Dagger 2 lies in reflection, `NOT`! What I'm trying to say is 
 
 ### Include in project
 
-Add the Android apt (Annotation Processing Tool) plugin. The apt plugin assists in working with annotation processors in combination with Android Studio. It has two purposes—it allows us to configure a compile-time-only annotation processor as a dependency, not including the artifact in the final APK or library, and set up the source paths so that the code that is generated from the annotation processor is correctly picked up by Android Studio.
+Add the Android apt (Annotation Processing Tool) plugin. The apt plugin assists in working with annotation processors in combination with Android Studio. It has two purposes. Firstly, it allows us to configure a compile-time-only annotation processor as a dependency, not including the artifact in the final APK or library. Secondly, it lets us set up source paths so that the code generated from the annotation processor is correctly picked up by Android Studio.
 
 Add the following to your build script:
 
@@ -70,13 +70,13 @@ dependencies {
 
 ### How does it work
 
-For all of this to work properly, we need to bind the request that is demanding some dependency with a supplier that will provide a matching dependency. This is done by adding annotation to instruct a specific action.
+For all of this to work properly, we need to bind the request that demands some dependency with a supplier that will provide a matching dependency. This is done by adding annotation to instruct a specific action.
 
 `@Inject`—is used to make a request for certain dependencies. You can annotate `Constructor`, `Field` or `Method` to mark dependencies.
 
-`@Provides`—is used as a method annotation. A method with the provides annotation will register its return type as a dependency that it can supply and match with the requested inject type.
+`@Provides`—is used as a method annotation. A method with the @Provides annotation will register its return type as a dependency it can supply and match with the requested inject type.
 
-`@Module`—is used as an annotation for classes that provide dependencies. All methods that are annotated with the provides annotation have to be inside module classes.
+`@Module`—is used as an annotation for classes that provide dependencies. All methods that are annotated with the @Provides annotation have to be inside module classes.
 
 `@Component`—is used to bind all things together. This creates an interface that will provide the injection start point and enable dependency configuration.
 
@@ -86,7 +86,7 @@ For all of this to work properly, we need to bind the request that is demanding 
 
 Almost every app we develop has a matching API, so we need the [Retrofit](http://square.github.io/retrofit/) service. Let's see how we can use ApiService with dependency injection.
 
-1. We need ApiService interface
+1. We need an ApiService interface.
 
 ```java
 	public interface ApiService {
@@ -96,7 +96,7 @@ Almost every app we develop has a matching API, so we need the [Retrofit](http:/
 	}
 ```
 
-2. We need someone who wants to use this ApiService (request it as a dependency)
+2. We need someone who wants to use this ApiService (request it as a dependency).
 
 ```java
 	public class PokemonInteractorImpl implements PokemonInteractor {
@@ -129,7 +129,7 @@ Almost every app we develop has a matching API, so we need the [Retrofit](http:/
 	}
 ```
 
-3. We need a `Module` that will supply necessary dependencies
+3. We need a `Module` that will supply the necessary dependencies.
 
 ```java
 	@Module
@@ -195,7 +195,7 @@ Almost every app we develop has a matching API, so we need the [Retrofit](http:/
 	}
 ```
 
-4. We should create an AppComponent which will provide ApiService to all subcomponents which require it
+4. We should create an AppComponent which will provide ApiService to all subcomponents which require it.
 
 ```java
   	@Component(modules = ApiModule.class)
@@ -223,7 +223,7 @@ Almost every app we develop has a matching API, so we need the [Retrofit](http:/
 	}
 ```
 
-5. Finally, we need to bind our subcomponent to the scope in which it is used
+5. Finally, we need to bind our subcomponent to the scope in which it is used.
 
 ```java
 	/**
