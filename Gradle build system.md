@@ -1,4 +1,4 @@
-Gradle has been a build and dependency system for Android projects since Google introduced Android Studio.
+Gradle has been the build and dependency system for Android projects since Google introduced Android Studio.
 
 The Gradle configuration file is named **build.gradle**.
 Each project contains a top-level configuration file which looks something like this:
@@ -84,7 +84,7 @@ Lint is a static code analysis tool that checks your source files for potential 
 
 The `lintOptions` block defines the configuration for lint. Possible config values can be found on the [lint support](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Lint-support) page.
 
-The **abortOnError** flag **must be** set to true. You can disable some of the checks after your team leaders' approval. All unapproved disabled checks and *abortOnError false* are subject to a yellow card.
+The **abortOnError** flag **must be** set to true. You can disable some of the checks after your team leader's approval. All unapproved disabled checks and *abortOnError false* are subject to a yellow card.
 
 ```gradle
 lintOptions {
@@ -93,7 +93,7 @@ lintOptions {
 ```
 
 ###3. Signing configs
-`signingConfigs` can contain one or more configurations to sign your APK. Each signing configuration should have the following properties:
+`signingConfigs` can contain one or more configurations used to sign your APK. Each signing configuration should have the following properties:
 
 * keyAlias
 * keyPassword
@@ -116,7 +116,7 @@ Based on the example above, you should reference the signing configuration block
 ###4. Build types
 The `buildTypes` element controls how your app is built and packaged. By default, the build system defines two build types: `debug` and `release`. The `debug` build type includes debugging symbols and is signed with the debug key. The `release` build type is not signed by default.
 
-If your app uses a feature whose key depends on signingKey, you should sign the debug build with your key instead of using the debug (default) key to ease the development for other collaborators. This is done in the example below:
+If your app uses a feature whose key depends on signingKey, you should sign the debug build with your key instead of using the debug (default) key to make the development easier for other collaborators. This is done in the example below:
 
 ```gradle
  buildTypes {
@@ -139,7 +139,7 @@ If your app uses a feature whose key depends on signingKey, you should sign the 
 ###5. Product flavors
 Product flavors define a customized version of the app. A project can have multiple flavors (e.g., [paid | free] or the same app targeting different API endpoints, etc.).
 
-The following example creates three flavors
+The following example creates three flavors:
 
 ```gradle
  flavorDimensions 'api'
@@ -158,11 +158,11 @@ The following example creates three flavors
 }
 ```
 
-Product flavor objects are of the same type as defaultConfig and share the same attributes. This means you can override any default value for a specific flavor.
+Product flavor objects are of the same type as defaultConfig and share the same attributes. This means that you can override any default value for a specific flavor.
 
 ###6. Dependencies
 Gradle projects can have dependencies on other components. These components can be external binary packages or other Gradle projects.
-To configure a dependency on an external library jar, you need to add a dependency on the compile configuration.
+To configure a dependency on an external library jar, you need to add the dependency on the compile configuration.
 
 ```gradle
 dependencies {
@@ -181,7 +181,7 @@ To build the variant you want, you should select it from the AS menu on the left
 
 ### 8. Adding a build version to an APK file
 
-Android Studio sets the name of the APK file based on the app name, build type, and flavor. For example, the default output looks like this: **app-staging-debug.apk**. If necessary, this can be changed by adding this code snippet to build.gradle file
+Android Studio sets the name of the APK file based on the app name, build type, and flavor. For example, the default output looks like this: **app-staging-debug.apk**. If necessary, this can be changed by adding the following code snippet to build.gradle file:
 
 ```gradle
 android.applicationVariants.all { variant ->

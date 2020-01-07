@@ -10,15 +10,15 @@ To use Polyglot in an Android project, use the [Gradle plugin](https://github.co
 
 Consult the documentation on the linked page for more details.
 
-Both the strings (files called `polyglot-v2.xml`) and the configuration file (`polyglot-config.yml`) should be committed to the repository so the app can be built even without access to the Polyglot API.
+Both strings (files called `polyglot-v2.xml`) and the configuration file (`polyglot-config.yml`) should be committed to the repository so that the app can be built even with no access to the Polyglot API.
 
 ## Legacy polyglot
 
-You may find that older Android projects use a Ruby gem called `polyglot-cli`. You will recognize such projects by the file `app/polyglot.yml`, which is the configuration file.
+You may find that older Android projects use a Ruby gem called `polyglot-cli`. You will recognize such projects by the `app/polyglot.yml` file, which is the configuration file.
 
-All such projects should be migrated to the above linked Polyglot Gradle plugin, as the old API is deprecated and will be shut down in Q1 2017 (plans as of December 2016).
+All such projects should be migrated to the above linked Polyglot Gradle plugin, since the old API is deprecated and will be shut down in Q1 2017 (planned as of December 2016).
 
 The migration is fairly easy:
 
-1. Remove `app/polyglot.yml` and all `polyglot.xml` string files
-2. Add the Polyglot Gradle plugin and set it up according to the docs, committing the config and translation files
+1. Remove `app/polyglot.yml` and all `polyglot.xml` string files.
+2. Add the Polyglot Gradle plugin and set it up according to the docs, committing the config and translation files.

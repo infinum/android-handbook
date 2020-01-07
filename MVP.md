@@ -1,6 +1,6 @@
 ## ~~Deprecated~~
 
-The Android team has moved past MVP architecture and is now using MVVM on all new projects. We are keeping this chapter since there is still a large number of projects that use MVP structure, and we are keeping this as reference. If you are starting a new project or refactoring the existing one, check the MVVM architecture setup described in the [Project architecture](/Project architecture.md) chapter.
+The Android team has moved past the MVP architecture and is now using MVVM on all new projects. We've kept this chapter as a reference since there is still a large number of projects that use the MVP structure. If you are starting a new project or refactoring the existing one, check the MVVM architecture setup described in the [Project architecture](/Project architecture.md) chapter.
 
 MVP is short for Model-View-Presenter, and it is a derivative from the MVC (Model View Controller) design pattern. The main difference between the two is shown in the picture below.
 
@@ -18,11 +18,11 @@ The MVP pattern is a way to separate background tasks from Activities/Fragments/
 
 ## Why use MVP?
 
-The main reason to use the MVP pattern is the [KISS principle](https://people.apache.org/~fhanik/kiss.html). Without using MVP, your Activity contains UI, UI logic, and data management, which means lots of lines of code that are hard to maintain and cannot be reused. MVP splits complex tasks into multiple simpler tasks so they becomes easier to solve, and classes have less code, which means they become much easier for your colleagues to maintain, debug and understand. MVP also allows unit testing because you can individually test each component of the app by recreating real use cases with mock data.
+The main reason to use the MVP pattern is the [KISS principle](https://people.apache.org/~fhanik/kiss.html). Without using MVP, your Activity contains UI, UI logic, and data management. This means that there are many lines of code that are hard to maintain and cannot be reused. MVP splits complex tasks into multiple simpler tasks so they become easier to solve. Also, classes have less code, which means that they become much easier for your colleagues to maintain, debug and understand. MVP also allows unit testing because you can individually test each component of the app by recreating real use cases with mock data.
 
 ## Model
 
-The Model is a representation of business logic, or to put it simpler: data that will be displayed in the user interface (view). It is implemented by interactors that are responsible for some specific action (fetching data from the API, reading from a file...). After that, the result is sent to the presenter via listener.
+The Model is a representation of business logic or, to put it simpler, data that will be displayed in the user interface (view). It is implemented by the interactors that are responsible for some specific action (fetching data from the API, reading from a file...). After that, the result is sent to the presenter via listener.
 
 ## View
 
@@ -30,11 +30,11 @@ The view is an interface that displays data (model) and is responsible for handl
 
 ## Presenter
 
-The presenter is the “middle-man” and has references to the view and model. For instance, if your app needs to display the data of a user, the presenter would use its reference to a database business logic, from where it would query a list of users and find the one it needs. Then, it would call a method in the view, passing the queried user, and the view would update the UI with the user data.
+The presenter is the “middle-man” and has references to the view and model. For instance, if your app needs to display the data of a user, the presenter would use its reference to a database business logic. From there, it would query a list of users and find the one it needs. Then, it would call a method in the view, passing the queried user, and the view would update the UI with the user data.
 
 ## Listener
 
-The listener is an interface implemented inside the presenter and is used for retrieving data from the model. As the model is usually asynchronous, the presenter needs a way to listen when data is successfully fetched or when some kind of error happens. The listener is passed to the interactor as a method parameter, and it is not injected by Dagger like other components.
+The listener is an interface implemented inside the presenter and used for retrieving data from the model. As the model is usually asynchronous, the presenter needs a way to listen when data is successfully fetched or when some kind of error happens. The listener is passed to the interactor as a method parameter, and it is not injected by Dagger like other components.
 
 
 ## How to implement MVP?
@@ -77,7 +77,7 @@ public interface LoginListener {
 }
 ```
 
-* Create an `impl` package inside of `interactors` and `presenters`, and create a presenter and interactor class that implement their belonging interface and implement the view interface in your Activity. You can find an example of full code below.
+* Create an `impl` package inside of `interactors` and `presenters`. Create a presenter and interactor class that implement their belonging interface and implement the view interface in your Activity. You can find an example of the full code below.
 
 ![MVP final packages](/img/mvp_final.png "MVP packages final form")
 
@@ -208,7 +208,7 @@ public class LoginInteractorImpl implements LoginInteractor {
 }
 ```
 
-* You have to pass all references that are needed for successful communication to successfully finish implementation. This is done by using [Dagger2](http://google.github.io/dagger/) for [dependency injection](http://stackoverflow.com/questions/130794/what-is-dependency-injection). You can find more about it [here](/android/dagger).
+* You have to pass all references that are needed for a successful communication to finish the implementation. This is done by using [Dagger2](http://google.github.io/dagger/) for [dependency injection](http://stackoverflow.com/questions/130794/what-is-dependency-injection). You can find more about it [here](/android/dagger).
 
 
 ## Useful links
