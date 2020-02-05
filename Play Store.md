@@ -1,4 +1,4 @@
-When releasing an application to the Google Play Store, you should make sure you've done everything necessary before the release. Here's a short checklist:
+When releasing an application to the Google Play Store, you should make sure you've done everything that's necessary before the release. Here's a short checklist:
 
 1. Increment versionCode and versionName (compared to the last version on the store)
 2. Run tests and make sure all of them are passing
@@ -14,7 +14,7 @@ If your app is already on the Play Store, take special care to **test the update
 3. Send the new APK to your device by mail or use labs to install it (don't use adb because it might remove the old app first and then install the new one)
 4. Click on the APK on the device to install the APK as an update
 
-This will enable you to find update bugs, such as forgetting the user's credentials ('remember me' checkbox), and it will also ensure that you detect instances where the updated app has a different db schema, which makes your app crash after update. In such cases, a db migration has to be prepared for a smooth update.
+This will enable you to find update bugs, such as forgetting the user's credentials ('remember me' checkbox), and it will also ensure that you detect instances where the updated app has a different db schema, which makes your app crash after an update. In such cases, a db migration has to be prepared for a smooth update.
 
 ## Version naming
 
@@ -23,7 +23,7 @@ In short, a more liberal description:
 
  - the build version should be made of *major*.*minor*.*patch*
  - increase *patch* for bug fixes
- - increase *minor* when adding new functionality
+ - increase *minor* when adding a new functionality
  - increase *major* when removing backwards compatibility or introducing a major change
 
 Side note: builds that are deployed to labs for internal and client testing can have suffixes:
@@ -32,7 +32,7 @@ Side note: builds that are deployed to labs for internal and client testing can 
 
 The first version of the application that goes on the Play Store should be labeled 1.0.0. An exception to the rule is if the client explicitly requests a different version name. Maximum effort should be made to explain to the client the use of semantic versioning, but in some cases it will not be possible.
 
-## Difference between package name and application ID
+## The difference between package name and application ID
 
 Every Android application is uniquely identified by the package name. In short, the package name serves two purposes:
  - to uniquely identify your app on the Play Store and on the device

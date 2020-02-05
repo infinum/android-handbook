@@ -2,15 +2,15 @@ Being mindful of code quality is a desirable trait of every developer. At Infinu
 
 ### Lint
 
-Lint is a static code checker and is used to indicate suspicious and potentially harmful lines of code that do **not** follow certain style guidelines.
+Lint is a static code checker used to indicate suspicious and potentially harmful lines of code that do **not** follow certain style guidelines.
 
 Lint should always be enabled on release builds. In other words, every build that is given into the hands of our internal QA team or the client **must** be run through lint and other static code checkers on CI.
 
-For example, you might be working on an older project with outdated codebase. In that case, if static code checkers haven't already been set up, it's expected of you to set them up and create a [baseline](https://sites.google.com/a/android.com/tools/tech-docs/lint-in-studio-2-3#TOC-Creating-a-Baseline) if necessary. The entire new codebase that's written in the project **should pass** static code checkers.
+For example, you might be working on an older project with an outdated codebase. In that case, if static code checkers haven't already been set up, it's expected of you to set them up and create a [baseline](https://sites.google.com/a/android.com/tools/tech-docs/lint-in-studio-2-3#TOC-Creating-a-Baseline) if necessary. The entire new codebase that's written in the project **should pass** static code checkers.
 
 ### Proguard
 
-Every build that's sent to the QA team or clients **must** be obfuscated with Proguard. In other words, only release builds which have Proguard enabled in the `build.gradle` file via `minifyEnabled` flag set to `true` should be sent.
+Every build that's sent to the QA team or clients **must** be obfuscated with Proguard. In other words, only the release builds which have Proguard enabled in the `build.gradle` file via `minifyEnabled` flag set to `true` should be sent.
 
 The only time you should make an exception to this rule is when the QA team or the client asks specifically for an unobfuscated build, in which case you should comply.
 
@@ -27,7 +27,7 @@ If a member of the QA team wants to see API responses and requests, you are supp
 
 ### Prince of Versions
 
-We have developed a library that checks for application updates using a configuration file—it's called the [Prince of Versions](https://github.com/infinum/Android-Prince-of-Versions).
+We have developed a library that checks for application updates using a configuration file. It is called the [Prince of Versions](https://github.com/infinum/Android-Prince-of-Versions).
 
 Using this library is required on every project, old or new. If you ever stumble upon a project that doesn't have the Prince of Versions set up, you should contact your team lead or project manager and let them know. They should be able to provide you with a few hours to set up the Prince of Versions.
 

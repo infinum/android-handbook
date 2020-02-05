@@ -1,7 +1,7 @@
 At Infinum, we use package structure called `package by feature`.
 
-## What is package by feature
-It's an organizational style in which you group your code by functionalities rather than by layers. With package by feature, items that work closely together are placed next to one another, and that makes navigating through the code a lot easier.
+## What is package by feature?
+It is an organizational style in which you group your code by functionalities rather than by layers. With package by feature, items that work closely together are placed next to one another, and that makes navigating through the code a lot easier.
 
 ## Example  
 
@@ -13,7 +13,7 @@ MyAwesomeApp (Application)
 * ui
 ```
 
-The `di` stands for *Dependency Injection*, and it's a package that contains the AppComponent and general Dagger modules that do not relate to specific screens (for example, ApiModule, ClientModule, AppContextModule, ExecutorsModule, etc.).
+The `di` stands for *Dependency Injection*. It is a package that contains the AppComponent and general Dagger modules that do not relate to specific screens (for example, ApiModule, ClientModule, AppContextModule, ExecutorsModule, etc.).
 
 ```
 di
@@ -28,7 +28,7 @@ di
 
 ```
 
-The `data` package contains all data management related code, which is grouped as interactors, models, and networking.
+The `data` package contains data management related code, which is grouped as interactors, models, and networking.
 
 ```
 data

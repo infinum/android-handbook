@@ -1,5 +1,5 @@
 Before you can start using Git, you need to [generate an SSH key](https://help.github.com/articles/generating-ssh-keys/) and add the public part of the key to your GitHub and Bitbucket accounts.
-In that way, you can interact with private repositories without entering your username and password all the time.
+That way, you can interact with private repositories without entering your username and password all the time.
 Just remember to clone the repository using the [SSH clone URL](https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-ssh).
 
 ## Using Git
@@ -47,7 +47,7 @@ git checkout -b feature/123-login-screen
 
 The preferred way of merging a branch back into `master` is by creating a pull request and assigning it to a colleague for review.
 
-There are two different roles in every pull request—the assignee and the reviewer. Reviewers are your colleagues who review your pull request, whereas the assignee is the person responsible for merging or cancelling the pull request, in other words, **you**.
+There are two different roles in every pull request—the assignee and the reviewer. Reviewers are your colleagues who review your pull request, whereas the assignee is the person responsible for merging or cancelling the pull request—in other words, **you**.
 
 If the branch cannot be merged back into `master` because of a merge conflict, you need to fix the conflict on your feature branch by either rebasing from `master`
 
@@ -67,15 +67,15 @@ git merge master
 
 Most projects have one active development stream at the moment. This means that all new changes should be included in the next upcoming release. Because of this, all changes can be merged into the `master` branch without the need to introduce multiple `release` branches.
 
-However, some projects have multiple releases planned ahead. It is possible that at some point a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `master` branch. You can use regex to match all the release branches and not worry about protecting newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done even with admin privileges. 
+However, some projects have multiple releases planned ahead. It is possible that, at some point, a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `master` branch. You can use regex to match all the release branches and not worry about protecting the newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done, even with admin privileges. 
 
-When working with `release` branches, it needs to be clear which task should be included in which version. If you are not sure of this, ask the project manager before starting with the task. In (Productive)[[https://app.productive.io](https://app.productive.io/)] release versions can be defined with tags or boards. In (JIRA)[<https://www.atlassian.com/software/jira>] you can track the status of each release and define `Fix version/s` attribute on a task.
+When working with `release` branches, it needs to be clear which task should be included in which version. If you are not sure, ask the project manager before starting the task. In (Productive)[[https://app.productive.io](https://app.productive.io/)], release versions can be defined with tags or boards. In (JIRA)[<https://www.atlassian.com/software/jira>], you can track the status of each release and define a `Fix version/s` attribute on a task.
 
 After releasing a new version from the `release` branch, make sure to create a new tag with that version from the last commit in that branch. Then you can merge the `release` branch into the `master` branch. Don't forget to also update all other active `release` branches.
 
 ### Commit early, commit often
 
-Don't forget to commit and push your code to the remote repository, this will protect you against losing your hard work.
+Don't forget to commit and push your code to the remote repository. This will protect you against losing your hard work.
 Make small commits with meaningful commit messages and push at least once a day.
 
 ### Don't commit generated code

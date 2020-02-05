@@ -11,6 +11,7 @@ Bitrise and Circle are a cloud-based solution, your code gets cloned to a remote
 ## Configuration
 
 We usually have two main workflows:
+>>>>>>> master
 
 - One that's run for every push and contains all the checks and linters. Status of this workflow is reported back to Github, so Pull Request can't be merged if these checks don't pass. That workflow might look something like this:
 
@@ -21,15 +22,15 @@ We usually have two main workflows:
 
 ## Protected branches
 
-In the git flow model that is applied in Infinum, the `dev` and `release` branches have a special role in the development and release cycle. It is expected that the code is not pushed directly to those two branches; therefore the branches need to be set as protected.
+In the git flow model that is applied at Infinum, the `dev` and `release` branches have a special role in the development and release cycle. It is expected that the code will not be pushed directly to those two branches. Therefore, the branches need to be set as protected.
 
-First, the `dev` and `release` branch need to be set as protected. In order to set them as protected, administrator rights are required on the working project. The administrator user can click on the Settings button, as depicted in the picture
+First, the `dev` and `release` branch need to be set as protected. In order to do so, administrator rights are required on the working project. The administrator user can click on the Settings button, as depicted in the picture.
 
-![Click on the Settings](/img/CI-protect-branch-click-setting.png)
+![Click on Settings](/img/CI-protect-branch-click-setting.png)
 
 Next, select the Branches tab as shown in the picture.
 
-![Click on the Branches](/img/CI-protect-branch-click-branches.png)
+![Click on Branches](/img/CI-protect-branch-click-branches.png)
 
 Next, select the `dev` branch in the `Protected branches` section.
 
@@ -37,4 +38,4 @@ Next, select the `dev` branch in the `Protected branches` section.
 
 Mark the check boxes as shown.
 
-![Mark check boxes](/img/CI-protect-branch-check.png)
+![Mark the check boxes](/img/CI-protect-branch-check.png)

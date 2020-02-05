@@ -2,7 +2,7 @@ Comments are a part of the documentation for the code, and they should be writte
 
 Have you ever stared at a piece of code and screamed `WHY? WHY?!? WHY WOULD YOU DO THAT?` at the screen?
 
-Follow the advice provided here, and your colleagues won't have to scream and will love working with you!
+Follow the advice provided here, and your colleagues won't have to scream and will love working with you.
 
 ## Avoid useless comments
 
@@ -43,7 +43,7 @@ Comments, like code, need to be maintained.
 public void onDeviceMetadataObtained(DeviceAuthMetadata deviceAuthMetadata) {
     /**
      * 'resend code' during 2fa enrollment will create a new device
-     * so, we need to save the new metadata so we can send the correct followOnId and deviceId
+     * so, we need to save the new metadata so that we can send the correct followOnId and deviceId
      */
     this.deviceAuthMetadata = deviceAuthMetadata;
     view.hideActionLoadingDialog();
