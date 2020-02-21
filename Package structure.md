@@ -1,7 +1,7 @@
-At Infinum we use package structure called `Package by feature`
+At Infinum, we use package structure called `package by feature`.
 
-## What is Package by feature
-It's an organisational style in which you group your code by functionalities rather than by layer. With package by feature items that work closely together are placed next to each other and that makes navigating through the code a lot easier.
+## What is package by feature?
+It is an organizational style in which you group your code by functionalities rather than by layers. With package by feature, items that work closely together are placed next to one another, and that makes navigating through the code a lot easier.
 
 ## Example  
 
@@ -13,7 +13,7 @@ MyAwesomeApp (Application)
 * ui
 ```
 
-The `di` stands for *Dependency Injection* and it's a package that contains the AppComponent and general Dagger modules that do not relate to specific screens (for example ApiModule, ClientModule, AppContextModule, ExecutorsModule, etc).
+The `di` stands for *Dependency Injection*. It is a package that contains the AppComponent and general Dagger modules that do not relate to specific screens (for example, ApiModule, ClientModule, AppContextModule, ExecutorsModule, etc.).
 
 ```
 di
@@ -28,7 +28,7 @@ di
 
 ```
 
-The `data` package contains all data management related code which is grouped as interactors, models, and networking.
+The `data` package contains data management related code, which is grouped as interactors, models, and networking.
 
 ```
 data
@@ -62,7 +62,7 @@ shared
      |-- ActivityUtil
 ```
 
-The `ui` package contains subpackages named after the screen name (each screen is a separate feature). In general, presenter and view code is contained in the `ui` subpackages. For each feature, besides the activity or fragment, the package contains presenter implementation, mvp interface for presenter and view (it is more `vp` than `mvp`, but we still stick to the `Mvp` prefix for it has a recognizable meaning), and `di` subpackage which contains dagger component and module for that screen. Features can also have subfeatures. For example `userinfo` feature consists of two subfeatures `typeA` and `typeB`.
+The `ui` package contains subpackages named after the screen name (each screen is a separate feature). In general, the presenter and view code is contained in the `ui` subpackages. For each feature, besides the activity or fragment, the package contains presenter implementation, the MVP interface for the presenter and view (it is more `vp` than `mvp`, but we still stick to the `Mvp` prefix as it has recognizable meaning), and a `di` subpackage which contains a Dagger component and module for that screen. Features can also have subfeatures. For example, the `userinfo` feature consists of two subfeatures—`typeA` and `typeB`.
 
 ```
 ui

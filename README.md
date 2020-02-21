@@ -1,3 +1,3 @@
-# Android Handbook - PUBLIC
+# Android Handbook
 
-This is the public part of the Android development handbook. It's publicly visible so take care not to expose information we don't want to share and information which is not of public interest.
+This is a handbook with coding standards and practices for Android at [Infinum](https://infinum.co/).

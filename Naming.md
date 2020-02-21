@@ -40,17 +40,19 @@ if (checkFileSize(image))
 
 ## Naming conventions
 
-* all code is written in english, including comments
-* upper `CamelCase` is used for classes
-* lower `camelCase` is used for methods, local variables and instance variables
-* constants should be `ALL_CAPS`
-* methods are named by verbs, variables and classes by nouns
-* XML resource ids must use `snake_case`
-* Activities and Fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`
-* the corresponding layouts must be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`
-* all naming must be simple, clear and mnemonic (short and meaningful)
-* the [Infinum Code Style](/resources/infinum-code-style-settings.jar) must be imported into Android Studio and used in formatting code. If you want to find out how to import it, check out chapter about [Android Studio setup](Android Studio Setup.md).
-* drawable resources also have [naming conventions](http://petrnohejl.github.io/Android-Cheatsheet-For-Graphic-Designers/#naming-conventions)
+* All code is written in English, including comments.
+* Upper `CamelCase` is used for classes.
+* Lower `camelCase` is used for methods, local variables, and instance variables.
+* Abbreviations and acronyms should use camel case as normal words (e.g., `XmlHttpRequest`, `QrCodeReader`, `userId`).
+* Constants should be `ALL_CAPS`.
+* Methods are named after verbs, variables and classes after nouns.
+* XML resource IDs have to use `snake_case`.
+* XML resource IDs should use `camelCase` in a Kotlin project because of [Kotlin synthetic](https://kotlinlang.org/docs/tutorials/android-plugin.html).
+* Activities and fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`.
+* The corresponding layouts have to be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`.
+* All naming has to be simple, clear and mnemonic (short and meaningful).
+* The [Infinum Code Style](https://github.com/infinum/android-handbook-private/blob/master/files/InfinumCodeStyle.xml) has to be imported into the Android Studio and used in formatting code. If you want to find out how to import it, check out the chapter about [Development environment setup](/books/android/development-environment-setup).
+* Drawable resources also have [naming conventions](http://petrnohejl.github.io/Android-Cheatsheet-For-Graphic-Designers/#naming-conventions).
 
 ## Examples of good naming
 

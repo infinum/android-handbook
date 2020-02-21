@@ -1,6 +1,6 @@
-When writing a class, it's natural for it to make use of other objects. These other objects (or services) are [dependencies](http://tutorials.jenkov.com/ood/understanding-dependencies.html#whatis). The simplest way to write the code is simply to create and use those other objects. But this means your object has an inflexible relationship to those dependencies: no matter why you are invoking your object, it uses the same dependencies.
+When writing a class, it's natural for it to make use of other objects. These other objects (or services) are [dependencies](http://tutorials.jenkov.com/ood/understanding-dependencies.html#whatis). The simplest way to write code is to create and use those other objects. But this means that your object has an inflexible relationship with those dependencies; no matter why you are invoking your object, it uses the same dependencies.
 
-A more powerful technique is to be able to create your object and provide it with dependencies to use. This way, you can create your object with different dependencies at different times, making your object more flexible. This is [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), where you "inject" the dependencies into the object.
+A more powerful technique is to be able to create your object and provide it with dependencies to use. This way, you can create your object with different dependencies at different times, which makes it more flexible. This is called [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) because you "inject" the dependencies into the object.
 
 ![Dependency inversion principle](/img/dependecy_inversion_principle.jpg "Example of dependency inversion principle")
 
@@ -12,23 +12,23 @@ Dependency injection for five-year-olds ([source](http://stackoverflow.com/a/163
 
 ## Why use dependency injection
 
-Main advantage of dependency injection is reduction of boilerplate code in the project since all work to initialize or set up dependencies is handled by a provider component. With dependency injection code is more readable and improves other code properties that we care about a lot like:
+The main advantage of dependency injection is the reduction of boilerplate code in the project since all work to initialize or set up dependencies is handled by a provider component. With dependency injection, code is more readable and improves other code properties that we care about a lot, such as:
 
   * Flexibility
   * Reusability
   * Testability
 
-Not every problem is solved with dependency injection and also there are some disadvantages that comes with such great power. Because we don't care about actual implementation our code can become difficult to trace (`Protip:` use <kbd>Alt</kbd>+<kbd>Cmd</kbd> to access implementation directly file in Android studio)
+Not every problem is solved with dependency injection. There are also some disadvantages that come with such great power. As we don't care about the actual implementation, our code can become difficult to trace (`Protip:` use <kbd>Alt</kbd>+<kbd>Cmd</kbd> to access the implementation file directly in Android Studio).
 
 ## Dagger 2
 
-[Dagger](http://google.github.io/dagger/) is a replacement for `Factory` classes that implements the dependency injection design pattern without the burden of writing the boilerplate. It allows you to focus on the interesting classes. Declare dependencies, specify how to satisfy them, and ship your app.
+[Dagger](http://google.github.io/dagger/) is a replacement for `Factory` classes that implements the dependency injection design pattern without the burden of writing the boilerplate. It allows you to focus on interesting classes. Declare dependencies, specify how to satisfy them, and ship your app.
 
-True power of Dagger 2 lies in reflection, `NOT`! What I'm trying to say is that Dagger 2 is not using reflection at all. Without reflection we can preform graph, configurations and preconditions validation at compile time. All of this means that code is now easy to debug, it is fully traceable and build will not pass unless all dependencies can be satisfied.
+The true power of Dagger 2 lies in reflection, `NOT`! What I'm trying to say is that Dagger 2 does not use reflection at all. Without reflection, we can perform graph, configuration and precondition validation at compile time. All of this means that code is now easy to debug, it is fully traceable, and the build will not pass unless all dependencies can be satisfied.
 
 ### Include in project
 
-Add android apt (Annotation Processing Tool) plugin. Apt plugin assists in working with annotation processors in combination with Android Studio. It has two purposes. Allow to configure a compile time only annotation processor as a dependency, not including the artifact in the final APK or library and set up the source paths so that code that is generated from the annotation processor is correctly picked up by Android Studio.
+Add the Android apt (Annotation Processing Tool) plugin. The apt plugin assists in working with annotation processors in combination with Android Studio. It has two purposes. Firstly, it allows us to configure a compile-time-only annotation processor as a dependency, not including the artifact in the final APK or library. Secondly, it lets us set up source paths so that the code generated from the annotation processor is correctly picked up by Android Studio.
 
 Add the following to your build script:
 
@@ -46,7 +46,7 @@ buildscript {
 }
 ```
 
-Add dagger library, compiler and javax annotation in your project app `build.gradle` In the end it should look something like this:
+Add the Dagger library, compiler and javax annotation in your project app `build.gradle`. In the end, it should look something like this:
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -68,25 +68,25 @@ dependencies {
 }
 ```
 
-### How it works
+### How does it work
 
-For all of this to work properly we need to bind request that is demanding some dependency with supplier that will provide matching dependency. This is done by adding annotation to instruct specific action.
+For all of this to work properly, we need to bind the request that demands some dependency with a supplier that will provide a matching dependency. This is done by adding annotation to instruct a specific action.
 
-`@Inject` - is used to make a request for certain dependencies. You can annotate `Constructor`, `Field` or `Method` to mark dependencies.
+`@Inject`—is used to make a request for certain dependencies. You can annotate `Constructor`, `Field` or `Method` to mark dependencies.
 
-`@Provides` - is used as method annotation. Method with provides annotation will register its return type as dependency that it can supply and match with requested inject type.
+`@Provides`—is used as a method annotation. A method with the @Provides annotation will register its return type as a dependency it can supply and match with the requested inject type.
 
-`@Module` - is used as annotation for classes that are providing dependencies. All methods that are annotated with provides annotation must be inside module classes.
+`@Module`—is used as an annotation for classes that provide dependencies. All methods that are annotated with the @Provides annotation have to be inside module classes.
 
-`@Component` - is used to bind all things together. This creates interface that will provide injection start point and enable dependency configuration.
+`@Component`—is used to bind all things together. This creates an interface that will provide the injection start point and enable dependency configuration.
 
-`@Subcomponent` - provides scoped injection. It will append its injection to already existing component and will live as long as its scope lives (e.g. `Activity`, `Session`, `Fragment`). When its scope dies (e.g. `Activity` is destroyed) subcomponent injections will be removed from graph.
+`@Subcomponent`—provides scoped injection. It will append its injection to an already existing component and will live as long as its scope lives (e.g., `Activity`, `Session`, `Fragment`). When its scope dies (e.g., `Activity` is destroyed) subcomponent injections will be removed from the graph.
 
 ### Example
 
-Almost every app we develop has matching API so we have a need for [Retrofit](http://square.github.io/retrofit/) service. Lets see how we can use ApiService with dependency injection.
+Almost every app we develop has a matching API, so we need the [Retrofit](http://square.github.io/retrofit/) service. Let's see how we can use ApiService with dependency injection.
 
-1. We need ApiService interface
+1. We need an ApiService interface.
 
 ```java
 	public interface ApiService {
@@ -96,7 +96,7 @@ Almost every app we develop has matching API so we have a need for [Retrofit](ht
 	}
 ```
 
-2. We need someone who wants to use this ApiService (request it as dependency)
+2. We need someone who wants to use this ApiService (request it as a dependency).
 
 ```java
 	public class PokemonInteractorImpl implements PokemonInteractor {
@@ -129,7 +129,7 @@ Almost every app we develop has matching API so we have a need for [Retrofit](ht
 	}
 ```
 
-3. We need `Module` that will supply necessary dependencies
+3. We need a `Module` that will supply the necessary dependencies.
 
 ```java
 	@Module
@@ -179,9 +179,9 @@ Almost every app we develop has matching API so we have a need for [Retrofit](ht
 	    }
 
 		/**
- 		 * Every parameter passed in method will first search for other provide methods to satisfy dependency.
- 		 * If first search fails parameter will be created using constructor that is annotated with @Inject.
- 		 * If both of this searches fail this will result with compile time error.
+ 		 * Every parameter passed in the method will first search for other provide methods to satisfy dependency.
+ 		 * If the first search fails, the parameter will be created using a constructor that is annotated with @Inject.
+ 		 * If both of these searches fail, this will result in a compile time error.
  		 */
 		@Provides
 	    public PokemonPresenter providePresenter(PokemonPresenterImpl presenter) {
@@ -195,14 +195,14 @@ Almost every app we develop has matching API so we have a need for [Retrofit](ht
 	}
 ```
 
-4. We should create AppComponent which will provide ApiService to all subcomponents which require it
+4. We should create an AppComponent which will provide ApiService to all subcomponents which require it.
 
 ```java
   	@Component(modules = ApiModule.class)
 	public interface AppComponent {
 
 		// for each subcomponent whose @Provides require ApiService
-		// we need to create getter
+		// we need to create a getter
 		PokemonComponent plus(PokemonModule module);
 	}
 
@@ -223,7 +223,7 @@ Almost every app we develop has matching API so we have a need for [Retrofit](ht
 	}
 ```
 
-5. Finally we need to bind our subcomponent with the scope in which it is used
+5. Finally, we need to bind our subcomponent to the scope in which it is used.
 
 ```java
 	/**
@@ -252,4 +252,4 @@ Almost every app we develop has matching API so we have a need for [Retrofit](ht
 	}
 ```
 
-For more detail examples and better explanation how dagger works under the hood take a look at this [presentation made by Jake Wharton](https://speakerdeck.com/jakewharton/dependency-injection-with-dagger-2-devoxx-2014)
+For more detailed examples and better explanation of how Dagger works under the hood, have a look at this [presentation by Jake Wharton](https://speakerdeck.com/jakewharton/dependency-injection-with-dagger-2-devoxx-2014).
