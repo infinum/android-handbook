@@ -46,7 +46,7 @@ App signing by Google Play is an opt-in feature and a recommended way to sign yo
 
 Now, we have to separate the **Upload** and **App Signing** key. The upload key is the one which developers use to sign and upload APK to Google Play. Google Play verifies the app and signs it with a new key that is used in production. Google Play is now responsible for storing the main app signing keystore. By separating the upload and the app signing key, you have the possibility to reset an upload key in case it gets lost or compromised. In case you are still using a single key for production, if you lose the key, you also lose the ability to update your app.
 
-[Signing an app with App Signing by Google Play](/img/app_signing.png)
+![Signing an app with App Signing by Google Play](/img/app_signing.png)
 
 You should follow the steps in the [official documentation](https://developer.android.com/studio/publish/app-signing#enroll) to enable app signing. When switching an existing app to app signing, you need to export the current key as `*.pepk`file and upload it to Google Play. In either case, make sure that we are using different upload and app signing certificates when you are switching the app or signing a new app. If you are asked to accept the terms before setting up the app signing, please contact the account owner (in Infinum's case, this is Tomislav Car) or ask your team leader or project manager for help.
 
