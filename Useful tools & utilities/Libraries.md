@@ -6,19 +6,19 @@
 
 	More info with code examples is available [here](http://jakewharton.github.io/butterknife/).
 
-3. **CircleImageView**
+2. **CircleImageView**
 
 	A fast circular ImageView perfect for profile images. As this is just a custom ImageView and not a custom 	Drawable or a combination of both, it can be used with all kinds of drawables, e.g. a PicassoDrawable from Picasso or other non-standard drawables.
 
 	More info with code examples is available [here](https://github.com/hdodenhof/CircleImageView).
 
-5. **Holo Graph Library**
+3. **Holo Graph Library**
 
 	Slick, easy-to-use graphs with click listeners.
 
 	More info with code examples is available [here](https://github.com/Androguide/HoloGraphLibrary).
 
-6. **Glide**
+4. **Glide**
 
 	Glide is a fast and efficient open source media management and image loading framework for Android. It wraps media decoding, memory and disk caching, and resource pooling into a simple and easy-to-use interface. It also has support for animated GIFs.
 
@@ -100,13 +100,13 @@
 
 	More info with code examples is available [here](https://firebase.google.com/products/crashlytics).
 
-3. **ThreeTen ABP**
+2. **ThreeTen ABP**
 
 	An adaptation of the JSR-310 backport for Android aka a Java 8 Date API backport for Android.
 
 	More info with code examples is available [here](https://github.com/JakeWharton/ThreeTenABP).
 
-5. **Clean status bar**
+3. **Clean status bar**
 
 	A utility library for making Google Play screenshots. It draws over your status bar, showing only a full battery icon and clock. Use it to get nice, clean screenshots without those pesky empty battery icons and notifications.
 
