@@ -6,41 +6,24 @@
 
 	More info with code examples is available [here](http://jakewharton.github.io/butterknife/).
 
-2. **ViewPagerIndicator**
-
-	ViewPagerIndicator provides us with the paging indicator widgets compatible with ViewPager. It helps you provide a clear indicator that additional content exist.
-
-	More info with code examples is available [here](https://github.com/JakeWharton/ViewPagerIndicator).
-
-3. **CircleImageView**
+2. **CircleImageView**
 
 	A fast circular ImageView perfect for profile images. As this is just a custom ImageView and not a custom 	Drawable or a combination of both, it can be used with all kinds of drawables, e.g. a PicassoDrawable from Picasso or other non-standard drawables.
 
 	More info with code examples is available [here](https://github.com/hdodenhof/CircleImageView).
 
-4. **Android Crop**
-
-	Android Crop provides a simple image cropping Activity, based on the code from AOSP. It is backwards compatible with Gingerbread and has a nice and clean UI.
-
-	More info with code examples is available [here](https://github.com/jdamcd/android-crop).
-
-5. **Holo Graph Library**
+3. **Holo Graph Library**
 
 	Slick, easy-to-use graphs with click listeners.
 
 	More info with code examples is available [here](https://github.com/Androguide/HoloGraphLibrary).
 
-6. **Glide**
+4. **Glide**
 
 	Glide is a fast and efficient open source media management and image loading framework for Android. It wraps media decoding, memory and disk caching, and resource pooling into a simple and easy-to-use interface. It also has support for animated GIFs.
 
 	More info with code examples is available [here](https://github.com/bumptech/glide).
 
-7. **Android Support Library package**
-
-	The Support Library package is a set of official Google libraries used for backwards compatibility with older APIs. Each of these libraries supports a specific range of Android platform versions and set of features.
-
-	More info and specific documentation about the Support Library package is available [here] (https://developer.android.com/tools/support-library/features.html).
 
 ## Networking
 
@@ -108,11 +91,6 @@
 
 	More info with code examples is available [here](http://mockito.org/).
 
-2. **AssertJ Android**
-
-	A set of AssertJ assertions geared toward testing Android.
-
-	More info with code examples is available [here](https://github.com/square/assertj-android).
 
 ## Other
 
@@ -120,29 +98,15 @@
 
 	Lightweight crash reporting solution with Android Studio support.
 
-	More info with code examples is available [here](https://www.crashlytics.com/).
+	More info with code examples is available [here](https://firebase.google.com/products/crashlytics).
 
-2. **EventBus**
-
-	EventBus is a publish/subscribe event bus optimized for Android. It simplifies communication between Activities, Fragments, Threads, Services, etc.
-
-	More info with code examples is available [here](https://github.com/greenrobot/EventBus).
-
-	Although it is in some of the projects' codebases, we tend to **avoid** this library as much as possible.
-
-3. **ThreeTen ABP**
+2. **ThreeTen ABP**
 
 	An adaptation of the JSR-310 backport for Android aka a Java 8 Date API backport for Android.
 
 	More info with code examples is available [here](https://github.com/JakeWharton/ThreeTenABP).
 
-4. **Better pickers**
-
-	DialogFragments modeled after the AOSP Clock and Calendar apps to improve the UX for picking time, date, numbers, and other things.
-
-	More info with code examples is available [here](https://github.com/derekbrameyer/android-betterpickers).
-
-5. **Clean status bar**
+3. **Clean status bar**
 
 	A utility library for making Google Play screenshots. It draws over your status bar, showing only a full battery icon and clock. Use it to get nice, clean screenshots without those pesky empty battery icons and notifications.
 
