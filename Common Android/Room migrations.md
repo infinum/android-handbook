@@ -21,7 +21,7 @@ So, your app has some sort of a database in it. Is it mandatory to write migrati
 
 # Making it work in Room
 
-If you're wondering how things worked before Room, look [here](https://riggaroo.co.za/android-sqlite-database-use-onupgrade-correctly) to find out how it's done directly through the SQLite API.
+If you're wondering how things worked before Room, look [here](https://riggaroo.dev/android-sqlite-database-use-onupgrade-correctly/) to find out how it's done directly through the SQLite API.
 
 ### Step 1: Setting up build.gradle
 
@@ -129,7 +129,7 @@ Room provides a testing Maven artifact to assist with this testing process (to f
 androidTestImplementation “android.arch.persistence.room:testing:<room_version>”
 ```
 
-Also, we've already mentioned in [step 1](#step-1-setting-up-build.gradle) that you need to define the schema location and add that location to the source sets in order for tests to function, so if you haven't done that, do it now.
+Also, we've already mentioned in [step 1](#step-1-setting-up-buildgradle) that you need to define the schema location and add that location to the source sets in order for tests to function, so if you haven't done that, do it now.
 
 ### Setting it up
 

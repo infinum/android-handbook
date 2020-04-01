@@ -24,7 +24,7 @@ Today, MVVM is a well-known architecture that was developed by Microsoft and pub
 
 ![MVVM lifecycle](/img/mvvm_lifecycle.png)
 
-The ViewModel might sound powerful, but this is just a simple abstract class in the architecture components library. The magic stuff resides in the [ViewModelProvider](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProvider). ViewModelProvider is responsible for the creation and retention of the ViewModel. To create a ViewModelProvider for a specific Activity/Fragment, you should use the [ViewModelProviders](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProviders) util class.
+The ViewModel might sound powerful, but this is just a simple abstract class in the architecture components library. The magic stuff resides in the [ViewModelProvider](https://developer.android.com/reference/androidx/lifecycle/ViewModelProvider). ViewModelProvider is responsible for the creation and retention of the ViewModel. To create a ViewModelProvider for a specific Activity/Fragment, you should use the [ViewModelProviders](https://developer.android.com/reference/android/arch/lifecycle/ViewModelProviders) util class.
 
 ### LiveData
 
@@ -55,7 +55,7 @@ Most applications contain some screens that can be grouped into a flow. Inside t
 
 This section will go through some main guidelines on how to implement MVVM in your Android project. We will cover the implementation of MVVM using the architectural components from Android we described in an earlier section.
 
-The user interface in an Android app is made from a collection of View and ViewGroup objects that are located inside of an Activity or a Fragment container. Those two containers represent the View component in the MVVM architecture. You may wonder why an ordinary Android View could not be the View in MVVM? This is a totally valid question, and it can be implemented in many ways, but we will focus on Activities and Fragments because they both implement the [LifecycleOwner](https://developer.android.com/reference/android/arch/lifecycle/LifecycleOwner) interface, which gives us an opportunity to use LiveData and ViewModel. Using LiveData and ViewModel gives us a great head start in developing our MVVM architecture.
+The user interface in an Android app is made from a collection of View and ViewGroup objects that are located inside of an Activity or a Fragment container. Those two containers represent the View component in the MVVM architecture. You may wonder why an ordinary Android View could not be the View in MVVM? This is a totally valid question, and it can be implemented in many ways, but we will focus on Activities and Fragments because they both implement the [LifecycleOwner](https://developer.android.com/reference/androidx/lifecycle/LifecycleOwner) interface, which gives us an opportunity to use LiveData and ViewModel. Using LiveData and ViewModel gives us a great head start in developing our MVVM architecture.
 
 Let's take a look at the ViewModel first. It is probably a good idea to have a base implementation of the ViewModel that will handle some shared logic and reduce the boilerplate in our codebase. It will look something like this:
 

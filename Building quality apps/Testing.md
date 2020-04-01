@@ -8,7 +8,7 @@ Unit tests are easy to write and fast to execute since they don't need an Androi
 
 This means that the code has to be neatly separated so that we can write useful unit tests for it.
 
-It is usually very useful to test the presenter logic, assuming MVP is used in the app (see the [MVP](/MVP.md) chapter for details).
+It is usually very useful to test the presenter logic, assuming MVP is used in the app (see the [MVP](books/android/project-structure/mvp) chapter for details).
 This means that presenters have to be Android-agnostic.
 
 In general, the most useful tests cover the business logic of the app and the most important functionalities, paying special attention to edge cases.

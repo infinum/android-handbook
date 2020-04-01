@@ -5,7 +5,7 @@ When releasing an application to the Google Play Store, you should make sure you
 3. Build the signed and obfuscated release version of the application
 4. Test the application manually; make sure all API endpoints are pointing to production
 5. Upload the release .apk to the Play Store
-6. Add a tag for the version on `dev`/`release` branch. Find out more about tagging in the [Git usage section](/git-usage)
+6. Add a tag for the version on `dev`/`release` branch. Find out more about tagging in the [Git usage section](/books/android/building-quality-apps/using-git)
 
 If your app is already on the Play Store, take special care to **test the update** of your app:
 
@@ -69,7 +69,7 @@ The package name is specified in AndroidManifest:
     package="co.infinum.myapp">
 ```
 
-For more information, check out [Android documentation](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename).
+For more information, check out [Android documentation](https://developer.android.com/studio/build/application-id.html).
 
 ## ProGuard
 
@@ -83,4 +83,4 @@ ProGuard configurations for most libraries can be found in the respective GitHub
 
 ## Screenshots
 
-You need to provide at least three screenshots for each app that is published to Google Play. Use the Clean Status Bar library (described in the [Libraries section](/Libraries.md) to make a nice, clean status bar showing only a full battery and clock.
+You need to provide at least three screenshots for each app that is published to Google Play. Use the Clean Status Bar library (described in the [Libraries section](/books/android/useful-tools-and-utilities/libraries)) to make a nice, clean status bar showing only a full battery and clock.

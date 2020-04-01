@@ -1,4 +1,4 @@
-To successfully release an app (or an update of an existing app) to the Google Play Store&trade;, you're going to need a couple of things. First and foremost, you need an APK/AAB file. For more information on this, check out the [Play store section](https://handbook.infinum.co/books/android/play-store) of this handbook.
+To successfully release an app (or an update of an existing app) to the Google Play Store&trade;, you're going to need a couple of things. First and foremost, you need an APK/AAB file. For more information on this, check out the [Play store section](/books/android/deployment/play-store) of this handbook.
 
 Secondly, you should check that you have been granted access to the Play Store Console ([link](https://play.google.com/apps/publish)). If this is not the case, contact the team leads, lead engineers, or your PM.
 
