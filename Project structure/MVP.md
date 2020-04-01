@@ -1,6 +1,6 @@
 ## ~~Deprecated~~
 
-The Android team has moved past the MVP architecture and is now using MVVM on all new projects. We've kept this chapter as a reference since there is still a large number of projects that use the MVP structure. If you are starting a new project or refactoring the existing one, check the MVVM architecture setup described in the [Project architecture](/Project architecture.md) chapter.
+The Android team has moved past the MVP architecture and is now using MVVM on all new projects. We've kept this chapter as a reference since there is still a large number of projects that use the MVP structure. If you are starting a new project or refactoring the existing one, check the MVVM architecture setup described in the [Project architecture](/books/android/project-structure/project-architecture) chapter.
 
 MVP is short for Model-View-Presenter, and it is a derivative from the MVC (Model View Controller) design pattern. The main difference between the two is shown in the picture below.
 
@@ -208,7 +208,7 @@ public class LoginInteractorImpl implements LoginInteractor {
 }
 ```
 
-* You have to pass all references that are needed for a successful communication to finish the implementation. This is done by using [Dagger2](http://google.github.io/dagger/) for [dependency injection](http://stackoverflow.com/questions/130794/what-is-dependency-injection). You can find more about it [here](/android/dagger).
+* You have to pass all references that are needed for a successful communication to finish the implementation. This is done by using [Dagger2](http://google.github.io/dagger/) for [dependency injection](http://stackoverflow.com/questions/130794/what-is-dependency-injection). You can find more about it [here](/books/android/project-structure/dependency-injection).
 
 
 ## Useful links

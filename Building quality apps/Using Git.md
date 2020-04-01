@@ -69,7 +69,7 @@ Most projects have one active development stream at the moment. This means that 
 
 However, some projects have multiple releases planned ahead. It is possible that, at some point, a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `master` branch. You can use regex to match all the release branches and not worry about protecting the newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done, even with admin privileges. 
 
-When working with `release` branches, it needs to be clear which task should be included in which version. If you are not sure, ask the project manager before starting the task. In (Productive)[[https://app.productive.io](https://app.productive.io/)], release versions can be defined with tags or boards. In (JIRA)[<https://www.atlassian.com/software/jira>], you can track the status of each release and define a `Fix version/s` attribute on a task.
+When working with `release` branches, it needs to be clear which task should be included in which version. If you are not sure, ask the project manager before starting the task. In [Productive](https://app.productive.io/), release versions can be defined with tags or boards. In [JIRA](<https://www.atlassian.com/software/jira>), you can track the status of each release and define a `Fix version/s` attribute on a task.
 
 After releasing a new version from the `release` branch, make sure to create a new tag with that version from the last commit in that branch. Then you can merge the `release` branch into the `master` branch. Don't forget to also update all other active `release` branches.
 

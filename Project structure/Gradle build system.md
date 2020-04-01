@@ -64,7 +64,7 @@ dependencies {
 
 Let's break down the module's build.gradle into several parts:
 
-###1. Default config
+### 1. Default config
 Values defined in the `defaultConfig` block override those in AndroidManifest.
 `defaultConfig` elements are applied to all build variants, unless a build variant has its own defaultConfig specified.
 An example of a typical `defaultConfig` block can be seen below.
@@ -79,10 +79,10 @@ defaultConfig {
 }
 ```
 
-###2. Lint options
+### 2. Lint options
 Lint is a static code analysis tool that checks your source files for potential bugs and optimization improvements. A lint check is mandatory on all projects.
 
-The `lintOptions` block defines the configuration for lint. Possible config values can be found on the [lint support](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Lint-support) page.
+The `lintOptions` block defines the configuration for lint. For more info, check out the [lint support](https://developer.android.com/studio/write/lint?hl=en) page.
 
 The **abortOnError** flag **must be** set to true. You can disable some of the checks after your team leader's approval. All unapproved disabled checks and *abortOnError false* are subject to a yellow card.
 
