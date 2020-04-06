@@ -34,3 +34,8 @@ After declaring the style, all you need to do is add it to a `Button` in the XML
 ## Why, what, when?
 
 Styles are not easy and, in some cases, they do not work as you thought they would. For detailed info on how and when to use them, read [this blog post](http://blog.danlew.net/2014/11/19/styles-on-android/).
+
+## TextView vs Button
+
+By definition, a [TextView](https://developer.android.com/reference/android/widget/TextView) is a user interface element that displays text to the user. On the other side, [Button](https://developer.android.com/reference/android/widget/Button) is a special TextView (extends TextView class) that presents user interface element the user can tap or click to perform an action. Developers usually misuse TextView element and make it act as Button. If your TextView is clickable, please use Button with proper style instead. If this practice is not followed, we don't know which TextViews in layouts are clickable and which are not, we need to open Java/Kotlin file where the layout is used to check if there are some click listeners set to it. Using this practice it is more straight-forward.
+
