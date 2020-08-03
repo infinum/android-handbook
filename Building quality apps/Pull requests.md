@@ -12,6 +12,8 @@ Links to tasks can be helpful, but they are very far from enough. Even if the ta
 
 A task may require certain contextual knowledge in order to be properly understood, as well. One other important goal of the description is to provide the background and define or explain the project-specific, task-specific, or PR-specific terminology.
 
+Links or screenshots of the UI design, and potentially screenshots of its implementation can be very helpful.
+
 Don't use artificial structures similar to grouping code by layer or type. We don't do that because it's much more useful to group related things together. An example of this would be a 'Features' section and a 'Fixes' section. Such structures also encourage using short bulleted lists of short single-sentence items that provide little to no value. Write full sentences and paragraphs. Writing is a valuable skill to be improved on. Use your own reasoning on a case-by-case basis, of course. Sometimes it's okay to have a bulleted list.
 
 ### Contextualise and group changes together
@@ -36,7 +38,9 @@ Duplicate the browser tab which contains the PR. One will be for writing the des
 
 Go through the files changed one-by-one, and go through the change hunks one-by-one.
 
-That change you're looking at belongs to a group of changes aimed towards a goal. Does your description contain a section for this goal? If not, create a section. Use [markdown](https://guides.github.com/features/mastering-markdown/) to your advantage. Describe the change inside this section. Perhaps it's already described, perhaps you need a single sentence, perhaps you need a paragraph, perhaps you need to reword what you wrote previously.
+That change you're looking at belongs to a group of changes aimed towards a goal. Does your description contain a section for this goal? If not, create a section. Use [markdown](https://guides.github.com/features/mastering-markdown/) to your advantage.
+
+Describe the change inside this section. Perhaps it's already described, perhaps you need a single sentence, perhaps you need a paragraph, perhaps you need to reword what you wrote previously. If there is a relevant docstring, it can simply be pointed to in the description.
 
 Not sure what to do with the change you're looking at right now? Skip it and come back to it later.
 
@@ -44,29 +48,14 @@ Finished with all the changes in a file? Collapse the file to get it out of your
 
 After you're done, give it a last couple of re-reads and re-iterations.
 
+### Docstrings and GitHub Wiki
+
+Now that you've written a PR description, think about whether it would be useful to have some of this information in a more accessible medium, such as docstrings or a GitHub Wiki page of the project. This information can then be pointed to in the PR description instead.
+
 ## Finally
+
+Every PR requires an individual approach, and always apply your own reasoning on a case-by-case basis. Giving an algorithm a go and seeing what comes out should be no problem, though. 
 
 After reading your description, the reviewer should be able to have a single pass through the 'Files changed' section, without going back and forth hopelessly trying to make sense of the changes and hopelessly trying to build a mental model.
 
 The title should follow the same format as a commit message heading. That is, use the imperative mood, as if giving a command, and keep it short. You can leave the branch name, if you choose to, but it takes 10 seconds to think of something better. The title is far less important than the description, though.
-
-How much time should you invest in writing a PR description? Use your own reasoning on a case-by-case basis, as with everything. For very small PRs, it will take you a couple of minutes. For a small PR, 15 minutes should be sufficient. For a moderate PR, it's perfectly fine to take 30 minutes. For larger PRs, you may need an hour, or more. The return on investment is huge in either case. The more you practise, the faster and better you'll be, just like with any other skill.
-
-I believe that some examples can be useful. I'll use my own PRs, simply because I was trying to hold myself up to a standard. They are by no means perfect. Form your own opinion about them. Pick up what you like, and change what you don't. Try to review them, as a matter of fact. (Please don't leave actual comments.) See how it feels going through the files changed, or going through the commits. See what made it easier for you, and try to figure out what's still missing from my descriptions. Perhaps try to go through the changes without reading the description, as well.
-
-**ConnectionBuddy**:
-
-- [https://github.com/zplesac/android_connectionbuddy/pull/91](https://github.com/zplesac/android_connectionbuddy/pull/91)
-
-**HAK**:
-
-- [https://github.com/infinum/Android-Hak-Ispitivaci/pull/453](https://github.com/infinum/Android-Hak-Ispitivaci/pull/453)
-- [https://github.com/infinum/Android-Hak-Ispitivaci/pull/454](https://github.com/infinum/Android-Hak-Ispitivaci/pull/454)
-- [https://github.com/infinum/Android-Hak-Ispitivaci/pull/481](https://github.com/infinum/Android-Hak-Ispitivaci/pull/481)
-
-**GO**:
-
-- [https://github.com/infinum/Android-MyGO/pull/517](https://github.com/infinum/Android-MyGO/pull/517)
-- [https://github.com/infinum/Android-MyGO/pull/525](https://github.com/infinum/Android-MyGO/pull/525)
-- [https://github.com/infinum/Android-MyGO/pull/526](https://github.com/infinum/Android-MyGO/pull/526)
-- [https://github.com/infinum/Android-MyGO/pull/521](https://github.com/infinum/Android-MyGO/pull/521)
