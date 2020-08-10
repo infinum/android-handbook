@@ -14,7 +14,7 @@ A task may require certain contextual knowledge in order to be properly understo
 
 Links or screenshots of the UI design, and potentially screenshots of its implementation can be very helpful.
 
-Don't use artificial structures similar to grouping code by layer or type. We don't do that because it's much more useful to group related things together. An example of this would be a 'Features' section and a 'Fixes' section. Such structures also encourage using short bulleted lists of short single-sentence items that provide little to no value. Write full sentences and paragraphs. Writing is a valuable skill to be improved on. Use your own reasoning on a case-by-case basis, of course. Sometimes it's okay to have a bulleted list.
+Don't use artificial structures similar to grouping code by layer or type. An example of this would be a 'Features' section and a 'Fixes' section. We don't do that because it's much more useful to group related things together. Such structures also encourage using short bulleted lists of short single-sentence items that provide little to no value. Write full sentences and paragraphs. Writing is a valuable skill to be improved on. Use your own reasoning on a case-by-case basis, of course. Sometimes it's okay to have a bulleted list.
 
 ### Contextualise and group changes together
 
