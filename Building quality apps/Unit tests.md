@@ -148,3 +148,8 @@ When talking about multiple asserts there is one caveat that you need to underst
 ### Keep your tests clean
 
 Developers tend to ignore code quality and readability in tests because of the nature how tests are written, they tend to have a lot of boilerplate code and you cannot do much about it. This is not a reason why you should behave naughty in tests. **Testing code is still part of your codebase that needs to be maintained and therefore it is your responsibility to create testing code that can be easy to read, understand and reused.** Therefore, it is ok that you create  helper functions and classes that will help you in writing tests. A good starting point in making the testing code reusable and cleaner is to simplify the arrange section of your tests where you can usually find a lot of boilerplate in configuring some objects that you will use during the test.
+
+
+___
+
+If you want to learn more about writing tests and see actual examples you can check out the [Android testing workshop](https://drive.google.com/drive/folders/1mRhHJJCYSh2NvDajf-6KWV_oV2pY-DRI) lectures.
