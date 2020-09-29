@@ -1,6 +1,6 @@
 Writing tests is not the most glamorous part of developing an Android application, but also an invaluable one. When we talk about testing in general we have something called a testing pyramid and in Android it is not much different. The testing pyramid looks like this:
 
-![testing_pyramid.png](img/testing_pyramid.png)
+![testing_pyramid.png](/img/testing_pyramid.png)
 
 The testing pyramid above consists of three main parts:
 
@@ -12,7 +12,7 @@ As one can see the foundation of the pyramid are Unit tests which are the highes
 
 ## Unit tests
 
-Unit tests are tests that are isolated, fast in execution and cheap to write. They run on a plain JVM and because of that it can't have any dependencies that are not available out of-the-box on the JVM. In order to achieve this we have to design our codebase in a way that allows us to neatly separate units that we want to test. Sometimes it is very hard to achieve this but luckily we have some tools in our arsenal that make our life easier, like junit and mockito.
+Unit tests are tests that are isolated, fast in execution and cheap to write. They run on a plain JVM and because of that it can't have any dependencies that are not available out of-the-box on the JVM. In order to achieve this we have to design our codebase in a way that allows us to neatly separate units that we want to test. Sometimes it is very hard to achieve this but luckily we have some tools in our arsenal that make our life easier, like jUnit and Mockito.
 
 ## Anatomy of a unit test
 
@@ -123,7 +123,7 @@ Some general guideline when writing testable code is to:
 
 ### Tests should not depend on order execution
 
-As you might already know, in junit each test class can have more than just one test and each time a test is executed the test class is initialised. This behaviour is on purpose and it is something that you want to retain because you do not want an older state to mess with tests that are yet to be executed.
+As you might already know, in jUnit each test class can have more than just one test and each time a test is executed the test class is initialised. This behaviour is on purpose and it is something that you want to retain because you do not want an older state to mess with tests that are yet to be executed.
 
 In general global mutable state can be tricky to test and therefore you should tend to avoid it. One example that can ruin this behavior is the singleton design pattern. It is important to note that you should not avoid Singletons, they still have their usage in some scenarios. What can be dangerous are stateful singletons and this is where you have to be careful. Since the main purpose of a singleton is to have exactly one instance of an object this means that our tests in a test class will have the exact same instance of that particular object. It is easy to imagine that one test edits a state of a singleton object and the other test that runs afterwards depends on an initial state of the our object and therefore fails. 
 
