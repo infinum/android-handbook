@@ -16,7 +16,7 @@ Unit tests are tests that are isolated, fast in execution and cheap to write. Th
 
 ## Anatomy of a unit test
 
-In order to write better tests that are easy to read and give us the exact amount of information that we need to actually understand the test it is paramount to choose an appropriate naming and structure for our tests. Let's take a look at an example test which is has no naming convention nor a defined structure:
+In order to write better tests that are easy to read and give us the exact amount of information that we need to actually understand the test it is paramount to choose the appropriate naming and structure for our tests. Let's take a look at an example test which neither follows a naming convention nor has a defined structure:
 
 ```kotlin
 @Test
@@ -51,12 +51,12 @@ This already looks much better and the most important thing here is that it give
 
 ### Test method structure
 
-The structure of a test is often overlooked because we often just think it is not so important. **But having a well defined and consistent structure results in more readable and understandable tests which, in long run, reduces the maintenance cost.**
+The structure of a test is often overlooked because we often just think it is not so important. However **having a well defined and consistent structure results in tests which are more readable and understandable, and in the long run, reduces the maintenance cost.**
 
 In our example we will use the AAA (Arrange-Act-Assert) structure. This essentially means that we divide our tests in 3 section:
 
-* Arrange - this section is used to set up the objects to be tested. You bring the system under test to a desired state and configure the dependencies
-* Act - in this section we act upon the system under test. You call one of its methods: pass the dependencies and capture the output value if any.
+* Arrange - this section is used to set up the objects to be tested. You bring the unit under test to a desired state and configure the dependencies.
+* Act - in this section we act upon the unit under test. You call one of its methods, pass the dependencies and capture the output value if any.
 * Assert - the assert section is used to verify the outcomes of the act with our expectations. 
 
 Let's take a look how our test example looks like after applying the AAA structure:
@@ -81,12 +81,12 @@ As a side note, when writing tests you do not need to write the actual section n
 
 ## Writing good unit tests
 
-Writing good tests is sometimes hard and sometimes very hard. Nevertheless, we will try to define some general guidelines to help us avoid common mistakes and achieve better tests at the end of the day.
+Writing good tests is usually hard and sometimes very hard. Nevertheless, we will try to define some general guidelines to help us avoid common mistakes and create better tests at the end of the day.
 
 ### Use test doubles
 
 As mentioned in the previous section we often have to arrange some behaviours or objects that we usually have in production code, which can sometimes be tricky depending on the complexity of a test. **In order to replace some production code for testing purposes we use a generic term called Test Double.**
-There are several test doubles that are worth mentioning and which you will use the most and those are:
+There are several types of test doubles, of which most of the time you will probably use the following:
 
 * Mock - An object which we use for verification by checking whether particular methods were called, with specific parameters.
 * Stub - An object that holds predefined data and uses it to answer calls during tests. It is used when we cannot or don’t want to involve objects that would answer with real data or have undesirable side effects.
@@ -114,7 +114,7 @@ whenever(authTokenManager.getAuthToken()).thenReturn("Token")
 With stubs we predefine results for a specific method just like it is shown in the example above. Every time the `getAuthToken` method is called we will get a stubbed result which is in our case `"Token"`.
 
 
-It is important to know this terminology because it is essentially part of the  testing fundamentals and it will definitely help you on your journey in becoming better in writing tests. You will also often find these terms in documentation of some testing library that you will use.
+It is important to know this terminology because it is essentially part of the testing fundamentals and it will definitely help you on your journey in becoming better in writing tests. You will also often find these terms in the documentation of some testing library that you will use.
 
 ### Write testable code
 
@@ -129,7 +129,7 @@ Some general guideline when writing testable code is to:
 
 ### Tests should not depend on order execution
 
-As you might already know, in jUnit each test class can have more than just one test and each time a test is executed the test class is initialised. This behaviour is on purpose and it is something that you want to retain because you do not want an older state to mess with tests that are yet to be executed.
+As you might already know, in jUnit each test class can have more than just one test and each time a test is executed the test class is initialised. This behaviour is on purpose and it is something that you want to retain because you do not want an older state to mess with tests that are yet to be executed. **Remember, unit tests are isolated!**
 
 In general global mutable state can be tricky to test and therefore you should tend to avoid it. One example that can ruin this behavior is the singleton design pattern. It is important to note that you should not avoid Singletons, they still have their usage in some scenarios. What can be dangerous are stateful singletons and this is where you have to be careful. Since the main purpose of a singleton is to have exactly one instance of an object this means that our tests in a test class will have the exact same instance of that particular object. It is easy to imagine that one test edits a state of a singleton object and the other test that runs afterwards depends on an initial state of the our object and therefore fails. 
 
