@@ -12,7 +12,7 @@ As one can see the foundation of the pyramid are Unit tests which are the highes
 
 ## Unit tests
 
-Unit tests are tests that are isolated, fast in execution and cheap to write. They run on a plain JVM and because of that it can't have any dependencies that are not available out of-the-box on the JVM. In order to achieve this we have to design our codebase in a way that allows us to neatly separate units that we want to test. Sometimes it is very hard to achieve this but luckily we have some tools in our arsenal that make our life easier, like jUnit and Mockito.
+Unit tests are tests that are isolated, fast in execution and cheap to write. Unit tests run on a plain JVM which means they can't contain code which doesn't run on the JVM out-of-the-box. Since Android code (think activities, fragments, etc.) runs on the Android runtime (ART), and not on plain JVM, this means that we can't run Android code in our unit tests. In order to achieve this we have to design our codebase in a way that allows us to neatly separate units that we want to test. Sometimes it is very hard to achieve this but luckily we have some tools in our arsenal that make our life easier, like jUnit and Mockito.
 
 ## Anatomy of a unit test
 
@@ -29,7 +29,7 @@ fun `login`() {
     assertEquals(expectedUser, actualUser)
 }
 ```
-The above test does not give us any information about what this code is supposed to test and in which scenario it is going to run. If we look at the test structure it is not so easy to understand what is happening here and at first glance it seems messy. Keep in mind that this test is a simple test, so in more complex examples this could get even messier. 
+The above test does not give us any information about what this code is supposed to test and in which scenario it is going to run. If take a glance at the test structure it is not so easy to understand what is happening here. Due to the fact that this is a relatively simple example you might not see the drawbacks immediately. But it is fair to say that a more complex test without a proper  structure can easily get messy and hard to read.
 
 ### Test method naming
 
@@ -92,7 +92,6 @@ There are several types of test doubles, of which most of the time you will prob
 * Stub - An object that holds predefined data and uses it to answer calls during tests. It is used when we cannot or don’t want to involve objects that would answer with real data or have undesirable side effects.
 * Fake - An object that has a working implementation, but not same as production one. Usually it takes some shortcut and has a simplified version of the production code. For example faking a database with an in memory solution in order to make our unit tests faster.
 
-
 When we talk about mocks and stubs we do not need to write our own implementation of those test doubles. Luckily, we have a tool called Mockito which enables us to mock and stub behaviours and dependencies with ease. Keep in mind that Mockito does not enable us to create fakes.
 
 Let's take a look at two examples where we use Mockito stubbing and mocking features.
@@ -113,7 +112,6 @@ whenever(authTokenManager.getAuthToken()).thenReturn("Token")
 ```
 With stubs we predefine results for a specific method just like it is shown in the example above. Every time the `getAuthToken` method is called we will get a stubbed result which is in our case `"Token"`.
 
-
 It is important to know this terminology because it is essentially part of the testing fundamentals and it will definitely help you on your journey in becoming better in writing tests. You will also often find these terms in the documentation of some testing library that you will use.
 
 ### Write testable code
@@ -125,7 +123,6 @@ Some general guideline when writing testable code is to:
 * **Use dependancy injection** - you will hear this a lot but one can not stress enough how important this is. This approach allows us to write loosely coupled code which, in turn, enables us to replace production dependencies with appropriate test doubles. As an end result this allows us to isolate units of work and write good unit tests.
 * **Use abstraction** - it is a good rule of thumb to abstract an implementation in case you are not sure if you can easily test it or not. For example, the use of abstraction allows us to hide a concrete class that uses android specific implementation. Since android is not available on JVM it makes sense to hide it behind an abstraction which we can easily mock in our tests. 
 * **Avoid static code** - static classes, methods and values should not be your first choice when developing something because they are hard to mock and they tend to create global state. In general when dealing with global state it is hard, but not impossible, to create reliable tests. Sometimes you can not avoid using static code which is totally fine but you have to know the implications that this code leaves on your tests. More on that in the next section.
- 
 
 ### Tests should not depend on order execution
 
@@ -134,7 +131,6 @@ As you might already know, in jUnit each test class can have more than just one 
 In general global mutable state can be tricky to test and therefore you should tend to avoid it. One example that can ruin this behavior is the singleton design pattern. It is important to note that you should not avoid Singletons, they still have their usage in some scenarios. What can be dangerous are stateful singletons and this is where you have to be careful. Since the main purpose of a singleton is to have exactly one instance of an object this means that our tests in a test class will have the exact same instance of that particular object. It is easy to imagine that one test edits a state of a singleton object and the other test that runs afterwards depends on an initial state of the our object and therefore fails. 
 
 **Tests that are dependent on order execution are not reliable tests and because of that they should be avoided.**
-
 
 ### Avoid flaky tests
 
@@ -154,7 +150,6 @@ When talking about multiple asserts there is one caveat that you need to underst
 ### Keep your tests clean
 
 Developers tend to ignore code quality and readability in tests because of the nature how tests are written, they tend to have a lot of boilerplate code and you cannot do much about it. This is not a reason why you should behave naughty in tests. **Testing code is still part of your codebase that needs to be maintained and therefore it is your responsibility to create testing code that can be easy to read, understand and reused.** Therefore, it is ok that you create  helper functions and classes that will help you in writing tests. A good starting point in making the testing code reusable and cleaner is to simplify the arrange section of your tests where you can usually find a lot of boilerplate in configuring some objects that you will use during the test.
-
 
 ___
 
