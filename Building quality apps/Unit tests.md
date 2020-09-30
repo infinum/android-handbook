@@ -110,9 +110,9 @@ With mocks we are verifying a specific behavior which can be seen in the above e
 val authTokenManager = mock(AuthTokenManager::class.java)
 whenever(authTokenManager.getAuthToken()).thenReturn("Token")
 ```
-With stubs we predefine results for a specific method just like it is shown in the example above. Every time the `getAuthToken` method is called we will get a stubbed result which is in our case `"Token"`.
+With stubs we define results for a specific method just like it is shown in the example above. Every time the `getAuthToken` method is called we will get a stubbed result which is in our case `"Token"`.
 
-It is important to know this terminology because it is essentially part of the testing fundamentals and it will definitely help you on your journey in becoming better in writing tests. You will also often find these terms in the documentation of some testing library that you will use.
+It is important to know this terminology because it is essentially part of the testing fundamentals and it will definitely help you on your journey to becoming better at writing tests. You will also often find these terms in the documentation of some testing library that you will use.
 
 ### Write testable code
 
