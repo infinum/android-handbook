@@ -33,7 +33,13 @@ The above test does not give us any information about what this code is supposed
 
 ### Test method naming
 
-The first thing that is wrong in the above test is the test method name. We want to have a name which give us information about the scenario which we are testing, the end result that is expected and what method are we testing. **There are a lot of well defined naming conventions out there in the wild and each one of them has some pros and cons so the most important thing is to pick one that makes most sense to use, but after you pick one try to be consistent across the codebase!**
+The first thing that is wrong in the test above is the method name. It should tell us:
+
+- The name of the method under test.
+- The scenario being tested.
+- The expected result.
+
+**There are many naming conventions out in the wild and each has its pros and cons. The most important thing is to pick the one which makes the most sense and stick to it across the codebase!**
 
 For the purpose of this example we will use a naming convention that follows this pattern `methodName ... should ... when`. Now let's try to improve the naming of the test in a way that it gives us more information about the scenario that is being tested here. 
 
