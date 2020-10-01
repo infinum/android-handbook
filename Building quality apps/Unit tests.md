@@ -136,20 +136,20 @@ In general global mutable state can be tricky to test and therefore you should t
 
 **When you write tests you want them to fail or pass consistently no matter how many times you run them.** Flaky tests describe exactly the opposite and that is the scenario where test could fail or pass for the exact same configuration. Such behavior could be harmful to developers because they are non-deterministic and do not always indicate bugs in the code.
 
-Some common cases where you can introduce flaky tests are when dealing with concurrency, caching, randomness, time dependent operations. When dealing with flaky tests it is important to know how to approach the problem. [This article](https://hackernoon.com/flaky-tests-a-war-that-never-ends-9aa32fdef359) has some very good points in handling flaky tests so I recommend to read it.
+Some common cases where you can introduce flaky tests are when dealing with concurrency, caching, randomness, time dependent operations. When dealing with flaky tests it is important to know how to approach the problem. [This article](https://hackernoon.com/flaky-tests-a-war-that-never-ends-9aa32fdef359) has some very good points in handling flaky tests so I recommend reading it.
 
 One good rule of thumb from the mentioned article: *If you face a flaky test, do not assume that this is a test problem. You should suspect production code first and then the test. Sometimes a flaky test can be flawless and has just revealed a bug in your code.*
 
 ### Keep asserts at a minimum per test case
 
-It is easy to get out of control when we assert things in a test case. Sometimes this is fine and unavoidable but it is a good idea to move in a direction where you keep assert at minimum per test case. This does not mean that you should avoid multiple asserts at all costs. For example it is absolutely fine 
+It is easy to get out of control when we assert things in a test case. Sometimes this is fine and unavoidable but it is a good idea to move in a direction where you keep asserts at a minimum per test case. This does not mean that you should avoid multiple asserts at all costs. For example it is absolutely fine 
 if you need to test multiple fields of a single operation, multiple independent asserts is the right approach here. **Keep in mind that you want to test a single operation (the act section of your test), not a single result of an operation.** This is also one of the reasons why AAA tests are helping us in writing better tests because they force us to think in a way were we have one act per test.
 
 When talking about multiple asserts there is one caveat that you need to understand and it is the fact that any assert failing early in the test means the later asserts are not run.
 
 ### Keep your tests clean
 
-Developers tend to ignore code quality and readability in tests because of the nature how tests are written, they tend to have a lot of boilerplate code and you cannot do much about it. This is not a reason why you should behave naughty in tests. **Testing code is still part of your codebase that needs to be maintained and therefore it is your responsibility to create testing code that can be easy to read, understand and reused.** Therefore, it is ok that you create  helper functions and classes that will help you in writing tests. A good starting point in making the testing code reusable and cleaner is to simplify the arrange section of your tests where you can usually find a lot of boilerplate in configuring some objects that you will use during the test.
+Developers tend to ignore code quality and readability in tests because of the nature of how tests are written, they tend to have a lot of boilerplate code and you cannot do much about it. This is not a reason why you should behave naughty in tests. **Testing code is still part of your codebase that needs to be maintained and therefore it is your responsibility to create testing code that can be easy to read, understand and reuse.** Therefore, it is ok to create helper functions and classes that will help you in writing tests. A good starting point in making the testing code reusable and cleaner is to simplify the arrange section of your tests, where you can usually find a lot of boilerplate in configuring the objects that you will use during the test.
 
 ___
 
