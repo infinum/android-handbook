@@ -1,6 +1,6 @@
 Writing tests is not the most glamorous part of developing an Android application, but it is an invaluable one. When we talk about testing, in general we have something called a testing pyramid and in Android it is not much different. The testing pyramid looks like this:
 
-![testing_pyramid.png](../img/testing_pyramid.png)
+![testing_pyramid.png](/img/testing_pyramid.png)
 
 The testing pyramid above consists of three main parts:
 
