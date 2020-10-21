@@ -133,7 +133,7 @@
 
 4. **Android KTX**
 
-    Android KTX is a set of Kotlin extensions that are included with Android Jetpack and other Android libraries. KTX extensions provide idiomatic Kotlin to Jetpack, Android platform, and other APIs
+    Android KTX is a set of Kotlin extensions that are included with Android Jetpack and other Android libraries. KTX extensions provide idiomatic Kotlin to Jetpack, Android platform and other APIs.
 
     Every project written in Kotlin should use these as they make your code more concise, readable and shorter.
 
@@ -141,13 +141,13 @@
 
 5. **Lifecycle**
 
-    Lifecycle from AndroidX includes everything we need to make a good MVVM application such as: ViewModels, LiveData, Lifecycle callbacks etc.
+    Lifecycle from AndroidX includes everything you need to make a good MVVM application, such as: ViewModels, LiveData, Lifecycle callbacks, etc.
 
     It is essential for MVVM arcitecture, but it can also help in lost of other use cases.
 
-    To see all features and variations of androidx.lifecycle go [here](https://developer.android.com/jetpack/androidx/releases/lifecycle).
+    To see all features and variations of androidx.lifecycle, go [here](https://developer.android.com/jetpack/androidx/releases/lifecycle).
 
-    For more info on ViewModel with code examples go [here](https://developer.android.com/topic/libraries/architecture/viewmodel).
+    For more info on ViewModel with code examples, go [here](https://developer.android.com/topic/libraries/architecture/viewmodel).
 
 6. **Exoplayer**
 
