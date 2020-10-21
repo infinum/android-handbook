@@ -18,6 +18,16 @@
 
     More info with code examples is available [here](https://github.com/PhilJay/MPAndroidChart).
 
+4. **Lottie**
+
+    Lottie is a go-to library if you need to add some awesome custom animations to your app. 
+    
+    It is powered by commonly used json format to define animations of all kinds.
+
+    Animations are usually made by designers, but you can find lots of community made animations [here](https://lottiefiles.com/).
+
+    More info on teh library, with code examples is available [here](https://github.com/airbnb/lottie-android).
+
 
 ## Networking
 
@@ -121,6 +131,16 @@
     To see all features and variations of androidx.lifecycle go [here](https://developer.android.com/jetpack/androidx/releases/lifecycle).
 
     For more info on ViewModel with code examples go [here](https://developer.android.com/topic/libraries/architecture/viewmodel).
+
+6. **Exoplayer**
+
+    Exoplayer is an all-around solution for media playback. It supports video and audio streaming and local playing.
+
+    Player control UI is also a part of Exoplayer. Since it is well maintained and offers lots of features, 
+    
+    it should be used when media playback is a requirement.
+
+    More info with code examples is available [here](https://github.com/google/ExoPlayer).
 
 ## Useful links
 
