@@ -106,7 +106,7 @@
 
 4. **Android KTX**
 
-    Android KTX is a set of Kotlin extensions that are included with Android Jetpack and other Android libraries. KTX extensions provide idiomatic Kotlin to Jetpack, Android platform, and other APIs
+    Android KTX is a set of Kotlin extensions that are included with Android Jetpack and other Android libraries. KTX extensions provide idiomatic Kotlin to Jetpack, Android platform and other APIs.
 
     Every project written in Kotlin should use these as they make your code more concise, readable and shorter.
 
