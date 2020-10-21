@@ -26,7 +26,6 @@
 
     More info on teh library, with code examples is available [here](https://github.com/airbnb/lottie-android).
 
-
 ## Networking
 
 1. **Moshi**
@@ -137,7 +136,7 @@
 
     Lifecycle from AndroidX includes everything you need to make a good MVVM application, such as: ViewModels, LiveData, Lifecycle callbacks, etc.
 
-    It is essential for MVVM arcitecture, but it can also help in lost of other use cases.
+    It is essential for MVVM arcitecture, but it can also help in lots of other use cases.
 
     To see all features and variations of androidx.lifecycle, go [here](https://developer.android.com/jetpack/androidx/releases/lifecycle).
 
