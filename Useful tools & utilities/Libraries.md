@@ -20,8 +20,8 @@
 
 4. **Lottie**
 
-    Lottie is a go-to library if you need to add some awesome custom animations to your app. 
-    
+    Lottie is a go-to library if you need to add some awesome custom animations to your app.
+
     It is powered by commonly used json format to define animations of all kinds.
 
     Animations are usually made by designers, but you can find lots of community made animations [here](https://lottiefiles.com/).
@@ -89,6 +89,29 @@
 
 	More info with code examples is available [here](http://mockito.org/).
 
+2. **Mockito Kotlin**
+
+    A small library that introduces kotlin helpers for working with Mockito. If you use Kotlin when writing tests,
+
+    this will make them shorter and more readable.
+
+    More info with code examples is available [here](https://github.com/nhaarman/mockito-kotlin).
+
+3. **OkHttp MockWebServer**
+
+    It can be very difficult to mock web requests and responses. This is where MockWebServer comes in handy.
+
+    It provides an ease-to-use scriptable web server implementation that can be used for testing your HTTP client.
+
+    More info with code examples is available [here](https://github.com/square/okhttp/tree/master/mockwebserver).
+
+4. **Espresso**
+
+    Espresso is a native Android library for writing UI tests. It can perform actions on your views programmatically
+
+    and check for any output values or states. It also supports some more complex use cases like testing WebViews, Intents and others.
+
+    More info with code examples is available [here](https://developer.android.com/training/testing/espresso).
 
 ## Other
 
@@ -136,8 +159,8 @@
 
     Exoplayer is an all-around solution for media playback. It supports video and audio streaming and local playing.
 
-    Player control UI is also a part of Exoplayer. Since it is well maintained and offers lots of features, 
-    
+    Player control UI is also a part of Exoplayer. Since it is well maintained and offers lots of features,
+
     it should be used when media playback is a requirement.
 
     More info with code examples is available [here](https://github.com/google/ExoPlayer).
