@@ -20,7 +20,7 @@
 
 4. **Lottie**
 
-    Lottie is a go-to library if you need to add some awesome custom animations to your app.
+    Lottie is the go-to library if you need to add some awesome custom animations to your app.
     It is powered by commonly used json format to define animations of all kinds.
     Animations are usually made by designers, but you can find lots of community made animations [here](https://lottiefiles.com/).
 
