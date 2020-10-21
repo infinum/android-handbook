@@ -114,7 +114,7 @@
 
 5. **Lifecycle**
 
-    Lifecycle from AndroidX includes everything we need to make a good MVVM application such as: ViewModels, LiveData, Lifecycle callbacks etc.
+    Lifecycle from AndroidX includes everything you need to make a good MVVM application, such as: ViewModels, LiveData, Lifecycle callbacks, etc.
 
     It is essential for MVVM arcitecture, but it can also help in lost of other use cases.
 
