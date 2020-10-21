@@ -24,7 +24,7 @@
     It is powered by the commonly used JSON format to define animations of all kinds.
     The resource files are generated from Adobe After Effects, and you can find lots of community made animations [here](https://lottiefiles.com/).
 
-    More info on teh library, with code examples is available [here](https://github.com/airbnb/lottie-android).
+    More info on the library (with code examples) is available [here](https://github.com/airbnb/lottie-android).
 
 
 ## Networking
