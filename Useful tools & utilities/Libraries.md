@@ -118,7 +118,7 @@
 
     It is essential for MVVM arcitecture, but it can also help in lost of other use cases.
 
-    To see all features and variations of androidx.lifecycle go [here](https://developer.android.com/jetpack/androidx/releases/lifecycle).
+    To see all features and variations of androidx.lifecycle, go [here](https://developer.android.com/jetpack/androidx/releases/lifecycle).
 
     For more info on ViewModel with code examples go [here](https://developer.android.com/topic/libraries/architecture/viewmodel).
 
