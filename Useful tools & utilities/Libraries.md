@@ -91,7 +91,7 @@
 3. **OkHttp MockWebServer**
 
     It can be very difficult to mock web requests and responses. This is where MockWebServer comes in handy.
-    It provides an ease-to-use scriptable web server implementation that can be used for testing your HTTP client.
+    It provides an easy-to-use scriptable web server implementation that can be used for testing your HTTP client.
 
     More info with code examples is available [here](https://github.com/square/okhttp/tree/master/mockwebserver).
 
