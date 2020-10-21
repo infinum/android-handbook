@@ -83,7 +83,7 @@
 
 2. **Mockito Kotlin**
 
-    A small library that introduces kotlin helpers for working with Mockito. If you use Kotlin when writing tests,
+    A small library that introduces Kotlin helpers for working with Mockito. If you use Kotlin when writing tests,
     this will make them shorter and more readable.
 
     More info with code examples is available [here](https://github.com/nhaarman/mockito-kotlin).
