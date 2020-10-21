@@ -31,13 +31,7 @@
 
 ## Networking
 
-1. **GSON**
-
-	GSON is used for converting Java and Kotlin objects into their JSON representation (and vice versa). Most commonly, we use it in combination with Retrofit to parse API responses.
-
-	More info with code examples is available [here](https://github.com/google/gson).
-
-2. **Moshi**
+1. **Moshi**
 
 	Just like GSON, Moshi by Square is used to convert Java and Kotlin objects into their JSON representation (and vice versa). Also used commonly with Retrofit and parsing API responses/requests.
 
@@ -47,19 +41,19 @@
 	More info with code examples is available [here](https://github.com/square/moshi).
 	More info about Moshi and JSON API is available [here](https://github.com/kamikat/moshi-jsonapi).
 
-3. **Retrofit**
+2. **Retrofit**
 
 	Retrofit is a type-safe HTTP client for Android and Java. It uses annotations to describe a HTTP request and has support for URL parameter replacement and query parameter. Also, it allows you to upload Multipart request bodies and files.
 
 	More info with code examples is available [here](http://square.github.io/retrofit/).
 
-4. **OkHttp**
+3. **OkHttp**
 
 	OkHttp is a HTTP & SPDY client for Android and Java applications. It also provides you with MockWebServer, which can be used for testing.
 
 	More info with code examples is available [here](http://square.github.io/okhttp/).
 
-5. **Chucker**
+4. **Chucker**
 
 	Chucker is a network library that logs the requests and responses during runtime on the device itself. This library should be enabled on staging and/or debug builds and should **never** be used in production. This is a required library that should always be implemented in the aforementioned environments.
 
