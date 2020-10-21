@@ -21,7 +21,7 @@
 4. **Lottie**
 
     Lottie is the go-to library if you need to add some awesome custom animations to your app.
-    It is powered by commonly used json format to define animations of all kinds.
+    It is powered by the commonly used JSON format to define animations of all kinds.
     The resource files are generated from Adobe After Effects, and you can find lots of community made animations [here](https://lottiefiles.com/).
 
     More info on teh library, with code examples is available [here](https://github.com/airbnb/lottie-android).
