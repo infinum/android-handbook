@@ -20,11 +20,11 @@
 
 4. **Lottie**
 
-    Lottie is a go-to library if you need to add some awesome custom animations to your app.
-    It is powered by commonly used json format to define animations of all kinds.
-    Animations are usually made by designers, but you can find lots of community made animations [here](https://lottiefiles.com/).
+    Lottie is the go-to library if you need to add some awesome custom animations to your app.
+    It is powered by the commonly used JSON format to define animations of all kinds.
+    The resource files are generated from Adobe After Effects, and you can find lots of community made animations [here](https://lottiefiles.com/).
 
-    More info on teh library, with code examples is available [here](https://github.com/airbnb/lottie-android).
+    More info on the library (with code examples) is available [here](https://github.com/airbnb/lottie-android).
 
 ## Networking
 
@@ -82,7 +82,7 @@
 
 2. **Mockito Kotlin**
 
-    A small library that introduces kotlin helpers for working with Mockito. If you use Kotlin when writing tests,
+    A small library that introduces Kotlin helpers for working with Mockito. If you use Kotlin when writing tests,
     this will make them shorter and more readable.
 
     More info with code examples is available [here](https://github.com/nhaarman/mockito-kotlin).
@@ -90,7 +90,7 @@
 3. **OkHttp MockWebServer**
 
     It can be very difficult to mock web requests and responses. This is where MockWebServer comes in handy.
-    It provides an ease-to-use scriptable web server implementation that can be used for testing your HTTP client.
+    It provides an easy-to-use scriptable web server implementation that can be used for testing your HTTP client.
 
     More info with code examples is available [here](https://github.com/square/okhttp/tree/master/mockwebserver).
 
