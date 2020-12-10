@@ -17,7 +17,7 @@
 9. Set up Firebase on the Infinum or client account if available (make sure that caught exceptions are also logged using [Timber](https://github.com/JakeWharton/timber)).
 10. Add app icons with a different icon for non-production server targets (we usually use a banner overlay on the icon saying 'test' or 'staging').
 11. Add the appropriate ProGuard configuration depending on the libraries used.
-12. Create README.md (see the [Readme](/books/android/internal-section/project-readme) chapter for details). 
+12. Create README.md (see the [Readme](/books/android/building-quality-apps/project-readme) chapter for details). 
 13. Open a pull request to the appropriate colleague.
 
 The first pull request should contain only the initial setup code so that it's easier to review.
