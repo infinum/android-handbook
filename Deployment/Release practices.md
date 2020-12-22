@@ -9,7 +9,10 @@ Now that you have a build that you wish to release and the right to do so, your 
 1. Internal test track
 2. Closed track
 3. Open track
-4. Production track
+4. Pre-registration track
+5. Production track
+
+
 
 ### Track fallback status
 
@@ -41,6 +44,11 @@ If the app is yet to see its first release to production, the store listing will
 
 By using open tracks, user feedback can be gathered directly from the Play Store, but are not public, meaning that they won't affect your total production listing.
 
+### Pre-registration track
+
+With this track you enable users to pre register for your app before it is actually available. When it becomes available it will be automatically installed to all the pre-registered users.
+It is mostly used to boost pre-launch game campaigns and improve retention metrics.
+
 ### Production track
 
 Finally, when you create a production release, your app is available to all users in the countries you've targeted.
@@ -51,13 +59,7 @@ Having selected a track, it's time to release your app. Go to your Play Console 
 
 Follow these simple steps to get you going:
 
-1. Head over to **Release management --> App releases** in the sidebar.
-
-	![app releases](/img/release_practices/console_sidebar.png)
-
-2. Click on the **Manage** button on your selected track and then the **Create release** button on the next screen.
-
-	![Manage track](/img/release_practices/release_tracks.png)
+2. Click on your preferred track from the side bar and then the **Create release** button on the top right corner.
 
 	![Create release](/img/release_practices/create_release.png)
 
@@ -69,7 +71,7 @@ Follow these simple steps to get you going:
 	
 	*Note:* To save your progress at any time, just press the **Save** button at the bottom of the page.
 	
-4. Once finished, press the **Review** button that will lead you to the final review step.
+4. Once finished, press the **Review release** button that will lead you to the final review step.
 
 ## Review & rollout
 
@@ -83,7 +85,7 @@ Before you release anything, double check the number of targeted devices, just t
 
 ![Targeted devices](/img/release_practices/targeted_devices.png)
 
-By expanding the **Rollout countries** section in the **Rollout** card, you are going to see all the countries that your rollout will be targeting. As is the case with targeted devices, just give it a quick look and see if there are any unwanted changes. 
+By default the release will be available in all targeted countries but you can manually select the availability of a release for specific countries/regions by checking **Select specific countries / regions** and picking individual countries.
 
 ![Rollout countries](/img/release_practices/rollout_countries.png)
 
