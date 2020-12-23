@@ -12,7 +12,7 @@ Now that you have a build that you wish to release and the right to do so, your 
 4. Pre-registration track
 5. Production track
 
-
+![Play Store tracks](/img/release_practices/play_store_tracks.png)
 
 ### Track fallback status
 
@@ -123,16 +123,16 @@ Once you release your update into production, your app publishing status will be
 - **Removed** - The app is no longer available on Google Play or for existing users
 - **Update pending** - The update has been submitted and is being processed
 
-## Timed publishing
+## Managed publishing
 
-When you select timed publishing, your update needs to be processed before it can go live. Processing takes up to a few hours. When your update is processed, you'll see a **Go live** button. When you select it, you'll make the update available on Google Play within a few minutes.
+When you select managed publishing, your update needs to be processed before it can go live. Processing takes up to a few hours. When your update is processed, you'll see a **Go live** button. When you select it, you'll make the update available on Google Play within a few minutes.
 
-Unfortunately, Google Play still **doesn't offer automatic releases**. It is your responsibility to press the Go live button in order to push the update to the store. Additionally, note that timed publishing is **only available for updates!**
+Unfortunately, Google Play still **doesn't offer automatic releases**. It is your responsibility to press the Go live button in order to push the update to the store. Additionally, note that managed publishing is **only available for updates!**
 
-To turn on timed publishing:
+To turn on managed publishing:
 
-1. Go to the **Store presence** section in the sidebar
-2. At the bottom of your screen, go to the **Timed publishing** switch
-3. Review the information and press **Turn on**
+1. Go to the **Publishing overview** section in the sidebar
+2. At the right side of your screen, press the **Manage** button
+3. Review the information, select the switch **Managed publishing on ** and press the  **Save** button
 
-![Timed publishing](/img/release_practices/timed_publishing.png)
+![Managed publishing](/img/release_practices/managed_publishing.png)
