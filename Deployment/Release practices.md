@@ -46,7 +46,7 @@ By using open tracks, user feedback can be gathered directly from the Play Store
 
 ### Pre-registration track
 
-With this track you enable users to pre register for your app before it is actually available. When it becomes available it will be automatically installed to all the pre-registered users.
+With this track, you enable users to pre-register for your app before it is actually available. When the app becomes available, it will be automatically installed to all the pre-registered users.
 It is mostly used to boost pre-launch game campaigns and improve retention metrics.
 
 ### Production track
@@ -59,7 +59,7 @@ Having selected a track, it's time to release your app. Go to your Play Console 
 
 Follow these simple steps to get you going:
 
-2. Click on your preferred track from the side bar and then the **Create release** button on the top right corner.
+1. Click on your preferred track from the side bar and then the **Create release** button on the top right corner.
 
 	![Create release](/img/release_practices/create_release.png)
 
@@ -71,7 +71,7 @@ Follow these simple steps to get you going:
 	
 	*Note:* To save your progress at any time, just press the **Save** button at the bottom of the page.
 	
-4. Once finished, press the **Review release** button that will lead you to the final review step.
+3. Once finished, press the **Review release** button that will lead you to the final review step.
 
 ## Review & rollout
 
@@ -85,7 +85,7 @@ Before you release anything, double check the number of targeted devices, just t
 
 ![Targeted devices](/img/release_practices/targeted_devices.png)
 
-By default the release will be available in all targeted countries but you can manually select the availability of a release for specific countries/regions by checking **Select specific countries / regions** and picking individual countries.
+By default, the release will be available in all targeted countries. You can still manually select the availability of a release for specific countries/regions by checking **Select specific countries/regions** and picking individual countries.
 
 ![Rollout countries](/img/release_practices/rollout_countries.png)
 
