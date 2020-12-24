@@ -128,7 +128,7 @@ Once you release your update into production, your app publishing status will be
 When you select managed publishing, your update needs to be processed before it can go live. Processing takes up to a few hours. When your update is processed, you'll see a **Go live** button. When you select it, you'll make the update available on Google Play within a few minutes.
 
 Unfortunately, Google Play still **doesn't offer automatic releases**. It is your responsibility to press the Go live button in order to push the update to the store. Additionally, note that managed publishing is **only available for updates!** 
-If active managed publishing remains on until you manually turn it off.
+If activated, managed publishing remains on until you manually turn it off.
 
 To turn on managed publishing:
 
