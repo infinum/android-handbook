@@ -18,8 +18,6 @@ Now that you have a build that you wish to release and the right to do so, your 
 
 Depending on deployed APKs/app bundles, you could see various validation messages that denote how this track compares to others. If a track is set as **shadowed**, this means that one APK shadows another APK when it serves part or all of the same device configuration and it has a higher version code. When a track is **promoted**, this means that all of its active APKs are contained in the fallback track's active APKs (e.g. all active beta APKs are also active in production). You may see this if you release first to a testing track and then move the APKs to a more stable release. When all of the active APKs in a track are completely shadowed by active APKs with higher version codes, the track gains a **superseded** status. Finally, a track can be **partially shadowed**, meaning that at least one APK is shadowed by a higher version code APK. This would mean, for example, that some users get the beta APK, while others get the one from production. Usually, this is a result of a mixup with the version codes.
 
-![Example fallback](/img/release_practices/track_fallback_status.png)
-
 ### Internal test track
 
 The internal test track is meant to be used for internal testing and quality assurance checks. Through this track, your app is immediately available, usually skipping regular Play Store security & policy checks<sup>1</sup>. It's worth mentioning that the test users can only access the app through an opt-in URL (the APK isn't discoverable on the Play Store). Additionally, this track can only contain a total of 100 users per app. Lastly, the users can only be added through their Gmail or G-suite account, so make sure they have one.
