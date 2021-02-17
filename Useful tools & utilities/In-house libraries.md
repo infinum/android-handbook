@@ -27,6 +27,10 @@ Retromock is a library for mocking responses in a Retrofit service. It uses anno
 
 ConnectionBuddy is a utility library for handling connectivity change events. It provides a simple way of listening to connectivity events, particularly useful for applications which need to change behaviour dynamically based on the connection state.
 
+### [Thrifty Retrofit converter](https://github.com/infinum/thrifty-retrofit-converter)
+
+Thrifty Retrofit converter is a [Retrofit](https://github.com/square/retrofit) converter which uses [Thrifty](https://github.com/Microsoft/thrifty) for (de)serialization of Apache Thrift requests and responses.
+
 ### [Goldfinger](https://github.com/infinum/Android-Goldfinger)
 
 Goldfinger is a library which simplifies biometric authentication implementation - our go-to on projects which use biometrics.
