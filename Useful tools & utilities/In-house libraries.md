@@ -23,6 +23,10 @@ DbInspector is a library for viewing the contents of the in-app database for deb
 
 Retromock is a library for mocking responses in a Retrofit service. It uses annotations and is very simple and intuitive to implement. If you work for a project with an inconsistent API uptime or are ahead of the backend team in the development, you will undoubtedly find it useful. 
 
+### [Complexify](https://github.com/infinum/android-complexify)
+
+Complexify provides a simple API for checking the quality of a password. You can configure how strong the password has to be, the minimum amount of characters, and ban the most commonly used passwords (or use your own ban list).
+
 ### [ConnectionBuddy](https://github.com/zplesac/android_connectionbuddy)
 
 ConnectionBuddy is a utility library for handling connectivity change events. It provides a simple way of listening to connectivity events, particularly useful for applications which need to change behaviour dynamically based on the connection state.
