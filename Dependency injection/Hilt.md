@@ -169,7 +169,7 @@ class GameActivity : AppCompatActivity() {
 
 ```
 
-Kotlin and Hilt will provide you with a neat feature that enables you to use Kotlin delegates when inject `ViewModel's`.
+Kotlin and Hilt will provide you with a neat feature that enable you to use Kotlin delegates when inject `ViewModels`.
 
 Hilt makes the built-in delegate `viewModels` use the injected version of the `ViewModel`.
 
