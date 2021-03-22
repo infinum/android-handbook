@@ -146,7 +146,7 @@ class GameViewModel @Inject constructor(
 }
 ```
 
-Having placed the `@HiltViewModel` above our `ViewModel`, we can now inject dependencies that are in either `SingletonComponent` or `ViewModelComponent` by using `@Inject` annotation on the `constructor` or above fields or methods.
+Having placed the `@HiltViewModel` above our `ViewModel`, we can now inject dependencies that are in either `SingletonComponent` or `ViewModelComponent` by using the `@Inject` annotation on the `constructor` or above fields or methods.
 
 In this case, we are injecting the `constructor` with an instance of `WordRepository`.
 
