@@ -62,7 +62,7 @@ Let's start by listing the most important annotations. Later we will expand by e
   * `@Module` - Marks a class as a module that provides some dependencies. Each module must also be annotated with `@InstallIn` annotation to specify it's scope.
   * `@InstallIn` - Takes a single parameter that is a component to install the module in. Components have different scopes so make sure that your module is included only where needed
   * `@Provides` - Place above the function in module that returns an instance of the dependency that you want to inject somewhere.
-  * `@Binds` - Also used in modules, but the function can be abstract or an interface function. Intead of creating and returning the instance, the function must return dependency type (usually an interface) and take the concrete implementation as a parameter.
+  * `@Binds` - Also used in modules, but the function can be abstract or an interface function. Instead of creating and returning the instance, the function must return a dependency type (usually an interface) and take the concrete implementation as a parameter.
   * `@HiltViewModel` - Place above ViewModels to populate the `ViewModelComponent` enabling view models to be injected.
 
 
