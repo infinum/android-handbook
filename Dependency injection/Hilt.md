@@ -72,7 +72,7 @@ In Hilt, everything happens through annotations. As I mentioned before, the firs
 
 Keep note of the scope of each generated component. For example, if some dependency is used in ViewModels only, you need to install it in the `ViewModelComponent`.
 
-`@AndroidEntryPoint` is the next annotation that you will probably use the most. Placed above Activity or Fragment, it makes them viable for injection by adding them to Hilt generated builder modules. No further action required.
+`@AndroidEntryPoint` is the next annotation that you will probably use the most. Placed above an Activity or Fragment, it makes them viable for injection by adding them to Hilt generated builder modules. No further action required.
 
 `@HiltViewModel` does the same, just for view models. Once you add this annotation, you can feel free to `@Inject` dependencies to your view models. As long as dependencies are provided in some `@Module`.
 
