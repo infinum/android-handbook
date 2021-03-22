@@ -126,7 +126,7 @@ interface RepositoriesModule {
 
 We are using the `SingletonComponent` for the first module, because we need remote config in various places, so we are making sure it's available in the global scope. Also, by using the `@Singleton` annotation, we are making sure that a single instance will be made and provided in all places.
 
-In the second module we are using `@Binds` annotation to bind repository interfaces to their implementations. Repositories in this case, are only used in `ViewModel's` so we are installing in `ViewModelComponent`.
+In the second module, we are using the `@Binds` annotation to bind repository interfaces to their implementations. The listed repositories are only used in `ViewModels` so we are installing them in the `ViewModelComponent`.
 
 Let's set up our `ViewModel`
 
