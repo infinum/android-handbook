@@ -2,7 +2,7 @@
 
 When writing a class, it's natural for it to make use of other objects. These other objects (or services) are [dependencies](http://tutorials.jenkov.com/ood/understanding-dependencies.html#whatis). The simplest way to write code is to create and use those other objects. But this means that your object has an inflexible relationship with those dependencies; no matter why you are invoking your object, it uses the same dependencies.
 
-A more powerful technique is to be able to create your object and provide it with dependencies to use. This way, you can create your object with different dependencies at different times, which makes it more flexible. This is called [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) because you "inject" the dependencies into the object.
+A more powerful technique is to be able to create your object and provide it with dependencies to use. This way, you can create your object with different dependencies at different times, which makes it more flexible. This is called [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), because you "inject" the dependencies into the object.
 
 ![Dependency inversion principle](/img/dependecy_inversion_principle.jpg "Example of dependency inversion principle")
 
