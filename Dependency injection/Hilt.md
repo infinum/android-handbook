@@ -128,7 +128,7 @@ We are using the `SingletonComponent` for the first module, because we need remo
 
 In the second module, we are using the `@Binds` annotation to bind repository interfaces to their implementations. The listed repositories are only used in `ViewModels` so we are installing them in the `ViewModelComponent`.
 
-Let's set up our `ViewModel`
+Let's set up our `ViewModel`:
 
 ```kotlin
 @HiltViewModel
