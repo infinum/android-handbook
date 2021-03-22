@@ -29,6 +29,6 @@ When developing Android applications, you will most likely come across two of th
 
 Once you set it up properly, you can easily inject everything you need, where you need it. Every dependency needs to be provided in one of the modules, before it can be injected. Since Dagger has a steep learning curve, and can take some time to set up, Google came up with Hilt to make things a lot easier.
 
-You can only use one or the other though. So for legacy projects that already have Dagger set up, migrating to Hilt might not be the best idea, especially if the project is big. For the new projects though, you should definitely consider to side with Hilt right from the start.
+You can only use one or the other though. So for legacy projects that already have Dagger set up, migrating to Hilt might not be the best idea, especially if the project is big. For new projects though, you should definitely consider siding with Hilt right from the start.
 
 We wouldn't want to leave you clueless and having to google stuff, so we will cover both Dagger and Hilt in the following sections.
