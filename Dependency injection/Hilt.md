@@ -70,7 +70,7 @@ Let's start by listing the most important annotations. Later we will expand by e
 
 In Hilt, everything happens through annotations. As I mentioned before, the first one you need to add is `@HiltAndroidApp` above your application class. This will generate all the components that you will need.
 
-Keep note of the scope of each generated component. For example, if some dependenci is used in ViewModels only, you need to install it in the `ViewModelComponent`.
+Keep note of the scope of each generated component. For example, if some dependency is used in ViewModels only, you need to install it in the `ViewModelComponent`.
 
 `@AndroidEntryPoint` is the next annotation that you will probably use the most. Placed above Activity or Fragment, it makes them viable for injection by adding them to Hilt generated builder modules. No further action required.
 
