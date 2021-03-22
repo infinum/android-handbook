@@ -2,7 +2,7 @@
 
 [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) is a tool that helps you set up Dagger fast and easy in your app. After placing a series of annotations in the right places, Hilt will do all the work for you.
 
-That includes:
+This includes:
 
   * Generating components with different scopes to use with your modules - `SingletonComponent`, `ActivityComponent`, `FragmentComponent`, `ViewModelComponent` etc.
   * Built-in `@ActivityContext` and `ApplicationContext` annotations to make context injection easier
