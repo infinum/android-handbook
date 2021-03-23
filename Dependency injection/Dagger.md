@@ -1,25 +1,3 @@
-When writing a class, it's natural for it to make use of other objects. These other objects (or services) are [dependencies](http://tutorials.jenkov.com/ood/understanding-dependencies.html#whatis). The simplest way to write code is to create and use those other objects. But this means that your object has an inflexible relationship with those dependencies; no matter why you are invoking your object, it uses the same dependencies.
-
-A more powerful technique is to be able to create your object and provide it with dependencies to use. This way, you can create your object with different dependencies at different times, which makes it more flexible. This is called [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) because you "inject" the dependencies into the object.
-
-![Dependency inversion principle](/img/dependecy_inversion_principle.jpg "Example of dependency inversion principle")
-
-Dependency injection for five-year-olds ([source](http://stackoverflow.com/a/1638961/2643666)):
-
-> When you go and get things out of the refrigerator for yourself, you can cause problems. You might leave the door open, you might get something Mommy or Daddy doesn't want you to have. You might even be looking for something we don't even have or which has expired.
-> What you should be doing is stating a need, "I need something to drink with lunch," and then we will make sure you have something when you sit down to eat.
-
-
-## Why use dependency injection
-
-The main advantage of dependency injection is the reduction of boilerplate code in the project since all work to initialize or set up dependencies is handled by a provider component. With dependency injection, code is more readable and improves other code properties that we care about a lot, such as:
-
-  * Flexibility
-  * Reusability
-  * Testability
-
-Not every problem is solved with dependency injection. There are also some disadvantages that come with such great power. As we don't care about the actual implementation, our code can become difficult to trace (`Protip:` use <kbd>Alt</kbd>+<kbd>Cmd</kbd> to access the implementation file directly in Android Studio).
-
 ## Dagger 2
 
 [Dagger](http://google.github.io/dagger/) is a replacement for `Factory` classes that implements the dependency injection design pattern without the burden of writing the boilerplate. It allows you to focus on interesting classes. Declare dependencies, specify how to satisfy them, and ship your app.
