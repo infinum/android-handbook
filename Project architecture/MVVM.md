@@ -33,7 +33,7 @@ The ViewModel might sound powerful, but this is just a simple abstract class in 
 ### LiveEvent
 
 As LiveData is not best suited to handle the problem of resubscriptions in some use cases (Snackbar, Navigation, and other one-shot events), Google added a custom implementation of LiveData called [SingleLiveEvent](https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) in the [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture#android-architecture-blueprints). It is a lifecycle-aware observable that sends only new updates after subscription, used for events such as navigation and Snackbar messages. For more information regarding this topic, please read this [article](https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150).
-However, the SingleLiveEvent implementation from Google has one major setback—it works only with one observer at a time. This issue is addressed and explained in detail in this [article](https://proandroiddev.com/livedata-with-single-events-2395dea972a8). The author of the article proposes an improved implementation, called LiveEvent, which covers the case of multiple observers. The source for implementation: [LiveEvent](https://github.com/hadilq/LiveEvent/blob/master/lib/src/main/java/com/hadilq/liveevent/LiveEvent.kt).
+However, the SingleLiveEvent implementation from Google has one major setback—it works only with one observer at a time. This issue is addressed and explained in detail in this [article](https://proandroiddev.com/livedata-with-single-events-2395dea972a8). The author of the article proposes an improved implementation, called LiveEvent, which covers the case of multiple observers. The source for implementation: [LiveEvent](https://github.com/hadilq/LiveEvent/blob/main/live-event/src/main/java/com/hadilq/liveevent/LiveEvent.kt).
 
 
 ## What is solved with MVVM?
@@ -136,8 +136,3 @@ At this point, the concept of MVVM and how to implement it should be much cleare
 
 A textbook example of our proposal of MVVM architecture can be found on this [GitHub repo](https://github.com/infinum/Android-MvvM-Example). In the README, you will find all the details for a base setup and using Android architecture components.
 
-For more projects with MVVM architecture, check out the following links:
-
-* [HAK-ispitivaci](https://github.com/infinum/Android-Hak-Ispitivaci)
-* [Porsche-Group-Slovenia](https://github.com/infinum/Android-Porsche-Group-Slovenia)
-* [XtraCash](https://github.com/infinum/Android-XtraCash)
