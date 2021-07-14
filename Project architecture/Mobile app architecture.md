@@ -37,7 +37,7 @@ In the next section we will dissect each layer into one or more components. Comp
 
 ### Source
 
-The main idea of the source component is to define a contract with a **data provider service**. In practice, this could be an API, a database, file system, etc. These systems mostly live outside the app scope and are maintained by a separate team of enginners. The main idea of the source component is to define a contract with the data provider service. This separation makes it easier to exchange sources in the future and hides the implementation from other layers. 
+The main idea of the source component is to define a contract with a **data provider service**. In practice, this could be an API, a database, file system, etc. These systems mostly live outside the app scope and are maintained by a separate team of enginners. This separation makes it easier to exchange sources in the future and hides the implementation from other layers. 
 
 Examples: *Retrofit API service interface, Room database Dao interface.*
 
