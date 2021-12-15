@@ -37,8 +37,12 @@ It should be committed to the repository together with the credentials in `build
 
 The production keystore **must** be protected with strong, random passwords. The keystore file **must** be committed to the repository, but the credentials will be saved in a password manager and downloaded as needed. The credentials **must not** be committed to the repository.
 
-We use an internal tool called [bombadil](https://bitbucket.org/infinum_hr/gem-bombadil) to make managing production keystores easier.
-Consult the documentation on the linked website to learn how to generate production keystores and use them. You should ask your team lead to download credentials to your local machine so that you are able to create a release app version.
+To create a production keystore, you can use Android Studio built-in tool. "Build" -> "Generate Signed Bundle / APK" -> "Next" -> "Create new...". Since the keystore will be a part of the repository, save it somewhere there. The name for the key store should be "package.name.of.your.project".
+Then we need to choose a password. Try to use some random password generator for this step and make sure to keep the password safe. This password is used both for keystore and the signing/upload key itself, since if you try to use different passwords you will get an error. Then we need to choose key alias, which can simply be the name of the project. The last thing you need to fill out is at least one of the fields under "Certificate" section. You can put "Infinum" at "Organization" for example.
+
+![Creation of a new keystore file](/img/create_keystore_example.png)
+
+After a successful creation of a keystore file and password, send the password and key alias to TL so it gets saved to a password manager. Commit the keystore file to the repository and push it to remote. If Vault is already setup for your project, then add password and key alias to it as well.
 
 ## App signing
 
@@ -50,4 +54,4 @@ Now, we have to separate the **Upload** and **App Signing** key. The upload key 
 
 You should follow the steps in the [official documentation](https://developer.android.com/studio/publish/app-signing#enroll) to enable app signing. When switching an existing app to app signing, you need to export the current key as `*.pepk`file and upload it to Google Play. In either case, make sure that we are using different upload and app signing certificates when you are switching the app or signing a new app. If you are asked to accept the terms before setting up the app signing, please contact the account owner (in Infinum's case, this is Tomislav Car) or ask your team leader or project manager for help.
 
-When using the described app signing, you can **forget about bombadil and push credentials directly to the repository**. If somebody would gain access to it, they would still not be able to upload the app without Google Play access. Also, they would not be able to upload it on a third-party store as the updated version of the original app. In case we lose or leak the upload key, we will request a reset. Note that the reset action takes some time. You will have a 48-hour period before the key is reset, during which you will not be able to release a new version with an old upload key.
+One great thing, when Google is managing your signing key, is that in case of lost or leaked upload key, we can request a reset. Note that the reset action takes some time. You will have a 48-hour period before the key is reset, during which you will not be able to release a new version with an old upload key.
