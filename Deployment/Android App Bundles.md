@@ -43,8 +43,9 @@ Upload your app bundle to the Play Console just like a normal APK as before.
 
 ## Good to know
 
-Only devices running Android 5.0 and higher support downloading and installing dynamically generated APK files on demand.  
-These split APKs are very similar to normal APKs. They include compiled bytecode, resources, and an Android manifest. Android treats these  multiple installed split APKs as a single app.  
-Devices running Android 4.4 and lower don’t support downloading and installing split APKs. 
-They will be served a single APK, called a multi-APK which is *optimized for the device's configuration*. 
-Full app experience of using an app is preserved but APK does not include unnecessary code and resources incompatible with device requesting it, like other screen densities and CPU architectures.  
+* Only devices running Android 5.0 and higher support downloading and installing dynamically generated APK files on demand.  
+* These split APKs are very similar to normal APKs. They include compiled bytecode, resources, and an Android manifest. Android treats these  multiple installed split APKs as a single app.  
+* Devices running Android 4.4 and lower don’t support downloading and installing split APKs. 
+* They will be served a single APK, called a multi-APK which is *optimized for the device's configuration*. 
+* Full app experience of using an app is preserved but APK does not include unnecessary code and resources incompatible with device requesting it, like other screen densities and CPU architectures. 
+* You usually need to provide your SHA1 fingerprint in order to register at your API providers and obtain a key. Note that when using aabs, google will create a signing key for you and you will need to add its SHA1 to your API providers, else your API will stop working when going into production. The SHA1 from the key that google creates for you can be found on the Play console (Setup -> App integrity).
