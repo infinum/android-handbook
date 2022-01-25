@@ -13,7 +13,7 @@
 5. Generate a development keystore with random passwords and add the configuration to `build.gradle`. The production keystore management is explained in the [Keystore management](/books/android/common-android/keystore-management) chapter.
 6. Add static analysis and CI configuration as described in the `Continuous integration` chapter.
 7. Add an Application class and Timber, set up Timber in the app class.
-8. Set up basic networking and test code with dependency injection (see the [Dependency injection](/books/android/project-structure/dependency-injection) chapter for details).
+8. Set up basic networking and test code with dependency injection (see the [Dependency injection](/books/android/dependency-injection/general) chapter for details).
 9. Set up Firebase on the Infinum or client account if available (make sure that caught exceptions are also logged using [Timber](https://github.com/JakeWharton/timber)).
 10. Add app icons with a different icon for non-production server targets (we usually use a banner overlay on the icon saying 'test' or 'staging').
 11. Add the appropriate ProGuard configuration depending on the libraries used.
