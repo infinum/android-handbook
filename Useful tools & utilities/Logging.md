@@ -8,15 +8,15 @@ For debug mode, we usually use the `DebugTree` implementation which comes with T
 
 To do that, simply add this in the `onCreate()` of your app:
 
-```java
+```kotlin
 if (BuildConfig.DEBUG) {
-    Timber.plant(new Timber.DebugTree());
+    Timber.plant(Timber.DebugTree())
 }
 ```
 
 You can now call Timber’s static methods to log, just like you would call the ones from `Log` class:
 
-```java
+```kotlin
 Timber.d(...)
 Timber.i(...)
 Timber.v(...)
