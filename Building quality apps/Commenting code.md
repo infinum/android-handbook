@@ -10,18 +10,18 @@ Comments that do not add any value to the code should be removed, and naming sho
 
 ### BAD
 
-```java
-int h; // days since refresh
+```kotlin
+var h: Int // days since refresh
 
-clearCache(); // clears the cache
+clearCache() // clears the cache
 ```
 
 ### GOOD
 
-```java
-int daysSinceRefresh;
+```kotlin
+var daysSinceRefresh: Int
 
-clearCache();
+clearCache()
 ```
 
 ## Comment the why, not the how
@@ -38,28 +38,26 @@ Comments, like code, need to be maintained.
 
 ## Examples of good comments
 
-```java
-@Override
-public void onDeviceMetadataObtained(DeviceAuthMetadata deviceAuthMetadata) {
+```kotlin
+override fun onDeviceMetadataObtained(deviceAuthMetadata: DeviceAuthMetadata) {
     /**
      * 'resend code' during 2fa enrollment will create a new device
      * so, we need to save the new metadata so that we can send the correct followOnId and deviceId
      */
-    this.deviceAuthMetadata = deviceAuthMetadata;
-    view.hideActionLoadingDialog();
+    deviceAuthMetadata = deviceAuthMetadata
+    view.hideActionLoadingDialog()
 }
 ```
 
-```java
+```kotlin
 // always construct a new callback because we can have multiple requests running in parallel
-calculationListener = new CancelableCallback() {
-    @Override
-    public void onSuccess(ComparisonQuoteResponse comparisonQuoteResponse, Response response) {
+calculationListener = object : CancelableCallback() {
+    override fun onSuccess(comparisonQuoteResponse: ComparisonQuoteResponse, response: Response) {
         if (!isCanceled) {
-            CalculatorPresenterImpl.this.onSuccess(comparisonQuoteResponse, false);
+            this@CalculatorPresenterImpl.onSuccess(comparisonQuoteResponse, false)
         }
     }
-};
+}
 ```
 
 ## Comments should always be appropriate
