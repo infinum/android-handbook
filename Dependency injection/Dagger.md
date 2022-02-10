@@ -66,168 +66,147 @@ Almost every app we develop has a matching API, so we need the [Retrofit](http:/
 
 1. We need an ApiService interface.
 
-```java
-	public interface ApiService {
+```kotlin
+interface ApiService {
 
-	    @GET("/sprite/{id}")
-	    public void getPokemon(@Path("id") int pokemonId, Callback<Pokemon> callback);
-	}
+    @GET("/sprite/{id}")
+    fun getPokemon(@Path("id") pokemonId: Int, callback: Callback<Pokemon>)
+}
 ```
 
 2. We need someone who wants to use this ApiService (request it as a dependency).
 
-```java
-	public class PokemonInteractorImpl implements PokemonInteractor {
+```kotlin
+// Constructor annotated with @Inject demands ApiService object
+class PokemonInteractorImpl @Inject constructor(private val apiService: ApiService) : PokemonInteractor {
+    lateinit var listener: PokemonListener
+    private val callback: Callback<Pokemon> = object : Callback<Pokemon>() {
+        fun success(pokemon: Pokemon, response: Response) {
+            listener.onSuccess(pokemon)
+        }
 
-	    private ApiService apiService;
+        fun failure(error: RetrofitError?) {
+            listener.onFailure(R.string.error_connectivity)
+        }
+    }
 
-	    private PokemonListener listener;
-
-	    private Callback<Pokemon> callback = new Callback<Pokemon>() {
-	        @Override public void success(Pokemon pokemon, Response response) {
-	            listener.onSuccess(pokemon);
-	        }
-
-	        @Override public void failure(RetrofitError error) {
-	            listener.onFailure(R.string.error_connectivity);
-	        }
-	    };
-
-	    @Inject
-	    public PokemonInteractorImpl(ApiService apiService) {
-	    	// Constructor annotated with @Inject demands ApiService object
-	    	this.apiService = apiService;
-		}
-
-	    @Override public void getPokemon(int pokemonId, PokemonListener listener) {
-
-	        this.listener = listener;
-	        apiService.getPokemon(pokemonId, callback);
-	    }
-	}
+    fun getPokemon(pokemonId: Int, listener: PokemonListener) {
+        this.listener = listener
+        apiService.getPokemon(pokemonId, callback)
+    }
+}
 ```
 
 3. We need a `Module` that will supply the necessary dependencies.
 
-```java
-	@Module
-	public class ApiModule {
+```kotlin
+@Module
+class ApiModule {
 
-	    private static ApiService apiService;
+    @Provides
+    fun apiService(client: OkHttpClient): ApiService {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.API_URL)
+            .client(client)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create(ApiService::class.java)
+    }
 
-	    private static Client client;
-
-	    @Provides
-	    public ApiService provideApiService() {
-	        if (apiService == null) {
-	            apiService = createApiService();
-	        }
-	        return apiService;
-	    }
-
-	    private ApiService createApiService() {
-
-	    	if (client == null) {
-	            client = new OkClient(new OkHttpClient());
-	        }
-
-	        RestAdapter.Builder builder = new RestAdapter.Builder()
-	                .setClient(client)
-	                .setEndpoint(Endpoints.newFixedEndpoint(BuildConfig.API_URL));
-
-	        RestAdapter restAdapter = builder.build();
-	        return restAdapter.create(ApiService.class);
-	    }
-	}
+    @Provides
+    fun okHttpClient(
+        logingInterceptor: Interceptor
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(logingInterceptor)
+            .connectTimeout(TIMEOUT_DURATION.first, TIMEOUT_DURATION.second)
+            .readTimeout(TIMEOUT_DURATION.first, TIMEOUT_DURATION.second)
+            .writeTimeout(TIMEOUT_DURATION.first, TIMEOUT_DURATION.second)
+            .build()
+    }
+}
 ```
 
-```java
-	@Module
-	public class PokemonModule {
+```kotlin
+@Module
+class PokemonModule(private val view: PokemonView) {
 
-		PokemonView view;
+    @Provides
+    fun provideView(): PokemonView {
+        return view
+    }
 
-	    public PokemonModule(PokemonView view) {
-	    	this.view = view;
-		}
+    /**
+     * Every parameter passed in the method will first search for other provide methods to satisfy dependency.
+     * If the first search fails, the parameter will be created using a constructor that is annotated with @Inject.
+     * If both of these searches fail, this will result in a compile time error.
+     */
+    @Provides
+    fun providePresenter(presenter: PokemonPresenterImpl): PokemonPresenter {
+        return presenter
+    }
 
-	    @Provides
-	    public PokemonView provideView() {
-	        return view;
-	    }
-
-		/**
- 		 * Every parameter passed in the method will first search for other provide methods to satisfy dependency.
- 		 * If the first search fails, the parameter will be created using a constructor that is annotated with @Inject.
- 		 * If both of these searches fail, this will result in a compile time error.
- 		 */
-		@Provides
-	    public PokemonPresenter providePresenter(PokemonPresenterImpl presenter) {
-	        return presenter;
-	    }
-
-		@Provides
-	    public PokemonInteractor provideInteractor(PokemonInteractorImpl interactor) {
-	        return interactor;
-	    }
-	}
+    @Provides
+    fun provideInteractor(interactor: PokemonInteractorImpl): PokemonInteractor {
+        return interactor
+    }
+}
 ```
 
 4. We should create an AppComponent which will provide ApiService to all subcomponents which require it.
 
-```java
-  	@Component(modules = ApiModule.class)
-	public interface AppComponent {
+```kotlin
+@Component(modules = [ApiModule::class])
+interface AppComponent {
 
-		// for each subcomponent whose @Provides require ApiService
-		// we need to create a getter
-		PokemonComponent plus(PokemonModule module);
-	}
+    // for each subcomponent whose @Provides require ApiService
+    // we need to create a getter
+    fun plus(module: PokemonModule): PokemonComponent
+}
 
-	public class PokemonApplication extends Application {
+class PokemonApplication : Application {
 
-		private static AppComponent appComponent;
+    private lateinit var appComponent: AppComponent
 
-		@Override
-	    public void onCreate() {
-	        super.onCreate();
-	        appComponent = DaggerAppComponent.create();
-	    }
+    @Override
+    override fun onCreate() {
+        super.onCreate()
+        appComponent = DaggerAppComponent.create()
+    }
 
-	    public static AppComponent getAppComponent() {
-	    	return appComponent;
-		}
-	    ...
-	}
+    fun getAppComponent(): AppComponent {
+        return appComponent
+    }
+    ...
+}
 ```
 
 5. Finally, we need to bind our subcomponent to the scope in which it is used.
 
-```java
+```kotlin
 	/**
 	 * Pokemon module is used to provide PokemonPresenter and PokemonInteractor in the spirit of MVP
 	 */
-	@Subomponent(modules = PokemonModule.class)
-	public interface PokemonComponent {
+@Subcomponent(modules = [PokemonModule::class])
+interface PokemonComponent {
 
-	    void inject(PokemonActivity activity);
-	}
+    fun inject (activity: PokemonActivity)
+}
 
-	public class PokemonActivity extends Activity implements PokemonView {
+class PokemonActivity : Activity, PokemonView {
 
-		@Inject
-		PokemonPresenter pokemonPresenter;
+    @Inject
+    lateinit var pokemonPresenter: PokemonPresenter
 
-		@Override
-	    public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.activity_pokemon);
+    override fun onCreate(savedInstanceState: Bundle) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_pokemon)
 
-	        PokemonApplication.getAppComponent.plus(new PokemonModule(this)).inject(this);
-	    }
+        PokemonApplication.getAppComponent.plus(PokemonModule(this)).inject(this)
+    }
 
-	    ...
-	}
+    ...
+}
 ```
 
 For more detailed examples and better explanation of how Dagger works under the hood, have a look at this [presentation by Jake Wharton](https://speakerdeck.com/jakewharton/dependency-injection-with-dagger-2-devoxx-2014).
