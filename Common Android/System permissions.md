@@ -209,8 +209,8 @@ abstract class PermissionFragment : BaseFragment() {
      * can enable permissions.
      */
     protected open fun showSnackbar() {
-        if (activity != null) {
-            Snackbar.make(requireActivity().findViewById(R.id.content), R.string.no_permission, Snackbar.LENGTH_LONG)
+        activity?.let {
+            Snackbar.make(it.findViewById(R.id.content), R.string.no_permission, Snackbar.LENGTH_LONG)
                 .setAction(R.string.action_settings, object : View.OnClickListener {
                     override fun onClick(v: View?) {
                         startActivity(getApplicationSettingsIntent())
@@ -223,9 +223,9 @@ abstract class PermissionFragment : BaseFragment() {
      * Creates an intent for the application details in settings.
      */
     protected fun getApplicationSettingsIntent(): Intent {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        intent.data = Uri.parse("package:" + requireActivity().packageName)
-        return intent
+        return Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            data = Uri.parse("package:" + requireActivity().packageName)
+        }
     }
 }
 ```

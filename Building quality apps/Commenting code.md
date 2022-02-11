@@ -44,7 +44,7 @@ override fun onDeviceMetadataObtained(deviceAuthMetadata: DeviceAuthMetadata) {
      * 'resend code' during 2fa enrollment will create a new device
      * so, we need to save the new metadata so that we can send the correct followOnId and deviceId
      */
-    deviceAuthMetadata = deviceAuthMetadata
+    this.deviceAuthMetadata = deviceAuthMetadata
     view.hideActionLoadingDialog()
 }
 ```
