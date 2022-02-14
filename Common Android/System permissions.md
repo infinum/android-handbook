@@ -70,14 +70,8 @@ We can now create a base fragment that will do all the hard work for us. Then, e
 
 Here's an example of a base fragment for handling runtime permissions:
 
-```java
-public abstract class PermissionFragment extends BaseFragment {
-
-    /**
-     * Default Permission Request Code.
-     */
-    protected static final int DEFAULT_PERMISSION_REQUEST = 142;
-
+```kotlin
+abstract class PermissionFragment : BaseFragment() {
 
     /**
      * Takes an array of permissions and checks if the user allowed all of them.
@@ -85,16 +79,15 @@ public abstract class PermissionFragment extends BaseFragment {
      * @param permissions Array of permissions to check
      * @return True if user allowed all permissions, false otherwise
      */
-    protected final boolean checkPermissions(String... permissions) {
-        if (getActivity() != null) {
-            for (String permission : permissions) {
-                if (ActivityCompat.checkSelfPermission(getActivity(), permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
+    protected fun checkPermissions(vararg permissions: String): Boolean {
+        activity?.let {
+            for (permission in permissions) {
+                if (ActivityCompat.checkSelfPermission(it, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false
                 }
             }
-            return true;
-        }
-        return false;
+            return true
+        } ?: return false
     }
 
     /**
@@ -104,8 +97,8 @@ public abstract class PermissionFragment extends BaseFragment {
      * @param permissions Array of permissions to check and request if needed.
      * @return True if user allowed all permissions, false otherwise
      */
-    protected final boolean checkAndRequestPermissions(String... permissions) {
-        return checkAndRequestPermissions(DEFAULT_PERMISSION_REQUEST, permissions);
+    protected fun checkAndRequestPermissions(vararg permissions: String): Boolean {
+        return checkAndRequestPermissions(DEFAULT_PERMISSION_REQUEST, *permissions)
     }
 
     /**
@@ -113,19 +106,18 @@ public abstract class PermissionFragment extends BaseFragment {
      * If not, it automatically requests them with custom request code.
      *
      * @param requestCode Request code that is used if permission is requested. MUST OVERRIDE requestPermissionResult() method if
-     *                    request code is different than DEFAULT_PERMISSION_REQUEST.
+     * request code is different than DEFAULT_PERMISSION_REQUEST.
      * @param permissions Array of permissions to check and request if needed
      * @return True if the user allowed all permissions, false otherwise
      */
-    protected final boolean checkAndRequestPermissions(int requestCode, String... permissions) {
-        if (checkPermissions(permissions)) {
-            return true;
+    protected fun checkAndRequestPermissions(requestCode: Int, vararg permissions: String): Boolean {
+        return if (checkPermissions(*permissions)) {
+            true
         } else {
-            requestPermissions(permissions, requestCode);
-            return false;
+            requestPermissions(requestCode, *permissions)
+            false
         }
     }
-
 
     /**
      * Simplified requestPermissions where you don't have to create new String[]{} but simply pass all permissions that you
@@ -133,30 +125,27 @@ public abstract class PermissionFragment extends BaseFragment {
      *
      * @param permissions Array of permissions that you want to request
      */
-    protected void requestPermissions(String... permissions) {
-        requestPermissions(permissions, DEFAULT_PERMISSION_REQUEST);
+    protected open fun requestPermissions(vararg permissions: String) {
+        requestPermissions(DEFAULT_PERMISSION_REQUEST, *permissions)
     }
-
 
     /**
      * Simplified requestPermissions where you don't have to create new String[]{} but simply pass all permissions that you
      * want to check.
      *
      * @param requestCode Request code used in onRequestPermissionResult. MUST OVERRIDE requestPermissionResult() method if
-     *                    request code is different than DEFAULT_PERMISSION_REQUEST.
+     * request code is different than DEFAULT_PERMISSION_REQUEST.
      * @param permissions Array of permissions that you want to request
      */
-    protected void requestPermissions(int requestCode, String... permissions) {
-        requestPermissions(permissions, requestCode);
+    protected open fun requestPermissions(requestCode: Int, vararg permissions: String) {
+        requestPermissions(requestCode, *permissions)
     }
 
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == DEFAULT_PERMISSION_REQUEST) {
-            defaultPermissionsResult(permissions, grantResults);
+            defaultPermissionsResult(permissions, grantResults)
         } else {
-            requestPermissionsResult(requestCode, permissions, grantResults);
+            requestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
 
@@ -164,19 +153,18 @@ public abstract class PermissionFragment extends BaseFragment {
      * Checks the result of permission requests and calls permissionsGranted() if all permissions are allowed, otherwise it
      * calls permissionDenied().
      */
-    private void defaultPermissionsResult(String[] permissions, int[] grantResults) {
+    private fun defaultPermissionsResult(permissions: Array<String>, grantResults: IntArray) {
         if (checkPermissionResults(grantResults)) {
-            permissionGranted();
+            permissionGranted()
         } else {
-            permissionDenied(permissions, grantResults);
+            permissionDenied(permissions, grantResults)
         }
     }
 
     /**
      * Called when all permissions are allowed. Must be implemented in a child.
      */
-    protected abstract void permissionGranted();
-
+    protected abstract fun permissionGranted()
 
     /**
      * Called when one of the permission is not allowed and shows Snackbar by default. Override this method to
@@ -186,8 +174,8 @@ public abstract class PermissionFragment extends BaseFragment {
      * @param permissions  Array of asked permissions
      * @param grantResults Array of user responses
      */
-    protected void permissionDenied(String[] permissions, int[] grantResults) {
-        showSnackbar();
+    protected open fun permissionDenied(permissions: Array<String>, grantResults: IntArray) {
+        showSnackbar()
     }
 
     /**
@@ -197,8 +185,8 @@ public abstract class PermissionFragment extends BaseFragment {
      * @param permissions  Array of asked permissions
      * @param grantResults Array of user responses
      */
-    protected void requestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        defaultPermissionsResult(permissions, grantResults);
+    protected open fun requestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        defaultPermissionsResult(permissions, grantResults)
     }
 
     /**
@@ -207,38 +195,37 @@ public abstract class PermissionFragment extends BaseFragment {
      * @param results Array of request results
      * @return True if thenuser allowed all permissions, false otherwise
      */
-    protected final boolean checkPermissionResults(int[] results) {
-        for (int result : results) {
+    protected fun checkPermissionResults(results: IntArray): Boolean {
+        for (result in results) {
             if (result != PackageManager.PERMISSION_GRANTED) {
-                return false;
+                return false
             }
         }
-        return true;
+        return true
     }
 
     /**
      * Displays the default Snackbar with Action to open the Application Details in Settings so the user
      * can enable permissions.
      */
-    protected void showSnackbar() {
-        if (getActivity() != null) {
-            Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.no_permission, Snackbar.LENGTH_LONG)
-                    .setAction(R.string.action_settings, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(getApplicationSettingsIntent());
-                        }
-                    }).show();
+    protected open fun showSnackbar() {
+        activity?.let {
+            Snackbar.make(it.findViewById(R.id.content), R.string.no_permission, Snackbar.LENGTH_LONG)
+                .setAction(R.string.action_settings, object : View.OnClickListener {
+                    override fun onClick(v: View?) {
+                        startActivity(getApplicationSettingsIntent())
+                    }
+                }).show()
         }
     }
 
     /**
      * Creates an intent for the application details in settings.
      */
-    protected final Intent getApplicationSettingsIntent() {
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        intent.setData(Uri.parse("package:" + getActivity().getPackageName()));
-        return intent;
+    protected fun getApplicationSettingsIntent(): Intent {
+        return Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            data = Uri.parse("package:" + requireActivity().packageName)
+        }
     }
 }
 ```
@@ -257,10 +244,10 @@ For more information about runtime system permissions, see [Google I/O 2015 - An
 #### Warning
 - If you are using this Fragment as a child fragment inside a ViewPager, your fragment won't receive an onRequestPermissionResult() callback. This happens because the ViewPager doesn't know to which fragment it has to send the permission request result, so you have to pass it yourself. One way to do this is to propagate a callback inside the ViewPager's host Fragment onRequestPermissionResult() using the code below.
 
-```java  
-for (Fragment f : getChildFragmentManager().getFragments()) {
-    if (f instanceOf PermissionFragment) {
-        ((PermissionFragment)f).onRequestPermissionResult(requestCode, permissions, grantResults);
+```kotlin
+for (fragment in supportFragmentManager.fragments) {
+    if (fragment is PermissionFragment) {
+        fragment.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }
 ```
