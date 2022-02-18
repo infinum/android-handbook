@@ -182,9 +182,9 @@ class GetStoredMachineNameInteractor @Inject constructor(
 ```
 
 ```kotlin
-class GetStoredMachineNameInteractor @Inject constructor(
+class GetMachineInfoInteractor @Inject constructor(
     private val connectedApplianceProvider: Sources.Raw.ConnectedApplianceProvider
-) : Interactors.GetStoredMachineName {
+) : Interactors.GetMachineInfo {
 
     override suspend fun invoke(input: Unit) = connectedApplianceProvider.get()?.let { appliance -> appliance.info
     } ?: throw WifiException("Appliance not connected")
