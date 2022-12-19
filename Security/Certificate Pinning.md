@@ -1,6 +1,6 @@
 Certificate pinning can help improve the security of an app by ensuring that the app only trusts a specific set of certificates, rather than all of the certificates in the system’s trust store. This can also help prevent man-in-the-middle attacks, where an attacker attempts to intercept and modify network traffic.
 
-Android N brought several new features and improvements, one of which is the [Network Security Config](https://developer.android.com/training/articles/security-config#CertificatePinning). This feature allows developers to specify a custom XML configuration file that enables certificate pinning for their app, even when using WebView.
+Android N (API/SDK level version 25) brought several new features and improvements, one of which is the [Network Security Config](https://developer.android.com/training/articles/security-config#CertificatePinning). This feature allows developers to specify a custom XML configuration file that enables certificate pinning for their app, even when using WebView.
 
 One issue with certificate pinning is that `android:networkSecurityConfig` is not backward compatible with older versions of Android. Another issue is that it can be difficult to implement when using self-signed certificates.
 
