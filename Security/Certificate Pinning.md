@@ -10,7 +10,8 @@ One solution is to use an internally forked library [TrustKit for Android](https
 
 Deploying certificate pinning requires initializing TrustKit with a pinning policy (domains, pins, and additional settings).
 
-Below sample code is to configure certificate pinning using the public SHA-256 key. Note the use of a backup pin, it ensures that the connectivity of your app is unaffected.
+Sample code below shows how to configure certificate pinning using the public SHA-256 key. Note the use of a backup pin, it ensures that the connectivity of your app is unaffected.
+
 ```xml
 <!-- res/xml/network_security_config.xml -->
 <?xml version="1.0" encoding="utf-8"?>
