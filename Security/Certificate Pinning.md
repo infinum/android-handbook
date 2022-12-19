@@ -47,7 +47,7 @@ Here’s an example of configuration when using a certificate. It is also possib
 
 ## Initializing TrustKit with the Pinning Policy
 
-The path to the XML policy should then be specified in manifest to enable it as the app's Network Security Configuration on Android N:
+The path to the XML policy should then be specified in the manifest to enable it as the app's Network Security Configuration on Android N and above:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
