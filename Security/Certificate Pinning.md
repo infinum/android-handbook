@@ -29,7 +29,8 @@ Sample code below shows how to configure certificate pinning using the public SH
 </network-security-config>
 ```
 
-Here’s an example of configuration when using a certificate. It is also possible to declare multiple certificates.
+Here’s an example of a configuration when using a certificate. It is also possible to declare multiple certificates.
+
 ```xml
 <!-- res/xml/network_security_config.xml -->
 <?xml version="1.0" encoding="utf-8"?>
