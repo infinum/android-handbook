@@ -66,7 +66,7 @@ Now we need a means of communication between the ViewModel and the View. But bef
 
 In most cases, the View wants to know about the state of the screen so that it can render the changes accordingly. The state of the screen is an object that represents stateful data that the user can see on the screen. To better understand what is part of the screen state, you can look at it in the following way. A part of the state can be any data representation of a UI component that we want the View to render after it is recreated. The end goal is to have the same screen like the one before the View got recreated.
 
-Unlike states, there are things that we do not want to render after a View recreation. For example, displaying self-dismissable messages (Toast, Snackbar, etc.) or some kind of navigation triggers. For this, we need to expose another piece of information to the View, and we call them events. An event is a one-shot trigger that is emitted from the ViewModel and consumed by the View only once.
+Unlike states, there are things that we do not want to render after a View recreation. For example, displaying self-dismissible messages (Toast, Snackbar, etc.) or some kind of navigation triggers. For this, we need to expose another piece of information to the View, and we call them events. An event is a one-shot trigger that is emitted from the ViewModel and consumed by the View only once.
 
 Considering the concepts of the State and Event, we would adjust our BaseViewModel implementation to be aware of them. The end result would look like this:
 
