@@ -35,6 +35,35 @@ The ViewModel might sound powerful, but this is just a simple abstract class in 
 As LiveData is not best suited to handle the problem of resubscriptions in some use cases (Snackbar, Navigation, and other one-shot events), Google added a custom implementation of LiveData called [SingleLiveEvent](https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) in the [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture#android-architecture-blueprints). It is a lifecycle-aware observable that sends only new updates after subscription, used for events such as navigation and Snackbar messages. For more information regarding this topic, please read this [article](https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150).
 However, the SingleLiveEvent implementation from Google has one major setback—it works only with one observer at a time. This issue is addressed and explained in detail in this [article](https://proandroiddev.com/livedata-with-single-events-2395dea972a8). The author of the article proposes an improved implementation, called LiveEvent, which covers the case of multiple observers. The source for implementation: [LiveEvent](https://github.com/hadilq/LiveEvent/blob/main/live-event/src/main/java/com/hadilq/liveevent/LiveEvent.kt).
 
+### Flows
+
+Flows are conceptually a stream of data which flows in a pipe and can be computed asynchronously. On both ends of that pipe, there is a producer and a consumer running on coroutines. Flows are built on top of coroutines and they can provide multiple values. Since suspend functions return only a single value, flows come in handy when we need to emit multiple values sequentially.
+
+### StateFlow and SharedFlow
+
+StateFlow and SharedFlow are Flow APIs which we use to enable flows to optimally emit state updates and emit values to multiple consumers.
+
+By definition,
+
+> StateFlow is a state-holder observable flow that emits current and new state updates to its collectors.
+
+Essentially, using StateFlow is a very convenient way of keeping our view states. It is a great fit for maintaining an observable mutable states and handling live state updates.
+
+On the other hand, SharedFLow is a highly-configurable generalization of StateFlow. SharedFlow is the perfect type for handling the events. With SharedFlow, we avoid the trouble of handling resubscriptions (the cases when we want to do a certain action only once, such as showing toasts, Snackbar, navigating between fragments, etc.). SharedFlow behaves as a hot flow and it emits values to all consumers that collect from it.
+
+
+### LiveData vs Flow vs StateFlow vs SharedFlow
+
+Since Kotlin Coroutines introduced StateFlow and SharedFLow, these types have opened the opportunity for substituting LiveData and they are becoming the go-to types for handling states and events. Additionally, they also solve the problems which appear when using pure Flows for this purpose (pure Flows are stateless and declarative(cold), therefore, they are not very suitable for working with states and events).
+
+Coroutines have dominantly taken over Rx and the major drawback of LiveData is that it is not built on top of coroutines, unlike the StateFLow and SharedFlow. LiveData is closely bound to UI and the Android platform, it lacks of control over the execution context and there is no natural way to offload some work from the worker threads. Everything that you can do with LiveData can be done in a much more elegant and improved manner by using the hot streams, StateFlow and SharedFlow. Moreover, StateFlow and SharedFlow cover the disadvantages and limitations that come with LiveData implementation. However, this doesn't mean that LiveData should be entirely excluded from projects or that it will become deprecated soon.
+
+Now that we understand how superior StateFlow and SharedFlow can be, let's see their difference. By default, SharedFlow takes no value and emits nothing, whereas, StateFlow takes a default value through the constructor and emits it as soon as someone starts collecting it. StateFlow is a subtype of SharedFlow, therefore, it has more restricted configuration options. Stateflow follows the concept of single current value, therefore, it must have an initial value because, otherwise, it would break the concept of always having a current value. Moreover, for the value to be single, it means that the replay has to be always 1 and it is not possible to create a buffer aside from the 1 current value. 
+
+A general guideline would be to use StateFlow for working with states and SharedFlow for events.
+
+What is also worth mentioning is the Channel type. SharedFlow will emit data even if no one is listening, whereas Channel will hold data until someone consumes it. In a situation where a SharedFlow emits an event and the view is not ready to receive an event, the event is lost. Thus, channels could be an even better solution for sending one-time events.
+
 
 ## What is solved with MVVM?
 
@@ -59,7 +88,7 @@ The user interface in an Android app is made from a collection of View and ViewG
 
 Let's take a look at the ViewModel first. It is probably a good idea to have a base implementation of the ViewModel that will handle some shared logic and reduce the boilerplate in our codebase. It will look something like this:
 
-```
+```kotlin
 open class BaseViewModel: ViewModel()
 ```
 Now we need a means of communication between the ViewModel and the View. But before we write about that, let's see what kind of information our View expects in the communication. In other words, what should we expose to the View from the ViewModel?
@@ -70,13 +99,13 @@ Unlike states, there are things that we do not want to render after a View recre
 
 Considering the concepts of the State and Event, we would adjust our BaseViewModel implementation to be aware of them. The end result would look like this:
 
-```
+```kotlin
 open class BaseViewModel<State : Any, Event : Any> : ViewModel()
 ```
 We now have the state and events for a specific View, but we are still missing a way to expose these objects to the View. This is where LiveData and LiveEvent implementations come into play.
 Inside the ViewModel, we need the LiveData objects of state and events that the View can observe. LiveData objects would look something like this:
 
-```
+```kotlin
 open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
 
     private val stateLiveData: MutableLiveData<State> = MutableLiveData()
@@ -90,7 +119,7 @@ As you can see in the code above, we expose our private stateLiveData and eventL
 
 To make it easier to use LiveData objects, we can create a convenient backing field and function that will help us manipulate LiveData objects in our specific ViewModel implementation.
 
-```
+```kotlin
 open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
 
    //...
@@ -110,27 +139,67 @@ open class BaseViewModel<State : Any, Event : Any> : ViewModel() {
 
 When we have a BaseViewModel implementation, for example LoginViewModel, we have to provide it to the View. This can be achieved using a utility method from the ViewModelProviders class:
 
-```
+```kotlin
 ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
 ```
 
 In the above code, `this` represents the LifecycleOwner. In our case, as mentioned earlier, this is either an Activity or a Fragment. The above code returns a ViewModel instance which we use to observe LiveData objects.
 
-```
-loginViewModel.viewStateData().observe(this, { state ->
-	// Update the UI state
-})
+```kotlin
+loginViewModel.viewStateData().observe(this) { state ->
+    // Update the UI state
+}
 
-loginViewModel.viewEventData().observe(this, { event ->
-	// Handle event
-})
+loginViewModel.viewEventData().observe(this) { event ->
+    // Handle event
+}
 
 ```
 
 This is now enough to establish a connection between the View and ViewModel.
 
 So far, we've only concentrated on the View and ViewModel, but what about the Model in MVVM? The Model is responsible for managing the data received from a specific data source (Database, Network, etc.), completely UI independent. This means that the Model should expose its data only to the ViewModel. The ViewModel can also request some data from the Model, so it is a two-way communication.
+
+### Implementation using StateFlow and SharedFlow
+
+If we want to use StateFlow and SharedFlow as a substitution to the LiveData objects mentioned above, our BaseViewModel will look something like this:
+
+```kotlin
+abstract class BaseViewModel<State : Any, Event : Any>(private val initialState: State) : ViewModel() {
+
+    val state: StateFlow<State> get() = stateFlow
+    val commonState: StateFlow<CommonState> get() = commonStateFlow
+    val event: SharedFlow<Event> get() = eventFlow
+
+    private val stateFlow: MutableStateFlow<State> by lazy { MutableStateFlow(initialState) }
+    private val commonStateFlow = MutableStateFlow(CommonState())
+    private val eventFlow: MutableSharedFlow<Event> = MutableSharedFlow()
+}
+```
+
+The private properties stateFlow, commonStateFLow, eventFlow are mutable only within the BaseViewModel and we expose them through the properties state, commonState, event which are immutable.
+
+A backing field and function would be really helpful for using these objects inside our ViewModels which inherit from the BaseViewModel, therefore, in our BaseViewModel we will add the following code:
+
+```kotlin
+abstract class BaseViewModel<State : Any, Event : Any>(private val initialState: State) : ViewModel() {
+
+    //...
+
+    var viewState: State
+        get() = state.value
+        set(state) {
+            stateFlow.value = state
+        }
+
+    protected suspend fun emitEvent(event: Event) {
+        eventFlow.emit(event)
+    }
+}
+```
+
+In the Activity or Fragment, we will handle the states and events and adjust the UI accordingly.
 
 At this point, the concept of MVVM and how to implement it should be much clearer and easier to understand. Take into account that the code you saw was very simplified, just to show the conceptual idea of MVVM in Android. This is only one way to implement it, there are many more different kinds of implementation that may include [DataBinding](https://developer.android.com/topic/libraries/data-binding/) or are very [Rx](http://reactivex.io/) heavy.
 
