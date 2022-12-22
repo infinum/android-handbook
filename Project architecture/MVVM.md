@@ -1,5 +1,4 @@
-When defining software architecture, we always want to achieve certain characteristics. For our team, the focus is on flexibility, reusability, and testability. We are guided by these characteristics but are not restricted to them. The main purpose of project architecture is consistency among projects, which makes sharing knowledge and the transition of people among projects easier. We also prefer architecture that helps with standard framework issues or makes them easier to solve. In fact, this was a huge motivation to ditch the old MVP and switch to a new MVVM project architecture.
-
+When defining software architecture, we always want to achieve certain characteristics. For our team, the focus is on flexibility, reusability, and testability. We are guided by these characteristics but are not restricted to them. The main purpose of project architecture is consistency among projects, which makes sharing knowledge and the transition of people among projects easier. We also prefer architecture that helps with standard framework issues or makes them easier to solve. In fact, this was a huge motivation to ditch the old MVP and switch to a new MVVM project architecture. Although this chapter covers the MVVM architecture specifically, all of the concepts and good practices mentioned in the general [Mobile app architecture](/books/android/project-architecture/mobile-app-architecture) chapter apply here as well.
 
 
 ## What is MVVM?
@@ -37,7 +36,7 @@ However, the SingleLiveEvent implementation from Google has one major setback—
 
 ### Flows
 
-Flows are conceptually a stream of data which flows in a pipe and can be computed asynchronously. On both ends of that pipe, there is a producer and a consumer running on coroutines. Flows are built on top of coroutines and they can provide multiple values. Since suspend functions return only a single value, flows come in handy when we need to emit multiple values sequentially.
+Flows are conceptually a stream of data which flows in a pipe and can be computed asynchronously. On both ends of that pipe, there is a producer and a consumer running on coroutines. Flows are built on top of coroutines and they can provide multiple values. Suspend functions return only a single value and flows come in handy when we need to emit multiple values sequentially.
 
 ### StateFlow and SharedFlow
 
@@ -60,13 +59,13 @@ SharedFlow is the perfect type for handling the events. With SharedFlow, we avoi
 
 Since Kotlin Coroutines introduced StateFlow and SharedFLow, these types have opened the opportunity for substituting LiveData and they are becoming the go-to types for handling states and events. Additionally, they also solve the problems which appear when using pure Flows for this purpose (pure Flows are stateless and declarative (cold), therefore, they are not very suitable for working with states and events).
 
-Coroutines have dominantly taken over Rx and the major drawback of LiveData is that it is not built on top of coroutines, unlike the StateFLow and SharedFlow. LiveData is closely bound to UI and the Android platform, it lacks of control over the execution context and there is no natural way to offload some work from the worker threads. Everything that you can do with LiveData can be done in a much more elegant and improved manner by using the hot streams, StateFlow and SharedFlow. A major difference from LiveData is that they are not lifecycle aware, however, this can be easily solved by using repeatOnLifecycle APIs. In the end, we can see that StateFlow and SharedFlow cover all the disadvantages and limitations that come with LiveData implementation. However, this doesn't mean that LiveData should be entirely excluded from projects or that it will become deprecated soon.
+Coroutines have dominantly taken over Rx and the major drawback of LiveData is that it is not built on top of coroutines, unlike the StateFLow and SharedFlow. LiveData is closely bound to the UI and the Android platform, it lacks of control over the execution context and there is no natural way to offload some work from the worker threads. Everything that you can do with LiveData can be done in a much more elegant and improved manner by using the hot streams, StateFlow and SharedFlow. A major difference from LiveData is that they are not lifecycle aware, however, this can be easily solved by using `repeatOnLifecycle` APIs. In the end, we can see that StateFlow and SharedFlow cover all the disadvantages and limitations that come with LiveData implementation. However, this doesn't mean that LiveData should be entirely excluded from projects or that it will become deprecated soon.
 
-Now that we understand how superior StateFlow and SharedFlow can be, let's see their difference. By default, SharedFlow takes no value and emits nothing, whereas, StateFlow takes a default value through the constructor and emits it as soon as someone starts collecting it. StateFlow is a subtype of SharedFlow, therefore, it has more restrictive configuration options. Stateflow follows the concept of single current value, thus, it must have an initial value because, otherwise, it would break the principle of always having a current value. Moreover, for the value to be single, it means that the replay always has to be 1 and it is not possible to create a buffer aside from the one current value. 
+Now that we understand how superior StateFlow and SharedFlow can be, let's see their difference. By default, SharedFlow takes no value and emits nothing, whereas, StateFlow takes a default value through the constructor and emits it as soon as someone starts collecting it. StateFlow is a subtype of SharedFlow, therefore, it has more restrictive configuration options. StateFlow follows the concept of single current value. It must have an initial value because, otherwise, it would break the principle of always having a current value. Moreover, for the value to be single, it means that the `replay` always has to be 1 and it is not possible to create a buffer aside from the one current value. 
 
 A general guideline would be to use StateFlow for working with states and SharedFlow for events.
 
-What is also worth mentioning is the Channel type. SharedFlow will emit data even if no one is listening, whereas Channel will hold data until someone consumes it. In a situation where a SharedFlow emits an event and the view is not ready to receive an event, the event is lost. Thus, channels could be an even better solution for sending one-time events.
+What is also worth mentioning is the Channel type. SharedFlow will emit data even if no one is listening, whereas, Channel will hold the data until it is consumed. In a situation where a SharedFlow emits an event and the view is not ready to receive that event, the event is lost. Thus, channels could be an even better solution for sending one-time events.
 
 
 ## What is solved with MVVM?
@@ -85,7 +84,7 @@ Most applications contain some screens that can be grouped into a flow. Inside t
 
 ## Coroutines vs RxJava
 
-Asynchronous code has always been one of the most challenging topics when developing Android apps. For a very long time, RxJava, with its most important building blocks - Observables and Subscribers, helped us achieve everything we had to in order to have asynchronous and event-based programs. RxJava, as its name suggest, is meant for any Java compatible language. Kotlin does fall into the category of Java compatible languages, however, since it has become very popular in the Android development community, naturally, the need for some Kotlin specific way of handling asynchronous work arose. This is how Kotlin Coroutines were born.
+Asynchronous code has always been one of the most challenging topics when developing Android apps. For a very long time, RxJava, with its most important building blocks - Observables and Subscribers, helped us achieve everything we had to in order to have asynchronous and event-based programs. RxJava, as its name suggests, is meant for any Java compatible language. Kotlin does fall into the category of Java compatible languages, however, since it has become very popular in the Android development community, naturally, the need for some Kotlin specific way of handling asynchronous work arose. This is how Kotlin Coroutines were born.
 
 > A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously. Coroutines help to manage long-running tasks that might otherwise block the main thread and cause your app to become unresponsive.
 
@@ -192,7 +191,7 @@ abstract class BaseViewModel<State : Any, Event : Any>(private val initialState:
 }
 ```
 
-The private properties stateFlow, commonStateFLow, eventFlow are mutable only within the BaseViewModel and we expose them through the properties state, commonState, event which are immutable.
+The private properties `stateFlow`, `commonStateFLow`, `eventFlow` are mutable only within the BaseViewModel and we expose them through the properties `state`, `commonState`, `event` which are immutable.
 
 A backing field and function would be really helpful for using these objects inside our ViewModels which inherit from the BaseViewModel, therefore, in our BaseViewModel we will add the following code:
 
