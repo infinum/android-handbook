@@ -47,18 +47,22 @@ By definition,
 
 > StateFlow is a state-holder observable flow that emits current and new state updates to its collectors.
 
-Essentially, using StateFlow is a very convenient way of keeping our view states. It is a great fit for maintaining an observable mutable states and handling live state updates.
+Essentially, the StateFlow type is very convenient for keeping our view states. It is a great fit for maintaining observable mutable states and handling live state updates.
 
-On the other hand, SharedFLow is a highly-configurable generalization of StateFlow. SharedFlow is the perfect type for handling the events. With SharedFlow, we avoid the trouble of handling resubscriptions (the cases when we want to do a certain action only once, such as showing toasts, Snackbar, navigating between fragments, etc.). SharedFlow behaves as a hot flow and it emits values to all consumers that collect from it.
+On the other hand, SharedFLow is a highly-configurable generalization of StateFlow. 
+
+> All methods of shared flow are thread-safe and can be safely invoked from concurrent coroutines without external synchronization.
+
+SharedFlow is the perfect type for handling the events. With SharedFlow, we avoid the trouble of handling resubscriptions (the cases when we want to do a certain action only once, such as showing toasts, Snackbar, navigating between fragments, etc.). SharedFlow behaves as a hot flow and it emits values to all consumers that collect from it.
 
 
 ### LiveData vs Flow vs StateFlow vs SharedFlow
 
-Since Kotlin Coroutines introduced StateFlow and SharedFLow, these types have opened the opportunity for substituting LiveData and they are becoming the go-to types for handling states and events. Additionally, they also solve the problems which appear when using pure Flows for this purpose (pure Flows are stateless and declarative(cold), therefore, they are not very suitable for working with states and events).
+Since Kotlin Coroutines introduced StateFlow and SharedFLow, these types have opened the opportunity for substituting LiveData and they are becoming the go-to types for handling states and events. Additionally, they also solve the problems which appear when using pure Flows for this purpose (pure Flows are stateless and declarative (cold), therefore, they are not very suitable for working with states and events).
 
-Coroutines have dominantly taken over Rx and the major drawback of LiveData is that it is not built on top of coroutines, unlike the StateFLow and SharedFlow. LiveData is closely bound to UI and the Android platform, it lacks of control over the execution context and there is no natural way to offload some work from the worker threads. Everything that you can do with LiveData can be done in a much more elegant and improved manner by using the hot streams, StateFlow and SharedFlow. Moreover, StateFlow and SharedFlow cover the disadvantages and limitations that come with LiveData implementation. However, this doesn't mean that LiveData should be entirely excluded from projects or that it will become deprecated soon.
+Coroutines have dominantly taken over Rx and the major drawback of LiveData is that it is not built on top of coroutines, unlike the StateFLow and SharedFlow. LiveData is closely bound to UI and the Android platform, it lacks of control over the execution context and there is no natural way to offload some work from the worker threads. Everything that you can do with LiveData can be done in a much more elegant and improved manner by using the hot streams, StateFlow and SharedFlow. A major difference from LiveData is that they are not lifecycle aware, however, this can be easily solved by using repeatOnLifecycle APIs. In the end, we can see that StateFlow and SharedFlow cover all the disadvantages and limitations that come with LiveData implementation. However, this doesn't mean that LiveData should be entirely excluded from projects or that it will become deprecated soon.
 
-Now that we understand how superior StateFlow and SharedFlow can be, let's see their difference. By default, SharedFlow takes no value and emits nothing, whereas, StateFlow takes a default value through the constructor and emits it as soon as someone starts collecting it. StateFlow is a subtype of SharedFlow, therefore, it has more restricted configuration options. Stateflow follows the concept of single current value, therefore, it must have an initial value because, otherwise, it would break the concept of always having a current value. Moreover, for the value to be single, it means that the replay has to be always 1 and it is not possible to create a buffer aside from the 1 current value. 
+Now that we understand how superior StateFlow and SharedFlow can be, let's see their difference. By default, SharedFlow takes no value and emits nothing, whereas, StateFlow takes a default value through the constructor and emits it as soon as someone starts collecting it. StateFlow is a subtype of SharedFlow, therefore, it has more restrictive configuration options. Stateflow follows the concept of single current value, thus, it must have an initial value because, otherwise, it would break the principle of always having a current value. Moreover, for the value to be single, it means that the replay always has to be 1 and it is not possible to create a buffer aside from the one current value. 
 
 A general guideline would be to use StateFlow for working with states and SharedFlow for events.
 
