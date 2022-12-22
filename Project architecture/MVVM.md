@@ -83,6 +83,16 @@ The ViewModel together with all the data will survive the activity configuration
 
 Most applications contain some screens that can be grouped into a flow. Inside this flow, you will often have to share some data. Information from the previous screen might be needed or might influence some of the future screens. The ViewModel and LiveData can be the perfect solution for such situations. If you organize a specific flow inside one activity and all other screens as a fragment, it is easy to share a ViewModel among all fragments and the controlling activity. This makes it easy to share, store, combine, and manage all the data in the flow.
 
+## Coroutines vs RxJava
+
+Asynchronous code has always been one of the most challenging topics when developing Android apps. For a very long time, RxJava, with its most important building blocks - Observables and Subscribers, helped us achieve everything we had to in order to have asynchronous and event-based programs. RxJava, as its name suggest, is meant for any Java compatible language. Kotlin does fall into the category of Java compatible languages, however, since it has become very popular in the Android development community, naturally, the need for some Kotlin specific way of handling asynchronous work arose. This is how Kotlin Coroutines were born.
+
+> A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously. Coroutines help to manage long-running tasks that might otherwise block the main thread and cause your app to become unresponsive.
+
+Nowadays, coroutines are significantly dominating over other solutions (such as RxJava) for asynchronous programming in Android. Coroutines are extremely lightweight (due to their support for suspension - ability to run many coroutines on a single thread) and they have built-in cancellation support. On top of that, coroutines lead to fewer memory leaks (by using structured concurrency) and they provide a nice Jetpack integration.
+
+Sooner or later, coroutines will start offering more and more features which will not be present in RxJava, therefore, if you are using Kotlin as a primary programming language, migrating your app from RxJava to coroutines is a safe bet.
+
 
 ## Implementation
 
