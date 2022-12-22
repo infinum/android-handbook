@@ -52,7 +52,7 @@ On the other hand, SharedFLow is a highly-configurable generalization of StateFl
 
 > All methods of SharedFlow are thread-safe and can be safely invoked from concurrent coroutines without external synchronization.
 
-SharedFlow is a perfect match when we are working with events. With SharedFlow, we avoid the trouble of handling resubscriptions (the cases when we want to do a certain action only once, such as showing toasts, Snackbar, navigating between fragments, etc.). SharedFlow behaves as a hot flow and it emits values to all consumers that collect from it.
+SharedFlow is the perfect choice when dealing with events. With SharedFlow, we avoid the trouble of handling resubscriptions (the cases when we want to do a certain action only once, such as showing toasts, Snackbar, navigating between fragments, etc.). SharedFlow behaves as a hot flow and it emits values to all consumers that collect from it.
 
 
 ### LiveData vs Flow vs StateFlow vs SharedFlow
@@ -84,7 +84,7 @@ Most applications contain some screens that can be grouped into a flow. Inside t
 
 ## Coroutines vs RxJava
 
-Asynchronous code has always been one of the most challenging topics when developing Android apps. For a very long time, [RxJava](https://medium.com/@gabrieldemattosleon/fundamentals-of-rxjava-with-kotlin-for-absolute-beginners-3d811350b701), with its most important building blocks - Observables and Subscribers, helped us achieve everything we had to in order to have asynchronous and event-based programs. RxJava, as its name suggests, is meant for any Java compatible language. Kotlin does fall into the category of Java compatible languages, however, since it has become very popular in the Android development community, naturally, the need for some Kotlin specific way of handling asynchronous work arose. This is how [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-basics.html) were born.
+Asynchronous code has always been one of the most challenging topics when developing Android apps. For a very long time, [RxJava](https://medium.com/@gabrieldemattosleon/fundamentals-of-rxjava-with-kotlin-for-absolute-beginners-3d811350b701), with its most important building blocks - Observables and Subscribers, helped us achieve everything we had to in order to have asynchronous and event-based programs. RxJava, as its name suggests, is meant for any Java compatible language. Kotlin does fall into the category of Java compatible languages, however, since it has become very popular in the Android development community, eventually, the need for some Kotlin specific way of handling asynchronous work arose. This is how [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-basics.html) were born.
 
 > A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously. Coroutines help to manage long-running tasks that might otherwise block the main thread and cause your app to become unresponsive.
 
