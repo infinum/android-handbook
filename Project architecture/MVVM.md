@@ -36,11 +36,11 @@ However, the SingleLiveEvent implementation from Google has one major setback—
 
 ### Flows
 
-Flows are conceptually a stream of data which flows in a pipe and can be computed asynchronously. On both ends of that pipe, there is a producer and a consumer running on coroutines. Flows are built on top of coroutines and they can provide multiple values. Suspend functions return only a single value and flows come in handy when we need to emit multiple values sequentially.
+[Flows](https://developer.android.com/kotlin/flow) are conceptually a stream of data which flows in a pipe and can be computed asynchronously. On both ends of that pipe, there is a producer and a consumer running on coroutines. Flows are built on top of coroutines and they can provide multiple values. Suspend functions return only a single value and flows come in handy when we need to emit multiple values sequentially.
 
 ### StateFlow and SharedFlow
 
-StateFlow and SharedFlow are Flow APIs which we use to enable flows to optimally emit state updates and emit values to multiple consumers.
+[StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#stateflow) and [SharedFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#sharedflow) are Flow APIs which we use to enable flows to optimally emit state updates and emit values to multiple consumers.
 
 By definition,
 
@@ -65,7 +65,7 @@ Now that we understand how superior StateFlow and SharedFlow can be, let's see t
 
 A general guideline would be to use StateFlow for working with states and SharedFlow for events.
 
-What is also worth mentioning is the Channel type. SharedFlow will emit data even if no one is listening, whereas, Channel will hold the data until it is consumed. In a situation where a SharedFlow emits an event and the view is not ready to receive that event, the event is lost. Thus, channels could be an even better solution for sending one-time events.
+What is also worth mentioning is the [Channel](https://www.geeksforgeeks.org/handle-one-time-events-in-android-with-kotlin-channel/). SharedFlow will emit data even if no one is listening, whereas, Channel will hold the data until it is consumed. In a situation where a SharedFlow emits an event and the view is not ready to receive that event, the event is lost. Thus, channels could be an even better solution for sending one-time events.
 
 
 ## What is solved with MVVM?
@@ -84,7 +84,7 @@ Most applications contain some screens that can be grouped into a flow. Inside t
 
 ## Coroutines vs RxJava
 
-Asynchronous code has always been one of the most challenging topics when developing Android apps. For a very long time, RxJava, with its most important building blocks - Observables and Subscribers, helped us achieve everything we had to in order to have asynchronous and event-based programs. RxJava, as its name suggests, is meant for any Java compatible language. Kotlin does fall into the category of Java compatible languages, however, since it has become very popular in the Android development community, naturally, the need for some Kotlin specific way of handling asynchronous work arose. This is how Kotlin Coroutines were born.
+Asynchronous code has always been one of the most challenging topics when developing Android apps. For a very long time, [RxJava](https://medium.com/@gabrieldemattosleon/fundamentals-of-rxjava-with-kotlin-for-absolute-beginners-3d811350b701), with its most important building blocks - Observables and Subscribers, helped us achieve everything we had to in order to have asynchronous and event-based programs. RxJava, as its name suggests, is meant for any Java compatible language. Kotlin does fall into the category of Java compatible languages, however, since it has become very popular in the Android development community, naturally, the need for some Kotlin specific way of handling asynchronous work arose. This is how [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-basics.html) were born.
 
 > A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously. Coroutines help to manage long-running tasks that might otherwise block the main thread and cause your app to become unresponsive.
 
