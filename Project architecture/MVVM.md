@@ -90,7 +90,7 @@ Asynchronous code has always been one of the most challenging topics when develo
 
 Nowadays, coroutines are significantly dominating over other solutions (such as RxJava) for asynchronous programming in Android. Coroutines are extremely lightweight (due to their support for suspension - ability to run many coroutines on a single thread) and they have built-in cancellation support. On top of that, coroutines lead to fewer memory leaks (by using structured concurrency) and they provide a nice Jetpack integration.
 
-Sooner or later, coroutines will start offering more and more features which will not be present in RxJava, therefore, if you are using Kotlin as a primary programming language, migrating your app from RxJava to coroutines is a safe bet.
+Sooner or later, coroutines will start offering more and more features which will not be present in RxJava, thus, if you are using Kotlin as a primary programming language, migrating your app from RxJava to coroutines is a safe bet.
 
 
 ## Implementation
