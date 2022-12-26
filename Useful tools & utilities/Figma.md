@@ -40,3 +40,24 @@ platform they are using.
 Each person can have either a view or an edit access to the Figma files. Additionally, the admin and owner roles can be set accordingly. All
 of the permissions can be easily managed and customized as desired. For a more detailed description about Figma team permissions and what
 different access modes entail, take a look at the following [link](https://help.figma.com/hc/en-us/articles/360039970673-Team-permissions).
+
+## Figma essentials
+
+Let's take a look at some of the things which you'll probably be using very frequently as a developer.
+
+### Frames
+
+![Figma Frames](/img/figma_frames.png "Frames in Figma")
+
+Frames in Figma serve as top-level containers for most elements in Figma. Usually each screen has a separate frame and they are all listed
+on the left side in Figma as shown in the image above. In this example project the frames are located in the Layers tab, however, keep in
+mind that this is customizable and the tab namings in your project might differ from this project's conventions (for example, you might have
+a Pages tab rather than a Layers tab). What's important is to know the fundamentals and what Figma provides as functionalities and then
+minor things like naming conventions and way of structuring stuff within the team is easily manageable.
+
+Each frame can be expanded and its sub-frames and elements will be shown as in the Register frame on the image above. You can click around
+and explore what each frame consists of. You can select a particular frame or an element from the frame directly on the designs as well.
+
+### Code inspection, layout measurements and constraints, exporting
+
+### Comments and discussions
