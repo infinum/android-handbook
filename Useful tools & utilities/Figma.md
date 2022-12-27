@@ -47,7 +47,7 @@ Let's take a look at some of the things which you'll probably be using very freq
 
 ### Frames
 
-![Figma Frames](/img/figma_frames.png "Frames in Figma")
+![Figma Frames](/img/figma/figma_frames.png "Frames in Figma")
 
 Frames in Figma serve as top-level containers for most elements in Figma. Usually, each screen has a separate frame and they are all listed
 on the left side in Figma as shown in the image above. In this example project, the frames are located in the Layers tab, however, keep in
@@ -66,7 +66,7 @@ right side of the Figma file.
 
 Here's an example when the "NEXT" button from the Register screen is selected:
 
-![Figma Element Inspection](/img/figma_button_inspection.png "Element inspection in Figma")
+![Figma Element Inspection](/img/figma/figma_button_inspection.png "Element inspection in Figma")
 
 In the Inspect tab on the right side, there is a Properties section which has some basic information about the dimensions of the selected
 element. In the Code section, there is a small code snippet which can be used as a guideline for implementing the design in code. On this
@@ -85,7 +85,7 @@ usually enough to have only view access to the Figma files.
 The Export tab will look something like this (there are also images from several options provided in this tab which will be discussed
 below):
 
-![Exporting in Figma](/img/figma_exports.png "Exporting in Figma")
+![Exporting in Figma](/img/figma/figma_exports.png "Exporting in Figma")
 
 In the export tab, the default export size is 1x and when you click on it, a drop down list with more options is displayed. You can also
 write the suffix which you would like the exported file to have and choose the image format of the export. Additionally, there is an option
@@ -100,16 +100,16 @@ Figma.
 You can enter Comment mode by clicking on the Comment icon in the toolbar. As long as you are in Comment mode, you can add a comment
 anywhere on the canvas by clicking on the spot where you want it to be added.
 
-![Comments in Figma](/img/figma_comment.png "Comments in Figma")
+![Comments in Figma](/img/figma/figma_comment.png "Comments in Figma")
 
 Other team members can join in the discussion by replying to the comment and as it was mentioned before, you can @mention other team members
 in the comments. You can also resolve the comment thread once the discussion is done.
 
-![Replying and resolving comments in Figma](/img/figma_comment_resolve.png "Replying and resolving comments in Figma")
+![Replying and resolving comments in Figma](/img/figma/figma_comment_resolve.png "Replying and resolving comments in Figma")
 
 When a comment is resolved, by default, it will no longer appear on the canvas. However, you can customize this and some other settings in
 the options menu shown in the image below:
 
-![Figma comment settings](/img/figma_comment.png "Comment settings in Figma")
+![Figma comment settings](/img/figma/figma_comment_settings.png "Comment settings in Figma")
 
 
