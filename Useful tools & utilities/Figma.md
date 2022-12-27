@@ -1,16 +1,16 @@
 As a developer, understanding the fundamentals of the design tools used within your team is an essential skill. The notorious war between
 developers and designers is never-ending and design tools are the places where these two worlds collide. This raises the importance of using
-good design tools which provide a nice connection between the design and development process. Imagine if all the screen designs,
-components, different assets were stored on Google Drive and the review process and communication was handled through email/Slack. To get a
-single component you'll have to go through several folders and then you'll have to open your email/Slack to remind yourself about the
-discussions you had about the implementation. This isn't a big deal if you have to do it once in a day, however, this is a continuous and
-frequent process. Eventually, the project grows, new designs are requested, new folders and files are added and all of a sudden, handling the
-designs like this sounds like a nightmare, right?
+good design tools which provide a nice connection between the design and development process. Imagine if all the screen designs, components,
+different assets were stored on Google Drive and the review process and communication was handled through email/Slack. To get a single
+component, you'll have to go through several folders and then, you'll have to open your email/Slack to remind yourself about the discussions
+you had regarding the implementation. This isn't a big deal if you have to do it once in a day, however, this is a continuous and frequent
+process. Eventually, the project grows, new designs are requested, new folders and files are added and all of a sudden, handling designs
+like this sounds like a nightmare, right?
 
 ![Designers vs Developers meme](/img/figma/figma_designers_vs_developers_meme.png "Designers vs Developers meme")
 
-[Figma](https://www.figma.com) is a cloud-based design tool which provides a simple, effective and intuitive functionalities perfect for team collaboration. Similar
-to Google Docs, team members can easily communicate, collaborate and edit the same file in Figma in real time.
+[Figma](https://www.figma.com) is a cloud-based design tool which provides simple, effective and intuitive functionalities perfect for team
+collaboration. Similar to Google Docs, team members can easily communicate, collaborate and edit the same file in Figma in real time.
 
 ## Benefits of using Figma
 
@@ -28,8 +28,8 @@ order to get a faster response from the discussion-relevant team members.
 - **Everything you need is at one place**
 
 Screen designs, components, assets, styles, comments, discussions and so much more can be found within a single Figma file. No need to
-include any third-party tools (unless the team feels like they would benefit from them), so basically, for all UI related stuff you might
-need, you can refer to the Figma file. You want it, you open Figma, you got it, no further actions needed. :)
+include any third-party tools (unless the team feels like they would benefit from them), so basically, for all UI related stuff, you can
+refer to the Figma file. You want it, you open Figma, you got it, no further actions needed. :)
 
 - **Platform flexibility**
 
@@ -40,8 +40,8 @@ platform they are using.
 - **Flexible user permissions management**
 
 Each person can have either a view or an edit access to the Figma files. Additionally, the admin and owner roles can be set accordingly. All
-of the permissions can be easily managed and customized as desired. For a more detailed description about Figma team permissions and what
-different access modes entail, check out the following [link](https://help.figma.com/hc/en-us/articles/360039970673-Team-permissions).
+permissions can be easily managed and customized as desired. For a more detailed description about Figma team permissions and what different
+access modes entail, check out the following [link](https://help.figma.com/hc/en-us/articles/360039970673-Team-permissions).
 
 ## Figma essentials
 
@@ -51,8 +51,8 @@ Let's take a look at some of the things which you'll probably be using very freq
 
 ![Figma Frames](/img/figma/figma_frames.png "Frames in Figma")
 
-Frames in Figma serve as top-level containers for most elements in Figma. Usually, each screen has a separate frame and they are all listed
-on the left side in Figma as shown in the image above. In this example project, the frames are located in the Layers tab, however, keep in
+Frames serve as top-level containers for most elements in Figma. Usually, each screen has a separate frame and they are all listed
+on the left side as shown in the image above. In this example project, the frames are located in the Layers tab, however, keep in
 mind that this is customizable and the tab naming in your project might differ from this project's conventions (for example, you might have
 a Pages tab rather than a Layers tab). What's important is to know the fundamentals and what Figma provides as functionalities and then
 minor things like naming conventions and way of structuring stuff within the team is easily manageable.
