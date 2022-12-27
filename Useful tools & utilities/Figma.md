@@ -7,6 +7,8 @@ discussions you had about the implementation. This isn't a big deal if you have 
 frequent process. Eventually, the project grows, new designs are requested, new folders and files are added and all of a sudden, handling the
 designs like this sounds like a nightmare, right?
 
+![Designers vs Developers meme](/img/figma/figma_designers_vs_developers_meme.png "Designers vs Developers meme")
+
 [Figma](https://www.figma.com) is a cloud-based design tool which provides a simple, effective and intuitive functionalities perfect for team collaboration. Similar
 to Google Docs, team members can easily communicate, collaborate and edit the same file in Figma in real time.
 
@@ -117,3 +119,6 @@ the options menu shown in the image below:
 
 - [From Zeplin to Figma](https://infinum.com/blog/zeplin-to-figma)
 - [Infinum Design Handbook](https://infinum.com/handbook/design)
+
+
+![Figma meme](/img/figma/figma_lion_king_meme.jpg "Figma meme")
