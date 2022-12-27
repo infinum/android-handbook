@@ -1,6 +1,6 @@
 As a developer, understanding the fundamentals of the design tools used within your team is an essential skill. The notorious war between
 developers and designers is never-ending and design tools are the places where these two worlds collide. This raises the importance of using
-good design tools which provide a nice connection between the design and development process. Imagine if all of the screen designs,
+good design tools which provide a nice connection between the design and development process. Imagine if all the screen designs,
 components, different assets were stored on Google Drive and the review process and communication was handled through email/Slack. To get a
 single component you'll have to go through several folders and then you'll have to open your email/Slack to remind yourself about the
 discussions you had about the implementation. This isn't a big deal if you have to do it once in a day, however, this is a continuous and
@@ -16,8 +16,8 @@ to Google Docs, team members can easily communicate, collaborate and edit the sa
 
 - **Simple and intuitive**
 
-Most of us are already very familiar with using tools like Google Docs and Figma isn't much different from them. First-time Figma users can
-get quickly adjusted to using Figma and it won't take too long before they understand most of its functionalities.
+Most of us are already very familiar with using tools like Google Docs and Figma isn't much different from that. First-time Figma users can
+get quickly adjusted to using Figma and it won't take them too long to understand most of its functionalities.
 
 - **Easier team collaboration and communication**
 
@@ -34,7 +34,7 @@ need, you can refer to the Figma file. You want it, you open Figma, you got it, 
 - **Platform flexibility**
 
 If you have any operating system and you run any web browser, you are ready to use Figma. You can share, open, edit Figma files through your
-web browser without any additional setup. The universality of Figma means that the design work will be available to everyone despite the
+web browser without any additional setup. The universality of Figma means that the design work will be available to everyone, despite the
 platform they are using.
 
 - **Flexible user permissions management**
@@ -53,7 +53,7 @@ Let's take a look at some of the things which you'll probably be using very freq
 
 Frames in Figma serve as top-level containers for most elements in Figma. Usually, each screen has a separate frame and they are all listed
 on the left side in Figma as shown in the image above. In this example project, the frames are located in the Layers tab, however, keep in
-mind that this is customizable and the tab namings in your project might differ from this project's conventions (for example, you might have
+mind that this is customizable and the tab naming in your project might differ from this project's conventions (for example, you might have
 a Pages tab rather than a Layers tab). What's important is to know the fundamentals and what Figma provides as functionalities and then
 minor things like naming conventions and way of structuring stuff within the team is easily manageable.
 
@@ -63,7 +63,7 @@ well.
 
 ### Element selection, code inspection, layout measurements and constraints
 
-If you want get more details about a certain element/component/part of the design, you can select it and then check out its details on the
+If you want to get more details about a certain element/component/part of the design, you can select it and then check out its details on the
 right side of the Figma file.
 
 Here's an example when the "NEXT" button from the Register screen is selected:
@@ -72,10 +72,10 @@ Here's an example when the "NEXT" button from the Register screen is selected:
 
 In the Inspect tab on the right side, there is a Properties section which has some basic information about the dimensions of the selected
 element. In the Code section, there is a small code snippet which can be used as a guideline for implementing the design in code. On this
-image, Android is selected as the preferred platform in the drop down menu, however, you can choose iOS or CSS and the code snippets will be
+image, Android is selected as the preferred platform in the drop-down menu, however, you can choose iOS or CSS and the code snippets will be
 displayed accordingly. Depending on the selected element, more sections might be present in this Inspect tab, such as sections with
 information about Colors, Borders, Typography, etc. If you hover around the designs and have the button selected, you can see some lines
-which represent its constraints. You can also view the margins, spacings and other dimensions by hovering over particular regions in the
+which represent its constraints. You can also view the margins, spacing and other dimensions by hovering over particular regions in the
 designs.
 
 ### Exports
@@ -89,12 +89,12 @@ below):
 
 ![Exporting in Figma](/img/figma/figma_exports.png "Exporting in Figma")
 
-In the export tab, the default export size is 1x and when you click on it, a drop down list with more options is displayed. You can also
+In the export tab, the default export size is 1x and when you click on it, a drop-down list with more options is displayed. You can also
 write the suffix which you would like the exported file to have and choose the image format of the export. Additionally, there is an option
 to set some extra settings if you click on the three dots placed after the image format. If you click on the "+" button, you can export
 multiple files at once (you can set different settings for each of the exported files). The Preview section lets you see how the exported
 file will look like after the export. Here's
-a [link](https://help.figma.com/hc/en-us/articles/360040028114-Guide-to-exports-in-Figma#extra-settings) to a nice guide for exports in
+a [link](https://help.figma.com/hc/en-us/articles/360040028114-Guide-to-exports-in-Figma) to a nice guide for exports in
 Figma.
 
 ### Comments and discussions
