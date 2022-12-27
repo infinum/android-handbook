@@ -4,10 +4,10 @@ good design tools which provide a nice connection between the design and develop
 components, different assets were stored on Google Drive and the review process and communication was handled through email/Slack. To get a
 single component you'll have to go through several folders and then you'll have to open your email/Slack to remind yourself about the
 discussions you had about the implementation. This isn't a big deal if you have to do it once in a day, however, this is a continuous and
-frequent process. Eventually the project grows, new designs are requested, new folders and files are added and all of a sudden, handling the
+frequent process. Eventually, the project grows, new designs are requested, new folders and files are added and all of a sudden, handling the
 designs like this sounds like a nightmare, right?
 
-Figma is a cloud-based design tool which provides a simple, effective and intuitive functionalities perfect for team collaboration. Similar
+[Figma](https://www.figma.com) is a cloud-based design tool which provides a simple, effective and intuitive functionalities perfect for team collaboration. Similar
 to Google Docs, team members can easily communicate, collaborate and edit the same file in Figma in real time.
 
 ## Benefits of using Figma
@@ -113,3 +113,7 @@ the options menu shown in the image below:
 ![Figma comment settings](/img/figma/figma_comment_settings.png "Comment settings in Figma")
 
 
+## Useful links
+
+- [From Zeplin to Figma](https://infinum.com/blog/zeplin-to-figma)
+- [Infinum Design Handbook](https://infinum.com/handbook/design)
