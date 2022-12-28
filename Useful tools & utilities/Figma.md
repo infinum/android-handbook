@@ -54,7 +54,7 @@ Let's take a look at some of the things which you'll probably be using very freq
 Frames serve as top-level containers for most elements in Figma. Usually, each screen has a separate frame and they are all listed
 on the left side as shown in the image above. In this example project, the frames are located in the Layers tab, however, keep in
 mind that this is customizable and the tab naming in your project might differ from this project's conventions (for example, you might have
-a Pages tab rather than a Layers tab). What's important is to know the fundamentals and what Figma provides as functionalities and then
+a Pages tab rather than a Layers tab). What's important is to know the fundamentals and what Figma provides as functionalities and then,
 minor things like naming conventions and way of structuring stuff within the team is easily manageable.
 
 Each frame can be expanded and its sub-frames and elements will be shown as in the Register frame on the image above. You can click around
@@ -81,7 +81,7 @@ designs.
 ### Exports
 
 In the Figma files for the project you'll be working on, there will probably be an Export tab on the right side as well when a certain
-element/component is selected. If you have edit access, you'll have the Export section in the Design tab, however, for developers it is
+element/component is selected. If you have edit access, you'll have the Export section in the Design tab, however, for developers, it is
 usually enough to have only view access to the Figma files.
 
 The Export tab will look something like this (there are also images from several options provided in this tab which will be discussed
@@ -89,7 +89,7 @@ below):
 
 ![Exporting in Figma](/img/figma/figma_exports.png "Exporting in Figma")
 
-In the export tab, the default export size is 1x and when you click on it, a drop-down list with more options is displayed. You can also
+In the Export tab, the default export size is 1x and when you click on it, a drop-down list with more options is displayed. You can also
 write the suffix which you would like the exported file to have and choose the image format of the export. Additionally, there is an option
 to set some extra settings if you click on the three dots placed after the image format. If you click on the "+" button, you can export
 multiple files at once (you can set different settings for each of the exported files). The Preview section lets you see how the exported
