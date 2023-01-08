@@ -33,9 +33,11 @@ refer to the Figma file. You want it, you open Figma, you got it, no further act
 
 - **Platform flexibility**
 
-If you have any operating system and you run any web browser, you are ready to use Figma. You can share, open and edit Figma files through your
-web browser without any additional setup. The universality of Figma means that the design work will be available to everyone, despite the
-platform they are using.
+If your device has a web browser, you are most likely ready to use Figma straight away. Figma handles rendering by using WebGL (Web Graphics
+Library) which has very low graphical requirements, thus, it runs well on most browsers (here's
+a [link](https://help.figma.com/hc/en-us/articles/360039827194-Figma-browser-requirements) with more information about the browser
+requirements). You can share, open and edit Figma files through your web browser without any additional setup. The universality of Figma
+means that the design work will be available to everyone, despite the platform they are using.
 
 - **Flexible user permissions management**
 
