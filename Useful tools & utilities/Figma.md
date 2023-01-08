@@ -71,12 +71,14 @@ Here's an example when the "NEXT" button from the Register screen is selected:
 ![Figma Element Inspection](/img/figma/figma_button_inspection.png "Element inspection in Figma")
 
 In the Inspect tab on the right side, there is a Properties section which has some basic information about the dimensions of the selected
-element. In the Code section, there is a small code snippet which can be used as a guideline for implementing the design in code. In this
-image, Android is selected as the preferred platform in the drop-down menu, however, you can choose iOS or CSS and the code snippets will be
-displayed accordingly. Depending on the selected element, more sections might be present in this Inspect tab, such as sections with
-information about Colors, Borders, Typography, etc. If you hover around the designs and have the button selected, you can see some lines
-which represent its constraints. You can also view the margins, spacing and other dimensions by hovering over particular regions in the
-designs.
+element. In the Code section, there is a small code snippet which can be used as a guideline for implementing the design in code. Feel free
+to copy-paste parts of these code snippets into your project, however, don't just rely blindly on them. Make sure to modify and adjust the
+code accordingly to preserve the project's theming and styling requirements. This section's drop-down menu has three options: CSS, Android
+and iOS where you can choose how the code snippets will be displayed. In this image, Android is selected as the preferred platform (a very
+objective and definitely unbiased choice :D). Depending on the selected element, more sections might be present in this Inspect tab, such
+as sections with information about Colors, Borders, Typography, etc. If you hover around the designs and have the button selected, you can
+see some lines which represent its constraints. You can also view the margins, spacing and other dimensions by hovering over particular
+regions in the designs.
 
 ### Exports
 
