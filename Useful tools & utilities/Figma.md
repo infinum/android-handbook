@@ -97,9 +97,16 @@ In the Export tab, the default export size is 1x and when you click on it, a dro
 write the suffix which you would like the exported file to have and choose the image format of the export. Additionally, there is an option
 to set some extra settings if you click on the three dots placed after the image format. If you click on the "+" button, you can export
 multiple files at once (you can set different settings for each of the exported files). The Preview section lets you see how the exported
-file will look like after the export. Here's
-a [link](https://help.figma.com/hc/en-us/articles/360040028114-Guide-to-exports-in-Figma) to a nice guide for exports in
-Figma.
+file will look like after the export. Here's a [link](https://help.figma.com/hc/en-us/articles/360040028114-Guide-to-exports-in-Figma) to a
+nice guide for exports in Figma.
+
+If you have to export an icon or some component/image which needs to be used in a vector-like form, in general, you should do the export in
+the `svg` format and then import the file as a vector/xml drawable in Android Studio. On the other hand, if you need to export something
+which is used as a normal photo or the component/image is quite complex, it would be more suitable to do the export in the `png` or `jpg`
+format in multiple sizes: hdpi, mdpi, xhdpi, xxhdpi, xxxhdpi, etc. Here's
+a [link](https://www.figma.com/community/plugin/848942545795372443/Android-Pixel-Density-Export-Settings) to a really useful utility plugin
+that applies the export settings for different pixel density sizes on Android. After you have successfully exported and placed these files
+in their corresponding drawable folders, the last step would be to convert them to the `webp` format in Android Studio.
 
 ### Comments and discussions
 
