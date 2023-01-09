@@ -125,11 +125,27 @@ the options menu shown in the image below:
 
 ![Figma comment settings](/img/figma/figma_comment_settings.png "Comment settings in Figma")
 
+### Version history
+
+If you want to see a nice timeline of the changes made within the Figma file, you can view the version history in the following way:
+
+![View Figma file's version history](/img/figma/figma_version_history_navigation.png "View Figma file's version history")
+
+The version history will be displayed in your right sidebar in Figma.
+
+![Figma file's version history](/img/figma/figma_version_history.png "Figma file's version history")
+
+Designers will often make new changes to the Figma file and they might start working on the designs for a new version of the app while you
+are still developing the previous one. Therefore, being able to view the file's version history and choose at which point in time you wish
+to go back, leads to lots of working flexibility between teams.
+
+When designers modify the Figma file, Figma automatically adds checkpoints to the file's version history. Additionally, the editors of the
+file can create and name new versions if they need to capture a specific snapshot in time. This is a really convenient way of keeping track
+of each file version, however, this is something the designers handle on their side, so it might differ from project to project.
 
 ## Useful links
 
 - [From Zeplin to Figma](https://infinum.com/blog/zeplin-to-figma)
 - [Infinum Design Handbook](https://infinum.com/handbook/design)
-
 
 ![Figma meme](/img/figma/figma_lion_king_meme.jpg "Figma meme")
