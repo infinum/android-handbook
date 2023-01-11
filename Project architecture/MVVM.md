@@ -67,6 +67,8 @@ A general guideline would be to use StateFlow for working with states and Shared
 
 What is also worth mentioning is the [Channel](https://www.geeksforgeeks.org/handle-one-time-events-in-android-with-kotlin-channel/). SharedFlow will emit data even if no one is listening, whereas, Channel will hold the data until it is consumed. In a situation where a SharedFlow emits an event and the view is not ready to receive that event, the event is lost. Thus, channels could be an even better solution for sending one-time events.
 
+For a more detailed comparison, check out [this](https://logidots.com/insights/live-data-flow-shared-flow-state-flow-2/) article.
+
 
 ## What is solved with MVVM?
 
