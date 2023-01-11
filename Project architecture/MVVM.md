@@ -218,5 +218,5 @@ In the Activity or Fragment, we will handle the states and events and adjust the
 
 At this point, the concept of MVVM and how to implement it should be much clearer and easier to understand. Take into account that the code you saw was very simplified, just to show the conceptual idea of MVVM in Android. This is only one way to implement it, there are many more different kinds of implementation that may include [DataBinding](https://developer.android.com/topic/libraries/data-binding/) or are very [Rx](http://reactivex.io/) heavy.
 
-A textbook example of our proposal of MVVM architecture can be found on this [GitHub repo](https://github.com/infinum/Android-MvvM-Example). In the README, you will find all the details for a base setup and using Android architecture components.
+
 
