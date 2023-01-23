@@ -140,39 +140,39 @@ The Interactor, Mapper, Repository and UseCase are components that make the **Do
 
 Let's say that we have an app that can connect to some hardware (appliance). Our task is to implement a screen where the appliance name would be shown. If the app is connected to the appliance, a name is fetched from the appliance's storage. If there is no connection to the appliance, a name is fetched from local storage.
 
-During a meeting with the rest of the team, we agree to call this domain `MachineFriendlyName`. In Android, `MachineFriendlyName` will be the domain model set as the output model of a `MachineFriendlyNameRepository`. In this simple example, it will be a String.
+During a meeting with the rest of the team, we agreed to call this domain `MachineFriendlyName`. In Android, `MachineFriendlyName` will be the domain model set as the output model of a `MachineFriendlyNameRepository`. In this simple example, it will be a String.
 
 `MachineFriendlyNameRepository` should look something like this:
 
 ```kotlin
 class MachineFriendlyNameRepository @Inject constructor(
-    private val getMachineInfo: Interactors.GetMachineInfo,
-    private val setMachineFriendlyName: Interactors.SetMachineFriendlyName,
-    private val getStoredMachineName: Interactors.GetStoredMachineName,
-    private val storeMachineName: Interactors.StoreMachineName,
+    private val getMachineInfoInteractor: Interactors.GetMachineInfo,
+    private val setMachineFriendlyNameInteractor: Interactors.SetMachineFriendlyName,
+    private val getStoredMachineNameInteractor: Interactors.GetStoredMachineName,
+    private val storeMachineNameInteractor: Interactors.StoreMachineName,
     private val machineInfoToMachineNameMapper: Mappers.MachineInfoToMachineName
 ) : Repositories.MachineFriendlyName {
 
     override suspend fun fetch(parameters: MachineFriendlyNameParams) = when (parameters) {
-        MachineFriendlyNameParams.FetchLocal -> getStoredMachineName()
-        MachineFriendlyNameParams.FetchFromMachine -> machineInfoToMachineNameMapper.fromRemote(getMachineInfo())
+        MachineFriendlyNameParams.FetchLocal -> getStoredMachineNameInteractor()
+        MachineFriendlyNameParams.FetchFromMachine -> machineInfoToMachineNameMapper.fromRemote(getMachineInfoInteractor())
         else -> throw IllegalArgumentException("Invalid use of MachineFriendlyNameParams. Use FetchLocal or FetchFromMachine for fetching.")
     }
 
     override suspend fun modify(parameters: MachineFriendlyNameParams) = when (parameters) {
-        is MachineFriendlyNameParams.SaveLocal -> storeMachineName(parameters.machineFriendlyName)
-        is MachineFriendlyNameParams.SetOnMachine -> setMachineFriendlyName(parameters.machineFriendlyName)
+        is MachineFriendlyNameParams.SaveLocal -> storeMachineNameInteractor(parameters.machineFriendlyName)
+        is MachineFriendlyNameParams.SetOnMachine -> setMachineFriendlyNameInteractor(parameters.machineFriendlyName)
         else -> throw IllegalArgumentException("Invalid use of MachineFriendlyNameParams. Use SaveLocal or SetOnMachine for storing.")
     }
 }
 
 ```
 
-Let's first take a look at the injected dependencies. As you may have noticed, the only components that we use in the repository are interactors and mappers. `MachineFriendlyNameRepository` has a very clear purpose, it provides a way to apply simple CRUD operations on the domain model. In this case, read and update (named *fetch* and *modify* to separate repository naming from standard API call naming). To achieve this, the repository knows which interactors can be used to extract the needed data. `getStoredMachineName` is an ideal interactor, because it can fetch a String from SharedPreferences which we can propagate  to the repository's fetch method, which is used by a UseCase that needs the name from local storage. But, having an ideal interactor is rarely the case, so let's focus on `getMachineInfo` interactor. As the name says, it doesn't just fetch the machine name, but a source-specific data model `MachineInfo`. Since `MachineFriendlyNameRepository` works with a String as the domain model, we need a way to create a machine friendly name from `MachineInfo`. For that purpose, we use `machineInfoToMachineNameMapper`. Keep in mind, mappers can become significantly more complex than this and therefore, they need to be thoroughly tested!
+Let's first take a look at the injected dependencies. As you may have noticed, the only components that we use in the repository are interactors and mappers. `MachineFriendlyNameRepository` has a very clear purpose, it provides a way to apply simple CRUD operations on the domain model. In this case, read and update (named *fetch* and *modify* to separate repository naming from standard API call naming). To achieve this, the repository knows which interactors can be used to extract the needed data. `getStoredMachineNameInteractor` is an ideal interactor, because it can fetch a String from SharedPreferences which we can propagate  to the repository's fetch method, which is used by a UseCase that needs the name from local storage. But, having an ideal interactor is rarely the case, so let's focus on `getMachineInfoInteractor` interactor. As the name says, it doesn't just fetch the machine name, but a source-specific data model `MachineInfo`. Since `MachineFriendlyNameRepository` works with a String as the domain model, we need a way to create a machine friendly name from `MachineInfo`. For that purpose, we use `machineInfoToMachineNameMapper`. Keep in mind, mappers can become significantly more complex than this and therefore, they need to be thoroughly tested!
 
 There is one more pattern used in this repository that may vary between implementations and that is the use of **Params** class, in our example `MachineFriendlyNameParams`. In DDD, this class also has a name and it's called a **Data transfer object (DTO)**. It's used to pass domain specific data properties between layers. In the machine friendly name example, we need to define a way to either fetch or store a name, both from a connected appliance or from local storage. `MachineFriendlyNameParams` serves that purpose. DTOs are also used to pass values from the UI to a repository and finally to a mapper in order to prepare a model required for some request.
 
-The interactors in this example are implemented fairly simply. Here are two examples for `getStoredMachineName` and `getMachineInfo`:
+The interactors in this example are implemented fairly simply. Here are two examples for `getStoredMachineNameInteractor` and `getMachineInfoInteractor`:
 
 ```kotlin
 class GetStoredMachineNameInteractor @Inject constructor(
@@ -200,13 +200,13 @@ Finally, the component that consumes functions provided by the repositories is t
 ```kotlin
 
 class GetMachineFriendlyNameUseCase @Inject constructor(
-    private val machineFriendlyName: Repositories.MachineFriendlyName
+    private val machineFriendlyNameRepository: Repositories.MachineFriendlyName
 ) : UseCases.GetMachineFriendlyName {
     override suspend fun invoke(input: Unit) = try {
-        machineFriendlyName.fetch(MachineFriendlyNameParams.FetchFromMachine)
+        machineFriendlyNameRepository.fetch(MachineFriendlyNameParams.FetchFromMachine)
     } catch (e: WifiException) {
         Timber.e("Machine name could not be fetched from appliance")
-        machineFriendlyName.fetch(MachineFriendlyNameParams.FetchLocal)
+        machineFriendlyNameRepository.fetch(MachineFriendlyNameParams.FetchLocal)
     }
 }
 ```
@@ -218,16 +218,16 @@ The last thing to mention about usecases is that they are the perfect place to i
 ```kotlin
 
 class GetMachineFriendlyNameUseCase @Inject constructor(
-    private val machineFriendlyName: Repositories.MachineFriendlyName,
+    private val machineFriendlyNameRepository: Repositories.MachineFriendlyName,
     private val ioDispatcher: Dispatchers.IO
 ) : UseCases.GetMachineFriendlyName {
     override suspend fun invoke(input: Unit) = try {
         ioDispatcher {
-           machineFriendlyName.fetch(MachineFriendlyNameParams.FetchFromMachine)
+           machineFriendlyNameRepository.fetch(MachineFriendlyNameParams.FetchFromMachine)
         }
     } catch (e: WifiException) {
         Timber.e("Machine name could not be fetched from appliance")
-        machineFriendlyName.fetch(MachineFriendlyNameParams.FetchLocal)
+        machineFriendlyNameRepository.fetch(MachineFriendlyNameParams.FetchLocal)
     }
 }
 ```
