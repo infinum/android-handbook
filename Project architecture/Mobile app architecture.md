@@ -79,7 +79,7 @@ The View components goal is to present data on the screen. There are a few decis
 
 ### Anticorruption layer (ACL)
 
-Even thought the name implies this is a layer, implementation wise this will be a component. The ACL should be used across the entire project and it naturally belongs between two components that are speaking a different language (different data models). Using the ACL ensures data consistency and correct mapping in both directions (e.g. from source to domain and back). The important thing to mention about the latter is that it doesn't have to be the same component (class) doing both transformations. For more complex cases, it's encouraged to create separate implementations for each usage and direction of data transformation. As a bare bones implementation, The ACL will simply map one data model into another.
+The ACL should be used across the entire project and it naturally belongs between two components that are speaking a different language (different data models). Using the ACL ensures data consistency and correct mapping in both directions (e.g. from source to domain and back). The important thing to mention about the latter is that it doesn't have to be the same component (class) doing both transformations. For more complex cases, it's encouraged to create separate implementations for each usage and direction of data transformation. As a bare bones implementation, The ACL will simply map one data model into another.
 
 Common places where the ACL should be used:
 
