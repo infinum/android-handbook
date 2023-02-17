@@ -46,7 +46,7 @@ After a successful creation of a keystore file and password, send the password a
 
 ## App signing
 
-App signing by Google Play is an opt-in feature and a recommended way to sign your app for distribution through Google Play. By using this feature, we add an extra layer of security to our application's release process. Also, this step is mandatory if we want to use the [Android App Bundle](https://developer.android.com/guide/app-bundle) and support [dynamic delivery](https://developer.android.com/guide/app-bundle/#dynamic_delivery).
+App signing by Google Play is an opt-in feature and a recommended way to sign your app for distribution through Google Play. By using this feature, we add an extra layer of security to our application's release process. Also, this step is mandatory if we want to use the [Android App Bundle](https://developer.android.com/guide/app-bundle) and support [dynamic delivery](https://developer.android.com/guide/playcore/feature-delivery).
 
 Now, we have to separate the **Upload** and **App Signing** key. The upload key is the one which developers use to sign and upload APK to Google Play. Google Play verifies the app and signs it with a new key that is used in production. Google Play is now responsible for storing the main app signing keystore. By separating the upload and the app signing key, you have the possibility to reset an upload key in case it gets lost or compromised. In case you are still using a single key for production, if you lose the key, you also lose the ability to update your app.
 
