@@ -20,7 +20,7 @@ allprojects {
 }
 ```
 
-A top-level file contains a global configuration which is applicable to all modules inside your project. (If you don't know what a module is, check out the following article: [Creating Modules](https://developer.android.com/sdk/installing/create-project.html#CreatingAModule)).
+A top-level file contains a global configuration which is applicable to all modules inside your project. (If you don't know what a module is, check out the following article: [Projects overview](https://developer.android.com/studio/projects#ApplicationModules)).
 
 Your main module (usually named **app**) contains its own **build.gradle**.
 Its contents usually look like this:
