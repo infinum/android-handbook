@@ -25,7 +25,7 @@ Timber.w(...)
 Timber.wtf(...)
 ```
 
-For more information about methods, see the javadoc [here](http://jakewharton.github.io/timber).
+For more information about methods, see the javadoc [here](https://jakewharton.github.io/timber/docs/5.x/index.html).
 
 To add Timber to a project, just add a new dependency in `build.gradle`:
 
