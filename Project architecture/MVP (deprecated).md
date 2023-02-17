@@ -214,5 +214,5 @@ public class LoginInteractorImpl implements LoginInteractor {
 ## Useful links
 
 * [MVP for Android](http://antonioleiva.com/mvp-android/)
-* [Introduction to MVP on Android](https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Androids)
+* [Introduction to MVP on Android](http://konmik.com/posts/introduction_to_model_view_presenter_on_android)
 * [MVP Project Example](https://github.com/antoniolg/androidmvp)
