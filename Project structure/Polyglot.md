@@ -1,4 +1,4 @@
-[Polyglot](https://infinum.polyglothq.com/) is an in-house platform for managing translations.
+[Polyglot](https://infinum.polyglothq.com) is an in-house platform for managing translations.
 
 The idea is to have all application strings in one place and share them between platforms. By using polyglot, translations across platforms are consistent, and we remove the chance of developer error when copying the strings in the app.
 
