@@ -47,11 +47,11 @@ if (checkFileSize(image))
 * Constants should be `ALL_CAPS`.
 * Methods are named after verbs, variables and classes after nouns.
 * XML resource IDs have to use `snake_case`.
-* XML resource IDs should use `camelCase` in a Kotlin project because of [Kotlin synthetic](https://kotlinlang.org/docs/tutorials/android-plugin.html).
+* XML resource IDs should use `camelCase` in a Kotlin project.
 * Activities and fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`.
 * The corresponding layouts have to be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`.
 * All naming has to be simple, clear and mnemonic (short and meaningful).
-* The [Infinum Code Style](https://github.com/infinum/android-handbook-private/blob/master/files/InfinumCodeStyle.xml) has to be imported into the Android Studio and used in formatting code. If you want to find out how to import it, check out the chapter about [Development environment setup](/books/android/onboarding/development-environment-setup).
+* The [Infinum Code Style](https://github.com/infinum/android-handbook/blob/master/files/InfinumCodeStyle.xml) has to be imported into the Android Studio and used in formatting code. If you want to find out how to import it, check out the chapter about [Development environment setup](/books/android/onboarding/development-environment-setup).
 * Drawable resources also have [naming conventions](http://petrnohejl.github.io/Android-Cheatsheet-For-Graphic-Designers/#naming-conventions).
 
 ## Examples of good naming

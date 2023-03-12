@@ -20,7 +20,7 @@ allprojects {
 }
 ```
 
-A top-level file contains a global configuration which is applicable to all modules inside your project. (If you don't know what a module is, check out the following article: [Creating Modules](https://developer.android.com/sdk/installing/create-project.html#CreatingAModule)).
+A top-level file contains a global configuration which is applicable to all modules inside your project. (If you don't know what a module is, check out the following article: [Projects overview](https://developer.android.com/studio/projects#ApplicationModules)).
 
 Your main module (usually named **app**) contains its own **build.gradle**.
 Its contents usually look like this:
@@ -176,8 +176,8 @@ Each (build type, product flavor) combination is called a **build variant**.
 Projects with no flavors still have build variants, but the single default flavor is used, nameless, making the list of variants the same as the list of build types.
 To build the variant you want, you should select it from the AS menu on the left side.
 
-![Build variant menu](/img/build_variant_1.png "Build variant menu")
-![Build variant selection](/img/build_variant_2.png "Build variant selection")
+<img src="/img/build_variant_1.png" alt="Build variant menu" width="80%" height="75%">
+<img src="/img/build_variant_2.png" alt="Build variant selection" width="80%" height="75%">
 
 ### 8. Adding a build version to an APK file
 

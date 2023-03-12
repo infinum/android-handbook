@@ -20,7 +20,7 @@ The main advantage of dependency injection is the reduction of boilerplate code 
   * Reusability
   * Testability
 
-Not every problem is solved with dependency injection. There are also some disadvantages that come with such great power. As we don't care about the actual implementation, our code can become difficult to trace (`Protip:` use <kbd>Alt</kbd>+<kbd>Cmd</kbd> to access the implementation file directly in Android Studio).
+Not every problem is solved with dependency injection. There are also some disadvantages that come with such great power. As we don't care about the actual implementation, our code can become difficult to trace (`Protip:` use <kbd>Command</kbd>+<kbd>Option</kbd> to access the implementation file directly in Android Studio).
 
 
 ## Dependency injection in Android
