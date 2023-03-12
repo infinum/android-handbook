@@ -47,7 +47,7 @@ if (checkFileSize(image))
 * Constants should be `ALL_CAPS`.
 * Methods are named after verbs, variables and classes after nouns.
 * XML resource IDs have to use `snake_case`.
-* XML resource IDs should use `camelCase` in a Kotlin project because of [Kotlin synthetic](https://kotlinlang.org/docs/tutorials/android-plugin.html).
+* XML resource IDs should use `camelCase` in a Kotlin project.
 * Activities and fragments are named with the appropriate suffix: `LoginActivity`, `RegisterFragment`.
 * The corresponding layouts have to be named with the appropriate prefix: `activity_login.xml`, `fragment_register.xml`.
 * All naming has to be simple, clear and mnemonic (short and meaningful).
