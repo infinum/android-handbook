@@ -16,7 +16,7 @@ The only time you should make an exception to this rule is when the QA team or t
 
 ### Crashlytics
 
-Every build that's uploaded to Infinum Labs **should**:
+Every build that's uploaded to Infinum Tryout apps **should**:
 
 * **not** be debuggable
 * pass static code checkers
