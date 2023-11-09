@@ -1,12 +1,12 @@
 ## Before starting work
 
 1. Ask your Tech/Team leader to create a private Git repository on Github/Bitbucket.
-2. If you are going to use `release` branches, add protection regex with same rules as for the `master` branch.
+2. If you are going to use `release` branches, add protection regex with same rules as for the `main` branch.
 3. Ask the project manager to provide you with all project documentation and design.
 
 ## Initial project setup
 
-1. Branch a new branch off `master` (see the [Using Git](/books/android/building-quality-apps/using-git) chapter for details).
+1. Branch a new branch off `main` (see the [Using Git](/books/android/building-quality-apps/using-git) chapter for details).
 2. Create a new project in Android Studio using the wizard.
 3. Create a gitignore file using [gitignore.io](https://www.gitignore.io/).
 4. Set up buildTypes and flavors (you usually need a `staging` and `production` flavor).
