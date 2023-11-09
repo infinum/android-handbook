@@ -1,7 +1,7 @@
 ### Disclaimer: Do not migrate to Kotlin DSL if you have gradle version < 5
 
-Official documentation: https://docs.gradle.org/current/userguide/kotlin_dsl.html  
-Detailed migration guide: https://proandroiddev.com/migrating-android-build-scripts-from-groovy-to-kotlin-dsl-f8db79dd6737
+[Official documentation](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+[Detailed migration guide](https://proandroiddev.com/migrating-android-build-scripts-from-groovy-to-kotlin-dsl-f8db79dd6737)
 
 ## What is Kotlin Gradle DSL ?
 

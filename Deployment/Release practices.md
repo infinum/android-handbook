@@ -9,13 +9,14 @@ Now that you have a build that you wish to release and the right to do so, your 
 1. Internal test track
 2. Closed track
 3. Open track
-4. Production track
+4. Pre-registration track
+5. Production track
+
+![Play Store tracks](/img/release_practices/play_store_tracks.png)
 
 ### Track fallback status
 
 Depending on deployed APKs/app bundles, you could see various validation messages that denote how this track compares to others. If a track is set as **shadowed**, this means that one APK shadows another APK when it serves part or all of the same device configuration and it has a higher version code. When a track is **promoted**, this means that all of its active APKs are contained in the fallback track's active APKs (e.g. all active beta APKs are also active in production). You may see this if you release first to a testing track and then move the APKs to a more stable release. When all of the active APKs in a track are completely shadowed by active APKs with higher version codes, the track gains a **superseded** status. Finally, a track can be **partially shadowed**, meaning that at least one APK is shadowed by a higher version code APK. This would mean, for example, that some users get the beta APK, while others get the one from production. Usually, this is a result of a mixup with the version codes.
-
-![Example fallback](/img/release_practices/track_fallback_status.png)
 
 ### Internal test track
 
@@ -41,6 +42,11 @@ If the app is yet to see its first release to production, the store listing will
 
 By using open tracks, user feedback can be gathered directly from the Play Store, but are not public, meaning that they won't affect your total production listing.
 
+### Pre-registration track
+
+With this track, you enable users to pre-register for your app before it is actually available. When the app becomes available, it will be automatically installed to all the pre-registered users.
+It is mostly used to boost pre-launch game campaigns and improve retention metrics.
+
 ### Production track
 
 Finally, when you create a production release, your app is available to all users in the countries you've targeted.
@@ -51,13 +57,7 @@ Having selected a track, it's time to release your app. Go to your Play Console 
 
 Follow these simple steps to get you going:
 
-1. Head over to **Release management --> App releases** in the sidebar.
-
-	![app releases](/img/release_practices/console_sidebar.png)
-
-2. Click on the **Manage** button on your selected track and then the **Create release** button on the next screen.
-
-	![Manage track](/img/release_practices/release_tracks.png)
+1. Click on your preferred track from the side bar and then the **Create release** button on the top right corner.
 
 	![Create release](/img/release_practices/create_release.png)
 
@@ -69,7 +69,7 @@ Follow these simple steps to get you going:
 	
 	*Note:* To save your progress at any time, just press the **Save** button at the bottom of the page.
 	
-4. Once finished, press the **Review** button that will lead you to the final review step.
+3. Once finished, press the **Review release** button that will lead you to the final review step.
 
 ## Review & rollout
 
@@ -83,7 +83,7 @@ Before you release anything, double check the number of targeted devices, just t
 
 ![Targeted devices](/img/release_practices/targeted_devices.png)
 
-By expanding the **Rollout countries** section in the **Rollout** card, you are going to see all the countries that your rollout will be targeting. As is the case with targeted devices, just give it a quick look and see if there are any unwanted changes. 
+By default, the release will be available in all targeted countries. You can still manually select the availability of a release for specific countries/regions by checking **Select specific countries/regions** and picking individual countries.
 
 ![Rollout countries](/img/release_practices/rollout_countries.png)
 
@@ -121,16 +121,27 @@ Once you release your update into production, your app publishing status will be
 - **Removed** - The app is no longer available on Google Play or for existing users
 - **Update pending** - The update has been submitted and is being processed
 
-## Timed publishing
+## Managed publishing
 
-When you select timed publishing, your update needs to be processed before it can go live. Processing takes up to a few hours. When your update is processed, you'll see a **Go live** button. When you select it, you'll make the update available on Google Play within a few minutes.
+When you select managed publishing, your update needs to be processed before it can go live. Processing takes up to a few hours. When your update is processed, you'll see a **Go live** button. When you select it, you'll make the update available on Google Play within a few minutes.
 
-Unfortunately, Google Play still **doesn't offer automatic releases**. It is your responsibility to press the Go live button in order to push the update to the store. Additionally, note that timed publishing is **only available for updates!**
+Unfortunately, Google Play still **doesn't offer automatic releases**. It is your responsibility to press the Go live button in order to push the update to the store. Additionally, note that managed publishing is **only available for updates!** 
+If activated, managed publishing remains on until you manually turn it off.
 
-To turn on timed publishing:
+To turn on managed publishing:
 
-1. Go to the **Store presence** section in the sidebar
-2. At the bottom of your screen, go to the **Timed publishing** switch
-3. Review the information and press **Turn on**
+1. Go to the **Publishing overview** section in the sidebar
+2. At the right side of your screen, press the **Manage** button
+3. Review the information, select the switch **Managed publishing on** and press the  **Save** button
 
-![Timed publishing](/img/release_practices/timed_publishing.png)
+![Managed publishing](/img/release_practices/managed_publishing.png)
+
+#### Exceptions for Managed Publishing
+
+- Increasing an existing staged roll-out to 100%
+- Updating your app’s ”Release notes” section
+- Changes to device exclusion rules
+- Managing testers
+- Unpublishing your app
+- Changes to your app’s **In-app products** page
+- Price changes

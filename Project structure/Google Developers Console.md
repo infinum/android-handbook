@@ -1,5 +1,5 @@
 ## Creating a project
-Head over to https://console.developers.google.com, click the `Select a project` button on the top, right next to the page title and click `Create a project...`.
+Head over to [Developers console](https://console.developers.google.com), click the `Select a project` button on the top, right next to the page title and click `Create a project...`.
 
 After you have created a new project in the Google Developers Console, you need to give access to your team leaders. To do so, open the `Permissions` page from the side menu, click `Add member` and add your team leaders' emails and select the `Is owner` permission.
 

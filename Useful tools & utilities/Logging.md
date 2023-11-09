@@ -8,15 +8,15 @@ For debug mode, we usually use the `DebugTree` implementation which comes with T
 
 To do that, simply add this in the `onCreate()` of your app:
 
-```java
+```kotlin
 if (BuildConfig.DEBUG) {
-    Timber.plant(new Timber.DebugTree());
+    Timber.plant(Timber.DebugTree())
 }
 ```
 
 You can now call Timber’s static methods to log, just like you would call the ones from `Log` class:
 
-```java
+```kotlin
 Timber.d(...)
 Timber.i(...)
 Timber.v(...)
@@ -25,7 +25,7 @@ Timber.w(...)
 Timber.wtf(...)
 ```
 
-For more information about methods, see the javadoc [here](http://jakewharton.github.io/timber).
+For more information about methods, see the javadoc [here](https://jakewharton.github.io/timber/docs/5.x/index.html).
 
 To add Timber to a project, just add a new dependency in `build.gradle`:
 

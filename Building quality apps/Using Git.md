@@ -91,7 +91,7 @@ Don't comment out code and commit it to the repository so you can 'uncomment it 
 ![Resolving conflicts in Android Studio](/img/idea_vcs_magic_resolve.png)
 
 Android Studio has a great built-in tool for resolving merge conflicts.
-You can find it in `VCS` — `VCS Operations Popup`.
+You can find it in `Git` — `Merge` or `Rebase` - `Resolve Conflicts`.
 Before you can use this tool, select Git as your VCS for your project under `Preferences` — `Version Control`.
 You can find more details about the tool [here](https://www.jetbrains.com/idea/help/resolving-conflicts.html).
 
