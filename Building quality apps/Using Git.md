@@ -12,9 +12,9 @@ We use a variant of the [Git Flow](https://www.atlassian.com/git/tutorials/compa
 
 ![Git Flow](/img/git-flow.svg)
 
-On most of the project we are going to use `master` as main branch and `dev` is not going to be used. All the development will be done on `master` branch. Each release is **tagged** with the version number as it is described in Git standardization document.
+On most of the project we are going to use `main` as main branch and `dev` is not going to be used. All the development will be done on `main` branch. Each release is **tagged** with the version number as it is described in Git standardization document.
 
-We noticed that when having both `master` and `dev` branches only one of them is used actively. Since we have tags on release commits, having a branch that only contains published code seems unnecessary. That is why, for the simplicity, we only keep the `master` branch as the main branch and track releases via tags.
+We noticed that when having both `main` and `dev` branches only one of them is used actively. Since we have tags on release commits, having a branch that only contains published code seems unnecessary. That is why, for the simplicity, we only keep the `main` branch as the main branch and track releases via tags.
 
 ## Git tagging
 
@@ -28,7 +28,7 @@ You can find more info about tagging [here](https://git-scm.com/book/en/v2/Git-B
 
 ### Naming conventions
 
-The development branch should always be named `master`, for consistency across projects.  
+The development branch should always be named `main`, for consistency across projects.  
 
 Branches are named according to their use, and words are delimited by dashes. You sould use Productive/Jira task number when possible. Some examples:
 
@@ -39,39 +39,39 @@ Branches are named according to their use, and words are delimited by dashes. Yo
 ### Starting work on a new feature
 
 ```bash
-git checkout master
+git checkout main
 git checkout -b feature/123-login-screen
 ```
 
-### Merging the feature into `master`
+### Merging the feature into `main`
 
-The preferred way of merging a branch back into `master` is by creating a pull request and assigning it to a colleague for review.
+The preferred way of merging a branch back into `main` is by creating a pull request and assigning it to a colleague for review.
 
 There are two different roles in every pull request—the assignee and the reviewer. Reviewers are your colleagues who review your pull request, whereas the assignee is the person responsible for merging or cancelling the pull request—in other words, **you**.
 
-If the branch cannot be merged back into `master` because of a merge conflict, you need to fix the conflict on your feature branch by either rebasing from `master`
+If the branch cannot be merged back into `main` because of a merge conflict, you need to fix the conflict on your feature branch by either rebasing from `main`
 
 ```bash
 git checkout feature/login-screen
-git rebase master
+git rebase main
 ```
 
-or by merging `master` into your branch
+or by merging `main` into your branch
 
 ```bash
 git checkout feature/login-screen
-git merge master
+git merge main
 ```
 
 ### Release branches
 
-Most projects have one active development stream at the moment. This means that all new changes should be included in the next upcoming release. Because of this, all changes can be merged into the `master` branch without the need to introduce multiple `release` branches.
+Most projects have one active development stream at the moment. This means that all new changes should be included in the next upcoming release. Because of this, all changes can be merged into the `main` branch without the need to introduce multiple `release` branches.
 
-However, some projects have multiple releases planned ahead. It is possible that, at some point, a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `master` branch. You can use regex to match all the release branches and not worry about protecting the newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done, even with admin privileges. 
+However, some projects have multiple releases planned ahead. It is possible that, at some point, a development team will work on multiple releases at the same time. In that case, `release` branches should be introduced and handled in the same manner as the main `main` branch. You can use regex to match all the release branches and not worry about protecting the newly created ones. **Note:** If you want to delete a protected branch on GitHub you will need to remove the protection because this can't be done, even with admin privileges. 
 
 When working with `release` branches, it needs to be clear which task should be included in which version. If you are not sure, ask the project manager before starting the task. In [Productive](https://app.productive.io/), release versions can be defined with tags or boards. In [JIRA](https://www.atlassian.com/software/jira), you can track the status of each release and define a `Fix version/s` attribute on a task.
 
-After releasing a new version from the `release` branch, make sure to create a new tag with that version from the last commit in that branch. Then you can merge the `release` branch into the `master` branch. Don't forget to also update all other active `release` branches.
+After releasing a new version from the `release` branch, make sure to create a new tag with that version from the last commit in that branch. Then you can merge the `release` branch into the `main` branch. Don't forget to also update all other active `release` branches.
 
 ### Commit early, commit often
 
