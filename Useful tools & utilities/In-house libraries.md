@@ -19,6 +19,22 @@ Sentinel is a simple one screen UI which provides a standardised entry point for
 
 DbInspector is a library for viewing the contents of the in-app database for debugging purposes. While somewhat replaced by the new [Android Studio's Database Inspector feature](https://developer.android.com/studio/preview/features#database-inspector), it is useful for QA and is included as a Sentinel tool.
 
+### [Localian](https://github.com/infinum/android-localian)
+
+Localian is a library that manipulates your application locale and language across multiple Android API levels with possibility not to restart application process. Includes Retrofit module for easy API implementations.
+
+### [Collar](https://github.com/infinum/android-collar)
+
+Gradle plugin which collects all analytics screen names, events and user properties for Android projects.
+This plugin has been written in Kotlin but works both inside Kotlin and Java projects.
+
+Collar does NOT send out analytics data to remote services. This is left for the developer to solve in their own codebase, with Collar being simply a reflection of the current state of analytics data.
+
+
+### [JsonApiX](https://github.com/infinum/kotlin-jsonapix)
+
+JSON API X is an Android, annotation processor library that implements a parser between Kotlin classes and JSON API specification strings in both directions.
+
 ### [Retromock](https://github.com/infinum/Retromock)
 
 Retromock is a library for mocking responses in a Retrofit service. It uses annotations and is very simple and intuitive to implement. If you work for a project with an inconsistent API uptime or are ahead of the backend team in the development, you will undoubtedly find it useful. 
