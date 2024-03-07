@@ -21,7 +21,7 @@ DbInspector is a library for viewing the contents of the in-app database for deb
 
 ### [Localian](https://github.com/infinum/android-localian)
 
-Localian is a library that manipulates your application locale and language across multiple Android API levels with possibility not to restart application process. Includes Retrofit module for easy API implementations.
+Localian is a library that manipulates your application locale and language across multiple Android API levels with possibility not to restart application process.
 
 ### [Collar](https://github.com/infinum/android-collar)
 
@@ -33,7 +33,7 @@ Collar does NOT send out analytics data to remote services. This is left for the
 
 ### [JsonApiX](https://github.com/infinum/kotlin-jsonapix)
 
-JSON API X is an Android, annotation processor library that implements a parser between Kotlin classes and JSON API specification strings in both directions.
+JSON API X is an Android, annotation processor library that implements a parser between Kotlin classes and JSON API specification strings in both directions. Includes Retrofit module for easy API implementations.
 
 ### [Retromock](https://github.com/infinum/Retromock)
 
