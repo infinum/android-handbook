@@ -18,7 +18,9 @@ If you open folder in finder, you can easily check for file size and time modifi
 ### Step 2 - run apksigner sign
 Using installed build tools, run the following ->
 
+```shell
 /Users/<your user name>/Library/Android/sdk/build-tools/<latest version>/apksigner sign --ks your_signing_key.jks myAwesomeApp.apk
+```
 
 You'll be prompted password, so please enter it (copy/paste my not be allowed here). Also, be careful with storing and sending these information.
 
@@ -34,7 +36,9 @@ Please be aware that it is not the signed app, the signed app is actually your o
 To make sure our signing is correct and will pass Google Play validation, we need to check SHA-256, SHA-1 and MD5 digest data.
 Run the following ->
 
+```shell
 /Users/<your user>/Library/Android/sdk/build-tools/<latest version>/apksigner verify --print-certs myAwesomeApp.apk
+```
 
 It'll print out the data we need.
 Now, go to Google Play Console of your project and find App integrity -> Upload key certificate section. Digest data writen there must match the output in the console.
