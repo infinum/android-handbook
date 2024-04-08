@@ -3,6 +3,7 @@
 In case you are provided with .apk file which is already signed, or not signed at all, you can follow these steps to re-sign it with correct signing key.
 
 You need:
+
 - .apk file to sign
 - .jks signing key file
 - signing password
