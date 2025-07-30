@@ -32,3 +32,5 @@ Once you set it up properly, you can easily inject everything you need, where yo
 You can only use one or the other though. So for legacy projects that already have Dagger set up, migrating to Hilt might not be the best idea, especially if the project is big. For new projects though, you should definitely consider siding with Hilt right from the start.
 
 We wouldn't want to leave you clueless and having to google stuff, so we will cover both Dagger and Hilt in the following sections.
+
+Of course, there are other DI solutions. To start with Koin or Kotlin-inject check out [Marin's article](https://infinum.com/blog/koin-vs-kotlin-inject-dependency-injection/).
